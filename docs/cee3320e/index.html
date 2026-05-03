@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林源韋 Bruce Lin — 履歷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-size: 9pt;
+    line-height: 1.6;
+    color: #2d3748;
+    background: #f7f8fa;
+  }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: #0f1f3d;
+    color: #fff;
+    padding: 32px 44px 28px;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .topbar h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .topbar .subtitle {
+    font-size: 10.5pt;
+    color: #94b8e8;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .topbar .contact {
+    font-size: 8.5pt;
+    color: #c5d8f0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .topbar .contact a { color: #7fb3e8; text-decoration: none; }
+
+  /* ── MAIN LAYOUT ── */
+  .content { padding: 32px 44px 48px; }
+
+  /* ── SECTION HEADINGS ── */
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #0f1f3d;
+    margin: 28px 0 14px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: #e2e8f0;
+    margin-left: 10px;
+    display: none;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: #f0f5ff;
+    border-left: 3px solid #1a56db;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    font-size: 9pt;
+    color: #2d3748;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  /* ── METRICS ROW ── */
+  .metrics {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 14px 0 4px;
+  }
+  .metric-card {
+    background: #0f1f3d;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    min-width: 110px;
+    text-align: center;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .metric-card .num {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #7fb3e8;
+    display: block;
+    line-height: 1.2;
+  }
+  .metric-card .label {
+    font-size: 7.5pt;
+    color: #c5d8f0;
+    margin-top: 2px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+  .skill-group { }
+  .skill-group .skill-label {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #1a56db;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 5px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 7.5pt;
+    font-weight: 500;
+  }
+  .tag-backend  { background: #0f1f3d; color: #fff; }
+  .tag-blockchain { background: #0e7490; color: #fff; }
+  .tag-frontend { background: #1d4ed8; color: #fff; }
+  .tag-cloud    { background: #166534; color: #fff; }
+  .tag-ai       { background: #6b21a8; color: #fff; }
+  .tag-data     { background: #065f46; color: #fff; }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { margin-top: 4px; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 0 16px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .exp-item::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    bottom: -24px;
+    width: 2px;
+    background: #e2e8f0;
+  }
+  .exp-item:last-child::before { display: none; }
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1a56db;
+    margin-top: 3px;
+    flex-shrink: 0;
+    z-index: 1;
+    position: relative;
+  }
+  .exp-body { }
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 2px;
+  }
+  .company {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a56db;
+  }
+  .period {
+    font-size: 8pt;
+    color: #718096;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .role {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #0f1f3d;
+    margin-bottom: 6px;
+  }
+  .exp-bullets {
+    padding-left: 16px;
+    margin-bottom: 6px;
+  }
+  .exp-bullets li {
+    margin-bottom: 3px;
+    font-size: 8.5pt;
+    color: #374151;
+  }
+  .exp-bullets li strong { color: #0f1f3d; }
+  .exp-note {
+    font-size: 7.5pt;
+    color: #718096;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  .sub-section {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #374151;
+    margin: 8px 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .project-card {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    background: #fafbff;
+  }
+  .project-card .proj-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin-bottom: 2px;
+  }
+  .project-card .proj-period {
+    font-size: 7.5pt;
+    color: #718096;
+    margin-bottom: 6px;
+  }
+  .project-card p {
+    font-size: 8pt;
+    color: #4a5568;
+    line-height: 1.55;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .ach-card {
+    background: #f0f5ff;
+    border-radius: 8px;
+    padding: 12px 14px;
+    border-left: 3px solid #1a56db;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .ach-card .ach-title {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin-bottom: 4px;
+  }
+  .ach-card p {
+    font-size: 8pt;
+    color: #4a5568;
+    line-height: 1.55;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; font-size: 8.5pt; }
+    .page { box-shadow: none; max-width: 100%; }
+    .topbar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .metric-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .ach-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .exp-item { page-break-inside: avoid; }
+    .project-card { page-break-inside: avoid; }
+    .ach-card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <h1>林源韋 &nbsp;Bruce Lin</h1>
+    <div class="subtitle">資深後端工程師 · 9 年全端開發經驗</div>
+    <div class="contact">
+      <span>✉ lywctl@gmail.com</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- INTRO -->
+    <div class="intro">
+      擁有 9 年全端開發經驗，主力後端技術棧涵蓋 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力。深度參與高併發即時系統設計——在鑫鼎鑽以 <strong>17 支 Redis Lua Script</strong> 原子解耦競態點、處理日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 管道承載 <strong>3,000 RPS</strong> 資料遷移。同時具備區塊鏈實戰經歷（以太坊 DEX 撮合引擎、TRON 智能合約競賽優選）與 AI 工具深度整合能力，包括自建 Claude Code Agent/Skill 與端對端 AI 自動化管線。對系統可觀測性、分散式一致性與零停機遷移有系統性思考，能在業務快速迭代中維持架構健壯性。
+    </div>
+
+    <!-- KEY METRICS -->
+    <div class="metrics">
+      <div class="metric-card">
+        <span class="num">千萬筆</span>
+        <div class="label">日均投注記錄</div>
+      </div>
+      <div class="metric-card">
+        <span class="num">17</span>
+        <div class="label">Redis Lua Scripts</div>
+      </div>
+      <div class="metric-card">
+        <span class="num">3,000</span>
+        <div class="label">RPS Serverless 管道</div>
+      </div>
+      <div class="metric-card">
+        <span class="num">9 年</span>
+        <div class="label">全端開發資歷</div>
+      </div>
+      <div class="metric-card">
+        <span class="num">70%</span>
+        <div class="label">申貸時間縮短</div>
+      </div>
+      <div class="metric-card">
+        <span class="num">7+</span>
+        <div class="label">子站 SSO 共用</div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section-title">核心技術能力</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-label">後端</div>
+        <div class="tags">
+          <span class="tag tag-backend">Ruby on Rails 6/7</span>
+          <span class="tag tag-backend">Go (Gin)</span>
+          <span class="tag tag-backend">Node.js</span>
+          <span class="tag tag-backend">Python (Django)</span>
+          <span class="tag tag-backend">GraphQL</span>
+          <span class="tag tag-backend">WebSocket / AnyCable</span>
+          <span class="tag tag-backend">Sidekiq / Celery</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">資料庫 &amp; 快取</div>
+        <div class="tags">
+          <span class="tag tag-data">MySQL (Partition)</span>
+          <span class="tag tag-data">PostgreSQL (行級鎖)</span>
+          <span class="tag tag-data">MongoDB</span>
+          <span class="tag tag-data">Redis (Lua / Redsync)</span>
+          <span class="tag tag-data">ByteHouse</span>
+          <span class="tag tag-data">Redshift</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">雲端 &amp; 基礎設施</div>
+        <div class="tags">
+          <span class="tag tag-cloud">AWS CDK</span>
+          <span class="tag tag-cloud">Lambda / EventBridge</span>
+          <span class="tag tag-cloud">SQS / S3</span>
+          <span class="tag tag-cloud">Docker</span>
+          <span class="tag tag-cloud">Chef / Capistrano</span>
+          <span class="tag tag-cloud">Rollbar / Sentry / NewRelic</span>
+          <span class="tag tag-cloud">OpenObserve</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">區塊鏈</div>
+        <div class="tags">
+          <span class="tag tag-blockchain">Ethereum / Solidity</span>
+          <span class="tag tag-blockchain">ECDSA 簽名驗證</span>
+          <span class="tag tag-blockchain">DEX 撮合引擎</span>
+          <span class="tag tag-blockchain">TRON / TronLink</span>
+          <span class="tag tag-blockchain">ICO 平台</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">前端</div>
+        <div class="tags">
+          <span class="tag tag-frontend">Angular 14/16</span>
+          <span class="tag tag-frontend">React</span>
+          <span class="tag tag-frontend">Nuxt 2</span>
+          <span class="tag tag-frontend">Apollo GraphQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-label">AI 工具</div>
+        <div class="tags">
+          <span class="tag tag-ai">Claude Code Agent/Skill</span>
+          <span class="tag tag-ai">Prompt Engineering</span>
+          <span class="tag tag-ai">LLM Fine-tuning</span>
+          <span class="tag tag-ai">AI 自動化管線</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section-title">工作經歷</div>
+    <div class="exp-list">
+
+      <!-- 鑫鼎鑽 -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">鑫鼎鑽</span>
+            <span class="period">2025/06 – 至今</span>
+          </div>
+          <div class="role">資深後端工程師</div>
+          <ul class="exp-bullets">
+            <li><strong>17 支 Redis Lua Script</strong> 原子解耦競態點：投注限額 6-key 原子操作、冪等性 guard、頻率限流、CDN 多層黑名單，徹底消除 TOCTOU race condition</li>
+            <li><strong>MySQL Range Partition</strong>：5 張核心流水表（credits / bets / transfers）按日期分區，<code>PartitionReorganizerService</code> 線上擴展不鎖表；到期前一個月 Slack 告警</li>
+            <li><strong>倉儲零停機遷移</strong>：Strategy Pattern + Factory 抽象 <code>Warehouse</code> 模組，per-feature Key 粒度切換 Redshift / ByteHouse，雙寫比對後一行 <code>disable_dual_write!</code> 完成切換</li>
+            <li><strong>AASM 三套聯動狀態機</strong>（Pool / Round / Bet，共 1,068 行），Pool 8 個狀態，一個轉換級聯觸發 Round → Bet 結算</li>
+            <li><strong>AnyCable + anycable-go</strong>：10 個 WebSocket channel，5 種伺服器角色分離部署，即時賠率推播</li>
+            <li>雙重記帳結算引擎（OrderBet → OrderSettle → OrderCancel），TransferService 原子性轉帳含 deadlock prevention，多幣種即時匯率</li>
+            <li>管理後台：MAC 定址 WebSocket 指令系統 + WsMonitor 5 秒心跳自動復原 + OpenObserve 7 幣別動態閾值異常偵測</li>
+          </ul>
+          <div class="exp-note">規模：178 Models / 148 Services / 54 Sidekiq Workers / 170+ DB Tables</div>
+        </div>
+      </div>
+
+      <!-- 新愛世 2nd -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">新愛世科技</span>
+            <span class="period">2023/09 – 2025/05</span>
+          </div>
+          <div class="role">資深全端工程師</div>
+          <ul class="exp-bullets">
+            <li>Rails 7 + <strong>GraphQL + graphql-batch DataLoader</strong>，91 Models 涵蓋完整貸款生命週期；paper_trail 金融稽核追蹤滿足監管需求</li>
+            <li>導入 <strong>GrowthBook A/B Testing</strong> 平台，Feature Flag 機制無縫整合，數據驅動產品決策</li>
+            <li>KYC/AML 合規模組：Python / Django + Google Vision OCR + Celery 非同步工作流</li>
+            <li>Angular 14 + SSR + Apollo GraphQL 前端，GA4 / GTM / Mixpanel 三層行為分析體系</li>
+            <li>獨立負責「來一張」信用卡比較平台前後端與產品策略，<strong>8 個月從虧損轉為穩定獲利</strong></li>
+          </ul>
+          <div class="exp-note">規模：91 Models（AlphaLoan）/ 138 Models（FinCake）</div>
+        </div>
+      </div>
+
+      <!-- Lestar -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">Lestar</span>
+            <span class="period">2022/09 – 2023/07</span>
+          </div>
+          <div class="role">資深後端工程師</div>
+          <div class="sub-section">AWS CDK Serverless 事件管道</div>
+          <ul class="exp-bullets">
+            <li>API Gateway → Lambda → EventBridge → SQS → Lambda 全託管架構，CDK IaC 管理；Locust 壓測驗證 <strong>3,000 RPS</strong>，支援 40+ 張資料表同步</li>
+            <li>設計 12 種亂序事件狀態機情境，<strong>Prisma Serializable 事務</strong> + <code>paddingUpdatingValue</code> 解決 update 先於 create 的時序問題</li>
+            <li>PII 加密（JWT HS256）、AJV JSON Schema 驗證 13 張表、EventBridge 21 天 archive 容災；Jest 整合測試覆蓋 3 種亂序組合（非 Mock）</li>
+          </ul>
+          <div class="sub-section">後台管理系統</div>
+          <ul class="exp-bullets">
+            <li>PostgreSQL + MongoDB <strong>Polyglot Persistence</strong>，pg_party 分區表自動管理，MongoDB Aggregation Pipeline 計算多維留存率</li>
+            <li>Main/Sub Sidekiq Job 架構，百萬行 CSV 平行匯出 → S3，支援<strong>中斷恢復</strong>（只重試未完成頁次）</li>
+            <li>代理結算引擎（ancestry 任意深度樹，NGR 日結/週結），細粒度 RBAC + TOTP 2FA（含 replay attack 防護）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Freelance wowogaming -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">Freelance（wowogaming）</span>
+            <span class="period">2022 – 2023</span>
+          </div>
+          <div class="role">Go 後端工程師</div>
+          <ul class="exp-bullets">
+            <li>以 <strong>Go 獨立開發</strong>遊戲平台白標後端：707 個 Go 檔案，60+ 業務模組（代理 / 玩家 / 主控三層）</li>
+            <li>整合 <strong>10+ 家支付閘道</strong>，Redis 分散式鎖（Redsync）確保回調冪等性</li>
+            <li>多層代理佣金計算引擎（每小時 Cron 自動執行），Clean Architecture + DI，MySQL 主從讀寫分離 + Redis 多層快取</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 新愛世 1st -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">新愛世科技</span>
+            <span class="period">2019/06 – 2022/09</span>
+          </div>
+          <div class="role">資深全端工程師</div>
+          <ul class="exp-bullets">
+            <li>AlphaLoan 信貸平台：Rails + Angular 前後端全包，自動化 CRM 流程縮短 <strong>70% 申貸時間</strong></li>
+            <li><strong>3 週</strong>完成「貸先生」貸款比較平台從需求確認到上線</li>
+            <li>Matomo 自架分析基礎設施（Docker Compose IaC + SSL 自動化）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 共識科技 -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">共識科技（Joyso）</span>
+            <span class="period">2018/05 – 2019/06</span>
+          </div>
+          <div class="role">後端工程師</div>
+          <ul class="exp-bullets">
+            <li>設計並實作 <strong>DEX 二層撮合引擎</strong>：鏈外撮合（order.rb 22K 行）→ 鏈上結算，五維餘額隔離 + PostgreSQL 兩層鎖確保高頻交易資金一致性</li>
+            <li>ECDSA 訂單簽名驗證（Secp256k1）、以太坊區塊事件監聽（含鏈分叉回滾）、CommitFlush WebSocket 推播一致性保障</li>
+            <li>TRON 鏈博弈平台：Concern + SimpleDelegator 多遊戲架構，撲克手型識別引擎（9 種手型，5 手並行），動態挖礦 + 每小時自動分紅</li>
+            <li>ICO 平台：BTC / ETH 雙鏈收款 + 三段式狀態機（購買→聚合→派發）+ KYC 合規；TronJack Watcher：動態 ABI Keccak256 路由 + 分叉偵測 + watchdog timer</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- T客邦 -->
+      <div class="exp-item">
+        <div class="timeline-dot"></div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <span class="company">T客邦</span>
+            <span class="period">2016/12 – 2018/05</span>
+          </div>
+          <div class="role">全端工程師</div>
+          <ul class="exp-bullets">
+            <li>Rails 4.2 + MySQL，68 Models，7 種文章類型，AASM 編審狀態機 + PaperTrail 版本控制，維護 <strong>8+ 個私有 Gem</strong> 跨 7 個子站共用</li>
+            <li><strong>CAS SSO 伺服器</strong>：策略模式 8 種認證後端，BCrypt 零停機密碼遷移，服務 7+ 子站；fork 自維護定期 cherry-pick 安全更新</li>
+            <li>Chef knife-solo 管理 14 台伺服器；電商平台：雙狀態機（訂單 + 金流）+ 4 通道支付 STI + 電子發票 + 物流整合</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /exp-list -->
+
+    <!-- SIDE PROJECTS -->
+    <div class="section-title">代表性 Side Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="proj-title">AI 端對端自動化管線</div>
+        <div class="proj-period">2024 – 至今</div>
+        <p>音樂影片生成系統：輸入主題/風格 → Suno API 生成歌曲 → 自動合成影片 → 上傳 YouTube，全程無人介入。AI 虛擬網紅以 Prompt Engineering + Fine-tuning 建模名人個性，為 2024 年早期模型蒸餾實踐。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-ai">Fine-tuning</span>
+          <span class="tag tag-ai">Suno API</span>
+          <span class="tag tag-ai">YouTube API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">自建 Claude Code Agent/Skill</div>
+        <div class="proj-period">2025</div>
+        <p>參考 Hermes Agent 架構設計本地持久記憶機制，規劃跨 AI 工具、跨 session 的統一記憶框架。本履歷系統即為此技術的實際應用：LLM Wiki + 客製化履歷生成全自動管線。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-ai">Claude Code</span>
+          <span class="tag tag-ai">Agent 架構</span>
+          <span class="tag tag-backend">LLM Workflow</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">Gao Jin — 幣安期貨自動交易機器人</div>
+        <div class="proj-period">2023</div>
+        <p>Go + Gin + Binance API，多帳號隔離管理，systemd 常駐服務，支援多策略並行執行。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Go</span>
+          <span class="tag tag-blockchain">Binance API</span>
+          <span class="tag tag-cloud">systemd</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">防疫旅館搜尋平台</div>
+        <div class="proj-period">2020 — findtaiwanhotel.com</div>
+        <p>COVID-19 期間 <strong>3 天</strong>獨立上線，Rails 全端，提供台灣民眾防疫旅館即時查詢，持續根據防疫政策迭代。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Ruby on Rails</span>
+          <span class="tag tag-cloud">快速 MVP</span>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+
+    <!-- ACHIEVEMENTS -->
+    <div class="section-title">特別成就</div>
+    <div class="achievements-grid">
+
+      <div class="ach-card">
+        <div class="ach-title">🏆 TRON Dapp 競賽優選</div>
+        <p>3 週獨立完成 Pixel Painter 像素藝術 DApp（React + TronLink），獲 TRON 官方競賽優選，應對測試鏈 3 次重置仍如期交付。</p>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-title">⚙️ HiLo 智能合約設計</div>
+        <p>52 張牌鏈上狀態機，96% RTP 數學模型，profitPerShare 分紅算法，內建防 bot 設計，Solidity 實作完整博弈邏輯。</p>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-title">🔐 零停機 BCrypt 密碼遷移</div>
+        <p>CAS SSO 以 <code>SQLBcrypt</code> 策略器從 MD5 漸進升級至 BCrypt，服務 7+ 子站，用戶無感知，線上零停機完成安全升級。</p>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-title">📈 8 個月扭轉虧損</div>
+        <p>獨立負責「來一張」信用卡比較平台的前後端與產品策略，8 個月內從虧損轉為穩定獲利，全端技術 + 業務理解力的完整展現。</p>
+      </div>
+
+    </div><!-- /achievements-grid -->
+
+  </div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
