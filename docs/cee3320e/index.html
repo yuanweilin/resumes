@@ -287,7 +287,42 @@
     line-height: 1.55;
   }
 
+  /* ── PDF Button ── */
+  .pdf-btn {
+    position: fixed;
+    top: 18px; right: 24px;
+    background: #1a56db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 8.5pt;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(26,86,219,0.35);
+    z-index: 9999;
+    transition: background 0.15s;
+  }
+  .pdf-btn:hover { background: #1446b8; }
+  .pdf-hint {
+    position: fixed;
+    top: 54px; right: 24px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 7.5pt;
+    line-height: 1.6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    max-width: 220px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .pdf-hint.show { display: block; }
+
   /* ── PRINT ── */
+  @page { size: A4; margin: 14mm 12mm; }
   @media print {
     body { background: #fff; font-size: 8.5pt; }
     .page { box-shadow: none; max-width: 100%; }
@@ -297,10 +332,13 @@
     .exp-item { page-break-inside: avoid; }
     .project-card { page-break-inside: avoid; }
     .ach-card { page-break-inside: avoid; }
+    .pdf-btn, .pdf-hint { display: none; }
   }
 </style>
 </head>
 <body>
+<button class="pdf-btn" onclick="document.getElementById('pdf-hint').classList.add('show'); window.print(); setTimeout(()=>document.getElementById('pdf-hint').classList.remove('show'),3000)">⬇ 匯出 PDF</button>
+<div class="pdf-hint" id="pdf-hint">列印對話框中，取消勾選<br><strong>「頁首和頁尾」</strong><br>（或 Headers and footers）<br>即可移除頂部日期與底部網址</div>
 <div class="page">
 
   <!-- TOP BAR -->

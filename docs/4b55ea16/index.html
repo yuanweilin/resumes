@@ -178,15 +178,53 @@
   .achievement h4 { font-size: 9pt; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
   .achievement p { font-size: 8.2pt; color: var(--gray-text); line-height: 1.5; }
 
+  /* ── PDF Button ── */
+  .pdf-btn {
+    position: fixed;
+    top: 18px; right: 24px;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 8.5pt;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(26,86,219,0.35);
+    z-index: 9999;
+    transition: background 0.15s;
+  }
+  .pdf-btn:hover { background: #1446b8; }
+  .pdf-hint {
+    position: fixed;
+    top: 54px; right: 24px;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 7.5pt;
+    line-height: 1.6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    max-width: 220px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .pdf-hint.show { display: block; }
+
   /* ── Print ── */
+  @page { size: A4; margin: 14mm 12mm; }
   @media print {
     body { font-size: 8.5pt; }
     .topbar, .metric, .achievement, .project-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     .page { padding: 0 36px 36px; }
+    .pdf-btn, .pdf-hint { display: none; }
   }
 </style>
 </head>
 <body>
+<button class="pdf-btn" onclick="document.getElementById('pdf-hint').classList.add('show'); window.print(); setTimeout(()=>document.getElementById('pdf-hint').classList.remove('show'),3000)">⬇ 匯出 PDF</button>
+<div class="pdf-hint" id="pdf-hint">列印對話框中，取消勾選<br><strong>「頁首和頁尾」</strong><br>（或 Headers and footers）<br>即可移除頂部日期與底部網址</div>
 
 <!-- Top bar -->
 <div class="topbar">
