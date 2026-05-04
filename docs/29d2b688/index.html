@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bruce Lin — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    color: #1e293b;
+    background: #f8fafc;
+  }
+
+  .pdf-btn {
+    position: fixed; top: 18px; right: 24px;
+    background: #1a56db; color: #fff;
+    border: none; border-radius: 8px;
+    padding: 8px 18px; font-size: 13px; font-weight: 600;
+    cursor: pointer; z-index: 9999;
+    box-shadow: 0 2px 8px rgba(26,86,219,.35);
+    transition: background .2s;
+  }
+  .pdf-btn:hover { background: #1648c0; }
+
+  .topbar {
+    background: #0f1f3d;
+    color: #fff;
+    padding: 32px 44px 28px;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .topbar h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+  .topbar .subtitle { font-size: 13px; color: #93c5fd; margin-top: 4px; font-weight: 400; }
+  .topbar .contact { margin-top: 10px; font-size: 9pt; color: #cbd5e1; }
+  .topbar .contact a { color: #93c5fd; text-decoration: none; }
+
+  .page { max-width: 820px; margin: 0 auto; padding: 0 44px 48px; background: #fff; }
+
+  .intro-box {
+    background: #eff6ff;
+    border-left: 4px solid #1a56db;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 28px 0 24px;
+    font-size: 9.5pt;
+    line-height: 1.7;
+    color: #1e3a5f;
+  }
+
+  .section { margin: 28px 0 0; }
+  .section-title {
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0f1f3d;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+  }
+
+  .skills-grid { display: flex; flex-direction: column; gap: 8px; }
+  .skill-row { display: flex; gap: 6px; align-items: flex-start; flex-wrap: wrap; }
+  .skill-label { font-size: 8pt; font-weight: 600; color: #64748b; min-width: 90px; padding-top: 2px; }
+  .tag {
+    display: inline-block;
+    font-size: 7.8pt;
+    font-weight: 500;
+    padding: 2px 9px;
+    border-radius: 20px;
+    line-height: 1.6;
+  }
+  .tag-backend { background: #0f1f3d; color: #fff; }
+  .tag-blockchain { background: #0d9488; color: #fff; }
+  .tag-frontend { background: #1a56db; color: #fff; }
+  .tag-db { background: #15803d; color: #fff; }
+  .tag-ai { background: #7c3aed; color: #fff; }
+  .tag-cloud { background: #0369a1; color: #fff; }
+  .tag-test { background: #9f1239; color: #fff; }
+
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 5px; top: 8px; bottom: 0;
+    width: 1px; background: #e2e8f0;
+  }
+  .exp-item { position: relative; margin-bottom: 26px; }
+  .exp-item::before {
+    content: '';
+    position: absolute; left: -17px; top: 6px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #1a56db;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #1a56db;
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px; }
+  .exp-company { font-size: 11pt; font-weight: 700; color: #1a56db; }
+  .exp-role { font-size: 9pt; font-weight: 500; color: #334155; margin-bottom: 6px; }
+  .exp-period { font-size: 8pt; color: #94a3b8; white-space: nowrap; }
+
+  .metrics { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 8px; }
+  .metric-card {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 6px 14px;
+    text-align: center;
+    min-width: 90px;
+  }
+  .metric-card strong { display: block; font-size: 13pt; font-weight: 700; color: #1a56db; line-height: 1.2; }
+  .metric-card span { font-size: 7.5pt; color: #64748b; }
+
+  ul { padding-left: 18px; }
+  li { margin-bottom: 4px; font-size: 9.2pt; }
+  li strong { color: #0f1f3d; }
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .project-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .project-card h4 { font-size: 9.5pt; font-weight: 700; color: #0f1f3d; margin-bottom: 4px; }
+  .project-card p { font-size: 8.8pt; color: #475569; }
+
+  .achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ach-card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border-left: 3px solid #1a56db;
+  }
+  .ach-card h4 { font-size: 9pt; font-weight: 700; color: #0f1f3d; margin-bottom: 3px; }
+  .ach-card p { font-size: 8.5pt; color: #475569; }
+
+  @media print {
+    .pdf-btn { display: none; }
+    body { background: #fff; font-size: 9pt; }
+    .topbar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .intro-box { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .metric-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .ach-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .tag-backend, .tag-blockchain, .tag-frontend, .tag-db, .tag-ai, .tag-cloud, .tag-test {
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+    .exp-item { page-break-inside: avoid; }
+    .page { padding: 0 32px 32px; }
+  }
+</style>
+</head>
+<body>
+<button class="pdf-btn" onclick="window.print()">⬇ Export PDF</button>
+
+<div class="topbar">
+  <h1>Bruce Lin (林源韋)</h1>
+  <div class="subtitle">Senior Full-Stack Engineer · 9 Years Experience</div>
+  <div class="contact">
+    📧 <a href="mailto:bruce.l@jvd.tw">bruce.l@jvd.tw</a>
+    &nbsp;·&nbsp;
+    🔗 <a href="https://cake.me/bruce-lin" target="_blank">cake.me/bruce-lin</a>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="intro-box">
+    Full-stack engineer with 9 years of experience, backend-deep in <strong>Golang, Python (Django/Celery), and Ruby on Rails</strong>, with frontend coverage in <strong>Angular and React</strong>. I design and ship platform-level systems end-to-end — from architecture decisions to production observability.<br><br>
+    At wowogaming, I independently designed and delivered a game platform whitelabel backend in Golang — <strong>707 Go files, 61 business modules</strong>, 10+ payment gateway integrations with idempotent callback handling via distributed locks. At Lestar, I architected a fully Serverless event-driven pipeline on AWS validated at <strong>3,000 RPS</strong>. On the high-concurrency side: <strong>17 Redis Lua Scripts</strong> atomically resolving all race conditions on a 10M+ daily transaction platform, and a zero-downtime Strategy Pattern dual-write migration. I take ownership from design through delivery.
+  </div>
+
+  <!-- Technical Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-label">Backend</div>
+        <span class="tag tag-backend">Golang</span>
+        <span class="tag tag-backend">Python / Django</span>
+        <span class="tag tag-backend">Celery</span>
+        <span class="tag tag-backend">Ruby on Rails</span>
+        <span class="tag tag-backend">Node.js</span>
+        <span class="tag tag-backend">GraphQL</span>
+        <span class="tag tag-backend">RESTful API</span>
+        <span class="tag tag-backend">WebSocket / AnyCable</span>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Frontend</div>
+        <span class="tag tag-frontend">Angular</span>
+        <span class="tag tag-frontend">React</span>
+        <span class="tag tag-frontend">TypeScript</span>
+        <span class="tag tag-frontend">Next.js</span>
+        <span class="tag tag-frontend">Nuxt</span>
+        <span class="tag tag-frontend">Apollo GraphQL</span>
+        <span class="tag tag-frontend">RxJS</span>
+        <span class="tag tag-frontend">SSR</span>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Databases</div>
+        <span class="tag tag-db">MySQL (Partition)</span>
+        <span class="tag tag-db">PostgreSQL</span>
+        <span class="tag tag-db">MongoDB</span>
+        <span class="tag tag-db">Redis Lua Scripts</span>
+        <span class="tag tag-db">ElasticSearch</span>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Cloud & Arch</div>
+        <span class="tag tag-cloud">AWS Lambda</span>
+        <span class="tag tag-cloud">EventBridge</span>
+        <span class="tag tag-cloud">SQS</span>
+        <span class="tag tag-cloud">CDK IaC</span>
+        <span class="tag tag-cloud">Docker</span>
+        <span class="tag tag-cloud">Microservices</span>
+        <span class="tag tag-cloud">Event-driven</span>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">Testing</div>
+        <span class="tag tag-test">RSpec / BDD</span>
+        <span class="tag tag-test">Capybara</span>
+        <span class="tag tag-test">Jest (integration)</span>
+        <span class="tag tag-test">Locust</span>
+        <span class="tag tag-test">Sentry / Rollbar</span>
+        <span class="tag tag-test">OpenObserve</span>
+      </div>
+      <div class="skill-row">
+        <div class="skill-label">AI Tools</div>
+        <span class="tag tag-ai">Claude Code Agent/Skill</span>
+        <span class="tag tag-ai">Fine-tuning</span>
+        <span class="tag tag-ai">AI Pipelines</span>
+        <span class="tag tag-ai">Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    <div class="timeline">
+
+      <!-- Fatpit -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Xindinzuan (鑫鼎鑽)</div>
+          <div class="exp-period">2023 – 2025</div>
+        </div>
+        <div class="exp-role">Senior Backend Engineer · High-concurrency real-time betting platform (Rails + MySQL + Redis + AnyCable)</div>
+        <div class="metrics">
+          <div class="metric-card"><strong>10M+/day</strong><span>bet transactions</span></div>
+          <div class="metric-card"><strong>17</strong><span>Redis Lua Scripts</span></div>
+          <div class="metric-card"><strong>Zero-downtime</strong><span>warehouse migration</span></div>
+          <div class="metric-card"><strong>178</strong><span>Models</span></div>
+        </div>
+        <ul>
+          <li>Designed <strong>17 Redis Lua Scripts</strong> atomically resolving all race conditions (6-key atomic bet limit checks, idempotency guards, rate limiting, distributed batch locks), eliminating TOCTOU vulnerabilities across 10M+ daily transactions</li>
+          <li>Applied MySQL <strong>Range Partition</strong> to 5 core ledger tables; `PartitionReorganizerService` reorganizes online without table locks; Slack alerts fire one month before partition expiry</li>
+          <li>Designed `Warehouse` module (Strategy Pattern + Factory) for <strong>Redshift → ByteHouse zero-downtime migration</strong>: dual-write with data validation (Phase 1) → `disable_dual_write!` single-line cutover (Phase 2), with 10 independent Feature Keys for per-table rollback</li>
+          <li><strong>AnyCable MAC-addressed WebSocket</strong> dispatch for edge node control (start/stop/restart/status); WsMonitor daemon auto-recovers disconnected nodes every minute; OpenObserve detects payout anomalies across 7 currencies via dynamic SQL</li>
+          <li>System scale: 178 Models, 148 Services, 54 Sidekiq Workers; 3 interlocked AASM state machines (Pool / Round / Bet)</li>
+        </ul>
+      </div>
+
+      <!-- Lestar -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Lestar</div>
+          <div class="exp-period">2022 – 2023</div>
+        </div>
+        <div class="exp-role">Backend Engineer · AWS Serverless event-driven data sync pipeline (Node.js + CDK + Lambda)</div>
+        <div class="metrics">
+          <div class="metric-card"><strong>3,000 RPS</strong><span>production validated</span></div>
+          <div class="metric-card"><strong>12 scenarios</strong><span>out-of-order events</span></div>
+          <div class="metric-card"><strong>40+ tables</strong><span>synced</span></div>
+        </div>
+        <ul>
+          <li>Independently architected and deployed with AWS CDK: <strong>API Gateway → Lambda → EventBridge (per-table bus) → SQS → Lambda</strong>, production-validated at 3,000 RPS, syncing MongoDB → PostgreSQL across 40+ tables</li>
+          <li>Designed <strong>12-scenario out-of-order event state machine</strong>: Prisma Serializable transactions + `paddingUpdatingValue` staging field resolve update-before-create timing issues; Jest integration tests (no mocks) cover 3 out-of-order combinations</li>
+          <li>PII protection: phone/email encrypted via JWT HS256, shared across Lambdas; AJV strict JSON Schema validation at ingress for 13 tables</li>
+          <li>Also maintained Rails + Sidekiq multi-environment migration service and Node.js JSONStream production data repair tool (SQS batch replay)</li>
+        </ul>
+      </div>
+
+      <!-- wowogaming -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Freelance — wowogaming</div>
+          <div class="exp-period">2022</div>
+        </div>
+        <div class="exp-role">Golang Full-Stack Engineer · Game platform whitelabel system (Go + MySQL + Redis)</div>
+        <div class="metrics">
+          <div class="metric-card"><strong>707</strong><span>Go files</span></div>
+          <div class="metric-card"><strong>61 modules</strong><span>3-tier architecture</span></div>
+          <div class="metric-card"><strong>10+</strong><span>payment gateways</span></div>
+        </div>
+        <ul>
+          <li>Contributed to whitelabel backend in <strong>Golang Clean Architecture</strong>: 707 Go files, 61 business modules (master / agent / player 3-tier), 176 DB migrations; owned payment gateway integrations and commission engine</li>
+          <li>Integrated <strong>10+ payment gateways</strong> with unified interface; Redis distributed locks (Redsync) for idempotent callback handling; multi-tier agent commission engine runs hourly and outputs Excel reports</li>
+          <li>MySQL primary-replica read-write splitting + Redis multi-tier caching; Telegram Mini App player portal integration</li>
+          <li>Also delivered master admin panel: sync.Map dynamic multi-tenant DB management + fine-grained RBAC + TeeReader full audit log</li>
+        </ul>
+      </div>
+
+      <!-- 新愛世 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Xinyaishi (新愛世科技)</div>
+          <div class="exp-period">2021 – 2022</div>
+        </div>
+        <div class="exp-role">Senior Full-Stack Engineer · Consumer finance platform (Rails 7 + Angular 14 + Python/Django)</div>
+        <ul>
+          <li>Backend: Rails 7 + <strong>GraphQL + graphql-batch</strong> (DataLoader eliminating N+1); paper_trail financial audit trails; Sentry + rails_performance + Slack alerting; 91 Models / 92 Tables</li>
+          <li>Frontend: Angular 14 SSR + Apollo GraphQL Client; 3-tier analytics (Google Analytics / Matomo / custom events); 138+ services with strict layered architecture</li>
+          <li><strong>KYC module</strong> (Python/Django + Celery + Google Vision OCR): async OCR workflow for ID document recognition and AML compliance checks</li>
+        </ul>
+      </div>
+
+      <!-- 共識科技 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">Consensus Tech (共識科技)</div>
+          <div class="exp-period">2019 – 2021</div>
+        </div>
+        <div class="exp-role">Senior Backend Engineer · Decentralized exchange (Rails + PostgreSQL + Ethereum / TRON)</div>
+        <ul>
+          <li>Designed DEX <strong>off-chain matching engine</strong> (order.rb 22K lines) → MatchQueue → Watcher → on-chain settlement 2-layer architecture; 5-dimensional balance isolation + PostgreSQL row-level locking for fund consistency under high-frequency trading</li>
+          <li>Implemented <strong>ECDSA signature verification</strong> (Secp256k1) + SHA3-256 order hash; CommitFlush pattern ensures WebSocket push fires only after DB commit</li>
+          <li>TRON chain event indexer (Node.js): dynamic ABI Keccak256 routing + fork detection + watchdog timer; Solidity smart contracts won developer competition</li>
+        </ul>
+      </div>
+
+      <!-- T客邦 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company">T客邦</div>
+          <div class="exp-period">2017 – 2019</div>
+        </div>
+        <div class="exp-role">Full-Stack Engineer · Taiwan's largest tech media platform (Rails + MySQL + Chef IaC)</div>
+        <ul>
+          <li>Maintained 10+ subsystems: main site (68 Models), community forum, e-commerce (dual state machines + logistics + e-invoicing), and CAS SSO identity center</li>
+          <li>Designed and maintained <strong>8+ private Rails Gems</strong> enabling 7 subsites to install SSO + OAuth in one line</li>
+          <li>Managed <strong>14 servers</strong> via Chef knife-solo IaC; zero-downtime BCrypt password migration using Strategy Pattern (8 auth backends)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Side Projects -->
+  <div class="section">
+    <div class="section-title">Side Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h4>gao-jin — Binance Futures Trading Bot</h4>
+        <p>Go + Gin · Binance API multi-account isolation · systemd daemon · Go concurrency design</p>
+      </div>
+      <div class="project-card">
+        <h4>poker-exchange — Poker Chip Exchange Backend</h4>
+        <p>Go + Gin · WebSocket broadcast (RWMutex connection pool) · Binance real-time pricing · Docker</p>
+      </div>
+      <div class="project-card">
+        <h4>AI Music Video Automation Pipeline</h4>
+        <p>End-to-end: Suno API music generation → video synthesis → auto-upload YouTube · Fully unattended</p>
+      </div>
+      <div class="project-card">
+        <h4>GameFi Studio — Blockchain Activity Platform</h4>
+        <p>Rails + Nuxt · MetaMask / ethers.js · Telegram Bot · Web3 scam blacklist · PWA</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="section">
+    <div class="section-title">Notable Achievements</div>
+    <div class="achievements-grid">
+      <div class="ach-card">
+        <h4>Large-scale Golang System (Freelance)</h4>
+        <p>707 Go files, 61 modules, game platform whitelabel — owned payment gateway idempotency and multi-tier agent commission engine</p>
+      </div>
+      <div class="ach-card">
+        <h4>High-concurrency Architecture</h4>
+        <p>17 Redis Lua Scripts atomically resolving all race conditions on a 10M+ daily transaction platform</p>
+      </div>
+      <div class="ach-card">
+        <h4>Zero-downtime Production Migration</h4>
+        <p>Strategy Pattern dual-write executing Redshift → ByteHouse cutover with 10 independent Feature Keys</p>
+      </div>
+      <div class="ach-card">
+        <h4>Multi-database Breadth</h4>
+        <p>MySQL Partition · PostgreSQL Serializable · MongoDB out-of-order consistency · Redis Lua atomicity</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
