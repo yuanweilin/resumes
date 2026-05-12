@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林源韋 Bruce Lin — Backend Engineer｜HAYEK Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1f2933;
+    background: #f4f6fb;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  body[data-lang="zh"] .lang-en { display: none; }
+  body[data-lang="en"] .lang-zh { display: none; }
+
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 6px 28px rgba(15, 31, 61, 0.08);
+  }
+
+  /* ===== Top bar ===== */
+  .topbar {
+    background: #0f1f3d;
+    color: #fff;
+    padding: 32px 44px 26px;
+  }
+  .topbar h1 {
+    font-size: 22pt;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  .topbar .subtitle {
+    font-size: 10.5pt;
+    color: #cbd5e1;
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+  .topbar .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-size: 8.8pt;
+    color: #e2e8f0;
+  }
+  .topbar .contact a { color: #93c5fd; text-decoration: none; }
+  .topbar .contact a:hover { text-decoration: underline; }
+
+  /* ===== Section ===== */
+  section { padding: 22px 44px; border-bottom: 1px solid #eef0f6; }
+  section:last-child { border-bottom: none; }
+
+  h2 {
+    font-size: 9pt;
+    color: #0f1f3d;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #d6dde8;
+  }
+
+  /* ===== About ===== */
+  .about {
+    background: #f7f9fd;
+    padding: 18px 22px;
+    border-radius: 8px;
+    font-size: 9.5pt;
+    line-height: 1.75;
+    color: #2d3748;
+  }
+  .about p { margin-bottom: 8px; }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ===== Skills ===== */
+  .skill-group {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 8px 16px;
+    margin-bottom: 8px;
+    align-items: baseline;
+  }
+  .skill-group .label {
+    font-size: 8.8pt;
+    font-weight: 600;
+    color: #0f1f3d;
+  }
+  .skill-group .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 11px;
+    font-size: 8pt;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+  .pill.backend { background: #0f1f3d; color: #fff; }
+  .pill.web3 { background: #0d9488; color: #fff; }
+  .pill.frontend { background: #1a56db; color: #fff; }
+  .pill.cloud { background: #15803d; color: #fff; }
+  .pill.data { background: #15803d; color: #fff; }
+  .pill.compliance { background: #b45309; color: #fff; }
+  .pill.ai { background: #7c3aed; color: #fff; }
+  .pill.concurrency { background: #be123c; color: #fff; }
+
+  /* ===== Experience ===== */
+  .exp {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 22px;
+  }
+  .exp::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: -22px;
+    width: 1px;
+    background: #d6dde8;
+  }
+  .exp:last-child::before { display: none; }
+  .exp .dot {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #1a56db;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1.5px #1a56db;
+  }
+
+  .exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .exp-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0f1f3d;
+  }
+  .exp-title .company { color: #1a56db; }
+  .exp-period {
+    font-size: 8.6pt;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .exp-summary {
+    font-size: 8.8pt;
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .exp-subhead {
+    font-size: 9.2pt;
+    font-weight: 600;
+    color: #0f1f3d;
+    margin: 9px 0 4px;
+  }
+  .exp ul { list-style: none; padding-left: 0; }
+  .exp ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 4px;
+    font-size: 9pt;
+    line-height: 1.65;
+  }
+  .exp ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #1a56db;
+    font-size: 8pt;
+    top: 1px;
+  }
+  .exp strong { color: #0f1f3d; font-weight: 600; }
+
+  /* ===== Metrics ===== */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 14px 0 10px;
+  }
+  .metric {
+    background: #f0f5ff;
+    border-left: 3px solid #1a56db;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  .metric strong {
+    display: block;
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1a56db;
+    margin-bottom: 1px;
+  }
+  .metric span {
+    font-size: 7.8pt;
+    color: #64748b;
+  }
+
+  /* ===== Projects ===== */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .project {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .project .name {
+    font-size: 9.4pt;
+    font-weight: 700;
+    color: #0f1f3d;
+    margin-bottom: 4px;
+  }
+  .project .desc {
+    font-size: 8.6pt;
+    color: #4a5568;
+    line-height: 1.55;
+  }
+
+  /* ===== Achievements ===== */
+  .achievements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+  }
+  .ach {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .ach .icon {
+    font-size: 14pt;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ach .label {
+    font-size: 8.8pt;
+    line-height: 1.55;
+  }
+  .ach .label strong {
+    display: block;
+    color: #0f1f3d;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+  .ach .label span { color: #4a5568; }
+
+  /* ===== Floating buttons ===== */
+  .pdf-btn, .lang-switch {
+    position: fixed;
+    top: 18px;
+    height: 38px;
+    z-index: 9999;
+    font-family: inherit;
+  }
+  .pdf-btn {
+    right: 24px;
+    width: 38px;
+    background: #1a56db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13pt;
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 3px 10px rgba(26, 86, 219, 0.3);
+    transition: all 0.2s;
+  }
+  .pdf-btn:hover { background: #1e40af; transform: translateY(-1px); }
+  .lang-switch {
+    right: 72px;
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid #c7d0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(15, 31, 61, 0.12);
+  }
+  .lang-switch button {
+    background: #fff;
+    color: #0f1f3d;
+    border: none;
+    padding: 0 12px;
+    min-width: 36px;
+    font-size: 9pt;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .lang-switch button + button { border-left: 1px solid #e2e8f0; }
+  .lang-switch button.active { background: #1a56db; color: #fff; }
+
+  @media print {
+    body { background: #fff; font-size: 9pt; }
+    .page { box-shadow: none; max-width: 100%; }
+    .pdf-btn, .lang-switch { display: none; }
+    section { page-break-inside: avoid; }
+    .exp { page-break-inside: avoid; }
+    .topbar { background: #0f1f3d !important; }
+    .pill { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+
+  @media (max-width: 720px) {
+    .projects, .achievements, .metrics { grid-template-columns: 1fr; }
+    .skill-group { grid-template-columns: 1fr; }
+    section { padding: 18px 22px; }
+    .topbar { padding: 24px 22px; }
+  }
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="pdf-btn" onclick="window.print()" title="匯出 PDF / Export PDF" aria-label="Export PDF">⬇</button>
+<div class="lang-switch">
+  <button data-lang="zh" class="active">中</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<!-- ============================== 繁體中文版 ============================== -->
+<div class="page lang-zh">
+
+  <div class="topbar">
+    <h1>林源韋 Bruce Lin</h1>
+    <div class="subtitle">Senior Backend Engineer · 9 年資歷 · Golang / Node.js / Python / Rails</div>
+    <div class="contact">
+      <span>📧 <a href="mailto:lywctl@gmail.com">lywctl@gmail.com</a></span>
+      <span>🔗 <a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792" target="_blank">cake.me/bruce-lin</a></span>
+    </div>
+  </div>
+
+  <section>
+    <h2>關於我</h2>
+    <div class="about">
+      <p>9 年後端為主的全端工程師，職涯主軸長期落在「金流／交易／區塊鏈」這條線上。在共識科技時期完整實作過 DEX 的鏈外撮合 → 鏈上結算二層架構（ECDSA 簽名驗證、五維餘額隔離、PostgreSQL 行級鎖），並用 Node.js 自建 TRON 鏈上事件監聽中介層（動態 ABI Keccak256 路由、分叉偵測、雙層 watchdog）。</p>
+      <p>具備 Golang、Node.js、Python、Ruby 多語言微服務設計實戰，並在鑫鼎鑽以 17 支 Redis Lua Script 原子解耦日均千萬筆投注流水的所有競態點、設計雙重記帳的結算引擎與 MAC 定址 WebSocket 指令系統。雲端側熟悉 AWS CDK Serverless（API Gateway → Lambda → EventBridge → SQS）事件驅動架構，曾以此承載 3,000 RPS、設計 12 種亂序事件狀態機解決異質系統的時序一致性問題。</p>
+      <p>對「原子性 / 不可篡改性 / 異質系統資料落差」這類問題有完整的工程語彙與實戰經驗，能直接對接傳統金融 ↔ 區塊鏈結算層的核心命題。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>核心技術能力</h2>
+    <div class="skill-group">
+      <div class="label">後端 / 微服務</div>
+      <div class="pills">
+        <span class="pill backend">Golang (Gin)</span>
+        <span class="pill backend">Node.js / TypeScript</span>
+        <span class="pill backend">Python (Django/Celery)</span>
+        <span class="pill backend">Ruby on Rails 4–7</span>
+        <span class="pill backend">GraphQL / REST</span>
+        <span class="pill backend">WebSocket (AnyCable)</span>
+        <span class="pill backend">Clean Architecture + DI</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">區塊鏈 / 鏈上結算</div>
+      <div class="pills">
+        <span class="pill web3">ECDSA Secp256k1</span>
+        <span class="pill web3">Keccak256 / SHA3-256</span>
+        <span class="pill web3">Ethereum / TRON</span>
+        <span class="pill web3">鏈分叉偵測 + 回滾</span>
+        <span class="pill web3">Solidity</span>
+        <span class="pill web3">DEX 鏈外撮合</span>
+        <span class="pill web3">ICO 多幣種收款</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">高併發 / 一致性</div>
+      <div class="pills">
+        <span class="pill concurrency">Redis Lua Script</span>
+        <span class="pill concurrency">分散式鎖 (Redsync)</span>
+        <span class="pill concurrency">PostgreSQL 行級鎖</span>
+        <span class="pill concurrency">Serializable 事務</span>
+        <span class="pill concurrency">冪等性 / TOCTOU</span>
+        <span class="pill concurrency">AASM 狀態機</span>
+        <span class="pill concurrency">亂序事件處理</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">雲端 / 容器</div>
+      <div class="pills">
+        <span class="pill cloud">AWS CDK (IaC)</span>
+        <span class="pill cloud">Lambda / API Gateway</span>
+        <span class="pill cloud">EventBridge / SQS</span>
+        <span class="pill cloud">Docker</span>
+        <span class="pill cloud">Chef knife-solo</span>
+        <span class="pill cloud">OpenObserve / Rollbar / Sentry</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">資料庫 / 快取</div>
+      <div class="pills">
+        <span class="pill data">PostgreSQL (Partition)</span>
+        <span class="pill data">MySQL (Range Partition)</span>
+        <span class="pill data">MongoDB</span>
+        <span class="pill data">Redis</span>
+        <span class="pill data">ByteHouse / ClickHouse / Redshift</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">金融合規 / 整合</div>
+      <div class="pills">
+        <span class="pill compliance">KYC/AML + Google Vision OCR</span>
+        <span class="pill compliance">paper_trail 稽核</span>
+        <span class="pill compliance">10+ 支付閘道整合</span>
+        <span class="pill compliance">JWT HS256 PII 加密</span>
+        <span class="pill compliance">TeeReader Audit Log</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">AI 工具</div>
+      <div class="pills">
+        <span class="pill ai">Claude Code Agent/Skill 自建</span>
+        <span class="pill ai">Prompt Engineering</span>
+        <span class="pill ai">LLM Fine-tuning</span>
+        <span class="pill ai">端對端自動化管線</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>工作經歷</h2>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">鑫鼎鑽</span> — 資深後端工程師</div>
+        <div class="exp-period">2025/06 – 至今　Remote</div>
+      </div>
+      <div class="exp-summary">高併發即時投注平台，日均千萬筆流水交易，178 Models / 148 Services / 54 Sidekiq Workers / 170+ DB Tables。</div>
+      <div class="metrics">
+        <div class="metric"><strong>千萬筆/日</strong><span>流水交易規模</span></div>
+        <div class="metric"><strong>17 支</strong><span>Redis Lua Script</span></div>
+        <div class="metric"><strong>10 channel</strong><span>WebSocket 即時推播</span></div>
+        <div class="metric"><strong>1,068 行</strong><span>三套聯動狀態機</span></div>
+      </div>
+      <ul>
+        <li><strong>17 支 Redis Lua Script</strong> 原子化解耦競態點：投注限額 6-key 原子操作、冪等性 guard、頻率限流、分布式批次鎖，徹底消除 TOCTOU race condition——高頻交易與帳本一致性場景的核心模式</li>
+        <li><strong>金融級結算引擎</strong>：雙重記帳制（OrderBet → OrderSettle → OrderCancel）、TransferService 467 行原子性轉帳含 deadlock prevention，支援多幣種即時匯率轉換；AASM 三套聯動狀態機（Pool / Round / Bet）級聯結算</li>
+        <li><strong>MySQL Range Partition</strong>：5 張核心流水表按日期分區，<strong>PartitionReorganizerService</strong> 線上 reorganize 不鎖表，到期前一個月 Slack 告警</li>
+        <li><strong>零停機倉儲遷移</strong>：Strategy + Factory 抽象 <strong>Warehouse</strong> 模組，per-feature Key 粒度切換 Redshift / ByteHouse，雙寫資料比對後 <code>disable_dual_write!</code> 一行切換</li>
+        <li><strong>AnyCable WebSocket</strong>：10 channel、5 種伺服器角色分離部署，MAC 定址 WebSocket 指令系統 + WsMonitor 5 秒心跳 + OpenObserve 7 幣別動態閾值異常偵測</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">共識科技 Joyso</span> — 後端工程師</div>
+        <div class="exp-period">2018/05 – 2019/06　Taipei</div>
+      </div>
+      <div class="exp-summary">去中心化交易所 (DEX) 與多鏈 ICO 平台後端核心——「鏈下 ↔ 鏈上結算」命題的直接對應經驗。</div>
+
+      <div class="exp-subhead">Joyso DEX 鏈外撮合 + 鏈上結算</div>
+      <ul>
+        <li>設計並實作二層架構：鏈外撮合引擎（22K 行 order model、MatchQueue → Watcher → 鏈上結算）大幅降低 Gas 費用同時保留去中心化資金安全性</li>
+        <li><strong>五維餘額隔離模型</strong>（joyso / in_order / trading / withdrawing / depositing）+ PostgreSQL 行級鎖 + Locker 表交易對粒度鎖，確保高頻交易資金一致性，杜絕重複扣款</li>
+        <li><strong>ECDSA Secp256k1 訂單簽名驗證 + SHA3-256 order_hash</strong>：訂單只能由錢包私鑰簽署，後端無法偽造——金融資安「不可篡改性」的核心保證</li>
+        <li><strong>CommitFlush 模式</strong>：WebSocket 推播必須等 DB transaction commit 成功後才送出，避免顯示最終被分叉回滾的值</li>
+      </ul>
+
+      <div class="exp-subhead">TronJack Watcher — Node.js 鏈上事件監聽中介層</div>
+      <ul>
+        <li><strong>動態 ABI Keccak256 hash 路由</strong>多合約事件（自製 Subgraph 等效層），單執行緒佇列保障事件串行</li>
+        <li><strong>分叉偵測</strong>：每區塊比對本地 parent_hash 與節點 parent_hash，分叉時通知後端 API 回滾交易、從確認區塊重新處理</li>
+        <li><strong>雙層 watchdog timer</strong>（初始化階段 / 正常運行）+ Rollbar 告警，保障 24/7 鏈下索引層可用性</li>
+        <li>直接呼應「事件驅動的狀態同步機制、解決異質系統間資料落差」需求</li>
+      </ul>
+
+      <div class="exp-subhead">Joyso ICO — BTC/ETH 雙鏈收款 + KYC 合規</div>
+      <ul>
+        <li><strong>BTC / ETH 雙鏈收款</strong>：EthWallet / BtcWallet 多態模型統一介面，各自獨立區塊高度追蹤</li>
+        <li><strong>三段式金流狀態機</strong>：購買 → 聚合 → 派發，每段可獨立重試；Sidekiq Worker 自動聚合零散收款至熱錢包，再批次派發 ERC-20 代幣</li>
+        <li><strong>KYC 合規 + 多租戶</strong>：使用者需通過 KYC 才能購買，ActiveAdmin 人工審核；Project 模型多租戶支援多 ICO 專案並行</li>
+        <li><strong>ERC-20 nonce 序列化</strong>：高並發下 Worker 序列化 nonce 分配，避免交易互相覆蓋</li>
+      </ul>
+
+      <div class="exp-subhead">Pixel Painter — 🏆 TRON DApp 開發者競賽優選</div>
+      <ul>
+        <li>3 週獨立完成：React 16 + TronLink 錢包整合 + Solidity 智能合約記錄鏈上像素所有權與轉售邏輯，期間應對 3 次測試鏈重置</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Lestar</span> — 資深後端工程師</div>
+        <div class="exp-period">2022/09 – 2023/07　Remote</div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>3,000 RPS</strong><span>Serverless 管道壓測</span></div>
+        <div class="metric"><strong>12 種</strong><span>亂序事件狀態機</span></div>
+        <div class="metric"><strong>40+ 表</strong><span>事件驅動同步</span></div>
+        <div class="metric"><strong>21 天</strong><span>EventBridge replay</span></div>
+      </div>
+      <ul>
+        <li><strong>AWS CDK Serverless 資料同步管道</strong>：API Gateway → Lambda → EventBridge（每表獨立 Bus）→ SQS → Lambda 完全託管 + CDK IaC 管理，壓測 3,000 RPS——職缺「高吞吐量 API Gateway + 事件驅動」原型</li>
+        <li><strong>12 種亂序事件狀態機</strong>：Prisma Serializable 事務 + <code>paddingUpdatingValue</code> 暫存解決「update 先於 create」時序問題，確保異質系統最終一致性</li>
+        <li><strong>PII 加密</strong>：phone / email 統一 JWT HS256 加密儲存；AJV JSON Schema 嚴格驗證 13 張表</li>
+        <li><strong>容災 / 測試</strong>：EventBridge Archive 21 天 replay；失敗寫入 MongoDB <code>error_rows</code>；Jest 整合測試（非 Mock）覆蓋 3 種亂序組合；Locust 壓測</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Wowogaming</span>（Freelance）— 後端工程師</div>
+        <div class="exp-period">2024 – 2025　Remote</div>
+      </div>
+      <div class="exp-summary">獨立以 Golang 交付遊戲平台白標後端 + 總控管理系統，證明 Go 微服務 + 多金流整合 + 多租戶實戰能力。</div>
+      <ul>
+        <li><strong>規模</strong>：707 個 Go 檔案、61 個業務模組、176 個 DB 遷移、Clean Architecture + DI、1,463 行 Router 集中依賴注入</li>
+        <li><strong>10+ 家支付閘道統一介面</strong>：各供應商簽名格式不同，以介面抽象 + Redis Redsync 分散式鎖確保回調冪等性，杜絕重複入帳</li>
+        <li><strong>sync.Map 多租戶 DB 動態管理</strong>：單一 Go 服務維護 N 個代理獨立資料庫，並發安全動態查詢，支援不重啟新增代理</li>
+        <li><strong>TeeReader-based API Audit Log</strong> 中介軟體：全量記錄 request / response，符合金融稽核需求</li>
+        <li><strong>JWT + Redis 雙驗證 Session</strong>：支援強制登出與單點踢人；三層細粒度 RBAC 以 DB 事務確保更新原子性</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">新愛世科技</span> — 資深全端工程師</div>
+        <div class="exp-period">2019/06 – 2022/09 & 2023/09 – 2025/05　Taipei</div>
+      </div>
+      <div class="exp-summary">消費金融貸款核心平台，金融合規 + 跨語言微服務實戰。</div>
+      <ul>
+        <li><strong>alphaKYC（Python / Django KYC/AML 合規模組）</strong>：Google Cloud Vision OCR 多國證件自動識別、Celery + RabbitMQ 多步驟工作流（OCR → 人臉 → 電話 → 背景調查）、Elasticsearch 稽核日誌秒級查詢；以微服務 API 與 Rails 主平台解耦</li>
+        <li><strong>alphaLoan 後端</strong>（Rails 7 + GraphQL）：91 Models 完整貸款生命週期；<strong>paper_trail 全欄位版本追蹤</strong>滿足金融監管稽核；graphql-batch DataLoader 解決 N+1；Sentry + rails_performance + stackprof + Slack 完整可觀測性</li>
+        <li><strong>GrowthBook A/B Testing</strong>：Feature Flag 與系統無縫整合，<strong>簡化 AlphaLoan 70% 申貸流程時間</strong></li>
+        <li><strong>alphaCard 信用卡比較平台</strong>：8 個月帶領產品從虧損轉為穩定獲利</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">T客邦</span> — 全端工程師</div>
+        <div class="exp-period">2016/12 – 2018/05　Taipei</div>
+      </div>
+      <ul>
+        <li>台灣月流量百萬級科技媒體；維護 7+ 子站 + 自建 CAS SSO 認證 Gem（一行安裝）</li>
+        <li>Chef knife-solo IaC 管理 14 台 AWS 伺服器、9 個 site-cookbooks；6+ 個月帶人培訓經驗</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Side Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="name">gao-jin — 幣安期貨自動化交易機器人</div>
+        <div class="desc">Go + Gin · Binance Futures API · 多帳號 Go routine 隔離 · systemd 常駐服務，現役運行中。</div>
+      </div>
+      <div class="project">
+        <div class="name">poker-exchange — 撲克籌碼即時兌換後端</div>
+        <div class="desc">Go + Gin · WebSocket 廣播（RWMutex 連線池）· Binance 即時報價 · Docker 容器化部署。</div>
+      </div>
+      <div class="project">
+        <div class="name">Claude Code Agent/Skill 履歷蒸餾系統</div>
+        <div class="desc">自建履歷蒸餾系統，從歷年專案程式碼與線上履歷自動產出職缺客製化履歷（本份履歷即此系統輸出）。</div>
+      </div>
+      <div class="project">
+        <div class="name">AI 音樂影片端對端管線 / 虛擬 KOL</div>
+        <div class="desc">Suno API 生成 → 自動合成影片 → 上傳 YouTube；2024 年以 Prompt Engineering + Fine-tuning 訓練虛擬 KOL 角色。</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>特別成就</h2>
+    <div class="achievements">
+      <div class="ach">
+        <div class="icon">🏆</div>
+        <div class="label"><strong>TRON DApp 開發者競賽優選</strong><span>Pixel Painter（2018）</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">⚡</div>
+        <div class="label"><strong>17 支 Redis Lua Script</strong><span>原子化解耦千萬筆/日所有競態點</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">📡</div>
+        <div class="label"><strong>3,000 RPS AWS Serverless 管道</strong><span>事件驅動資料同步壓測驗證</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">🔐</div>
+        <div class="label"><strong>DEX 二層架構</strong><span>五維餘額 + ECDSA 簽名驗證鏈下↔鏈上資金安全</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">🏛️</div>
+        <div class="label"><strong>三套金融合規方案實戰</strong><span>paper_trail / KYC-AML / TeeReader Audit Log</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">📉</div>
+        <div class="label"><strong>70% 申貸流程時間縮短</strong><span>AlphaLoan 數據驅動產品優化</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================== English ============================== -->
+<div class="page lang-en">
+
+  <div class="topbar">
+    <h1>Bruce Lin (Yuan-Wei Lin)</h1>
+    <div class="subtitle">Senior Backend Engineer · 9 Years · Golang / Node.js / Python / Rails</div>
+    <div class="contact">
+      <span>📧 <a href="mailto:lywctl@gmail.com">lywctl@gmail.com</a></span>
+      <span>🔗 <a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792" target="_blank">cake.me/bruce-lin</a></span>
+    </div>
+  </div>
+
+  <section>
+    <h2>About Me</h2>
+    <div class="about">
+      <p>9 years of full-stack experience with a backend focus, consistently anchored in <strong>payments, trading, and blockchain</strong>. At Joyso (Consensus Tech) I built a full DEX two-layer architecture — off-chain matching with on-chain settlement — backed by ECDSA signature verification, a 5-dimension balance isolation model, and PostgreSQL row-level locks. I also implemented a TRON on-chain event listener in Node.js (dynamic ABI Keccak256 routing, fork detection, dual-layer watchdog).</p>
+      <p>I have hands-on microservice experience across Golang, Node.js, Python, and Ruby. At Fatpit, I decoupled every race condition in a 10M-tx/day betting ledger with 17 Redis Lua scripts, designed a double-entry settlement engine, and built a MAC-addressed WebSocket command system. On the cloud side, I'm fluent in AWS CDK Serverless (API Gateway → Lambda → EventBridge → SQS) event-driven pipelines — load-tested to 3,000 RPS — and designed 12 out-of-order event state machines to enforce temporal consistency across heterogeneous systems.</p>
+      <p>I have the full engineering vocabulary and battle-tested experience for problems like <strong>atomicity, immutability, and cross-system data drift</strong> — directly applicable to the traditional finance ↔ on-chain settlement layer.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Core Skills</h2>
+    <div class="skill-group">
+      <div class="label">Backend / Microservices</div>
+      <div class="pills">
+        <span class="pill backend">Golang (Gin)</span>
+        <span class="pill backend">Node.js / TypeScript</span>
+        <span class="pill backend">Python (Django/Celery)</span>
+        <span class="pill backend">Ruby on Rails 4–7</span>
+        <span class="pill backend">GraphQL / REST</span>
+        <span class="pill backend">WebSocket (AnyCable)</span>
+        <span class="pill backend">Clean Architecture + DI</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">Blockchain / Settlement</div>
+      <div class="pills">
+        <span class="pill web3">ECDSA Secp256k1</span>
+        <span class="pill web3">Keccak256 / SHA3-256</span>
+        <span class="pill web3">Ethereum / TRON</span>
+        <span class="pill web3">Fork Detection + Rollback</span>
+        <span class="pill web3">Solidity</span>
+        <span class="pill web3">DEX Off-chain Matching</span>
+        <span class="pill web3">Multi-chain ICO</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">Concurrency / Consistency</div>
+      <div class="pills">
+        <span class="pill concurrency">Redis Lua Scripts</span>
+        <span class="pill concurrency">Distributed Lock (Redsync)</span>
+        <span class="pill concurrency">PostgreSQL Row Lock</span>
+        <span class="pill concurrency">Serializable Tx</span>
+        <span class="pill concurrency">Idempotency / TOCTOU</span>
+        <span class="pill concurrency">AASM State Machines</span>
+        <span class="pill concurrency">Out-of-order Event Handling</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">Cloud / Container</div>
+      <div class="pills">
+        <span class="pill cloud">AWS CDK (IaC)</span>
+        <span class="pill cloud">Lambda / API Gateway</span>
+        <span class="pill cloud">EventBridge / SQS</span>
+        <span class="pill cloud">Docker</span>
+        <span class="pill cloud">Chef knife-solo</span>
+        <span class="pill cloud">OpenObserve / Rollbar / Sentry</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">Database / Cache</div>
+      <div class="pills">
+        <span class="pill data">PostgreSQL (Partition)</span>
+        <span class="pill data">MySQL (Range Partition)</span>
+        <span class="pill data">MongoDB</span>
+        <span class="pill data">Redis</span>
+        <span class="pill data">ByteHouse / ClickHouse / Redshift</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">Compliance / Integration</div>
+      <div class="pills">
+        <span class="pill compliance">KYC/AML + Google Vision OCR</span>
+        <span class="pill compliance">paper_trail Audit</span>
+        <span class="pill compliance">10+ Payment Gateway Integration</span>
+        <span class="pill compliance">JWT HS256 PII Encryption</span>
+        <span class="pill compliance">TeeReader Audit Log</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="label">AI Tools</div>
+      <div class="pills">
+        <span class="pill ai">Claude Code Agent/Skill</span>
+        <span class="pill ai">Prompt Engineering</span>
+        <span class="pill ai">LLM Fine-tuning</span>
+        <span class="pill ai">End-to-End AI Pipeline</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Fatpit</span> — Senior Backend Engineer</div>
+        <div class="exp-period">2025/06 – Present　Remote</div>
+      </div>
+      <div class="exp-summary">High-concurrency real-time betting platform with 10M-tx/day ledger flow; 178 Models / 148 Services / 54 Sidekiq Workers / 170+ DB Tables.</div>
+      <div class="metrics">
+        <div class="metric"><strong>10M/day</strong><span>Ledger transactions</span></div>
+        <div class="metric"><strong>17 scripts</strong><span>Redis Lua atomic ops</span></div>
+        <div class="metric"><strong>10 channels</strong><span>WebSocket real-time push</span></div>
+        <div class="metric"><strong>1,068 LOC</strong><span>3 linked state machines</span></div>
+      </div>
+      <ul>
+        <li><strong>17 Redis Lua scripts</strong> for atomic race-condition decoupling: 6-key bet-limit checks, idempotency guards, rate limiting, distributed batch locks — completely eliminating TOCTOU races. The canonical pattern for high-frequency trading + ledger consistency.</li>
+        <li><strong>Financial-grade settlement engine</strong>: double-entry bookkeeping (OrderBet → OrderSettle → OrderCancel), TransferService (467 LOC) atomic transfers with deadlock prevention, multi-currency live FX conversion; AASM three-state-machine cascade (Pool / Round / Bet) for chained settlement.</li>
+        <li><strong>MySQL Range Partitioning</strong>: 5 core ledger tables partitioned by date; <strong>PartitionReorganizerService</strong> reorganizes online without locking; Slack alert 1 month before expiration.</li>
+        <li><strong>Zero-downtime warehouse migration</strong>: Strategy + Factory abstraction over <strong>Warehouse</strong> module, per-feature-key switching between Redshift / ByteHouse, dual-write data-parity comparison, single-line <code>disable_dual_write!</code> cutover.</li>
+        <li><strong>AnyCable WebSocket</strong>: 10 channels, 5 server-role separation, MAC-addressed WebSocket command system + WsMonitor 5-sec heartbeat + OpenObserve dynamic-threshold anomaly detection across 7 currencies.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Joyso (Consensus Tech)</span> — Backend Engineer</div>
+        <div class="exp-period">2018/05 – 2019/06　Taipei</div>
+      </div>
+      <div class="exp-summary">Decentralized exchange (DEX) and multi-chain ICO platform — direct precedent for the "off-chain ↔ on-chain settlement" mandate.</div>
+
+      <div class="exp-subhead">Joyso DEX — Off-chain Matching + On-chain Settlement</div>
+      <ul>
+        <li>Designed and built the two-layer architecture: off-chain matching engine (22K-line order model, MatchQueue → Watcher → on-chain settlement) — drastically reducing Gas costs while preserving the security guarantees of decentralized custody.</li>
+        <li><strong>5-dimension balance isolation</strong> (joyso / in_order / trading / withdrawing / depositing) + PostgreSQL row-level lock + Locker table for trading-pair-granularity locks — guaranteeing fund consistency under HFT load with zero double-spending.</li>
+        <li><strong>ECDSA Secp256k1 order signature verification + SHA3-256 order_hash</strong>: orders signable only by the wallet's private key — the core guarantee of "immutability" required by financial security.</li>
+        <li><strong>CommitFlush pattern</strong>: WebSocket push only fires after DB transaction commit, preventing the UI from showing values that were ultimately rolled back by fork detection.</li>
+      </ul>
+
+      <div class="exp-subhead">TronJack Watcher — Node.js On-chain Event Listener</div>
+      <ul>
+        <li><strong>Dynamic ABI Keccak256 hash routing</strong> across multiple contracts (self-built Subgraph-equivalent layer); single-threaded queue enforces strict event serialization.</li>
+        <li><strong>Fork detection</strong>: per-block comparison of local <code>parent_hash</code> against node-returned <code>parent_hash</code>; on fork, signals the backend API to roll back affected transactions and reprocess from the confirmed block.</li>
+        <li><strong>Dual-layer watchdog timer</strong> (initialization + steady state) + Rollbar alerts, ensuring 24/7 availability of the off-chain indexing layer.</li>
+        <li>Directly addresses the requirement of "event-driven state synchronization that resolves data drift between heterogeneous systems."</li>
+      </ul>
+
+      <div class="exp-subhead">Joyso ICO — BTC/ETH Dual-chain + KYC Compliance</div>
+      <ul>
+        <li><strong>BTC / ETH dual-chain receivers</strong>: EthWallet / BtcWallet polymorphic models with a unified interface and independent block-height tracking.</li>
+        <li><strong>3-stage payment state machine</strong>: purchase → aggregate → deliver; each stage independently retryable. Sidekiq workers aggregate scattered receipts into a hot wallet, then batch-distribute ERC-20 tokens.</li>
+        <li><strong>KYC compliance + multi-tenant</strong>: KYC review required before purchase via ActiveAdmin manual review; Project model enables multiple ICOs to run concurrently.</li>
+        <li><strong>ERC-20 nonce serialization</strong>: under high concurrency, workers serialize nonce allocation to prevent transactions from overwriting each other.</li>
+      </ul>
+
+      <div class="exp-subhead">Pixel Painter — 🏆 TRON DApp Developer Contest Winner</div>
+      <ul>
+        <li>Shipped solo in 3 weeks: React 16 + TronLink wallet integration + Solidity smart contract for on-chain pixel ownership and resale logic, surviving 3 testnet resets.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Lestar</span> — Senior Backend Engineer</div>
+        <div class="exp-period">2022/09 – 2023/07　Remote</div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><strong>3,000 RPS</strong><span>Serverless pipeline load test</span></div>
+        <div class="metric"><strong>12 scenarios</strong><span>Out-of-order event state machines</span></div>
+        <div class="metric"><strong>40+ tables</strong><span>Event-driven sync</span></div>
+        <div class="metric"><strong>21 days</strong><span>EventBridge replay window</span></div>
+      </div>
+      <ul>
+        <li><strong>AWS CDK Serverless data sync pipeline</strong>: API Gateway → Lambda → EventBridge (per-table Bus) → SQS → Lambda, fully managed + IaC, load-tested to 3,000 RPS — the prototype for the role's "high-throughput API Gateway + event-driven" requirement.</li>
+        <li><strong>12 out-of-order event state machines</strong>: Prisma Serializable transactions + <code>paddingUpdatingValue</code> buffering resolves "update arrives before create" — ensuring eventual consistency across heterogeneous systems.</li>
+        <li><strong>PII encryption</strong>: phone / email uniformly JWT-HS256-encrypted at rest; AJV JSON Schema strictly validates 13 tables, rejecting malformed data at ingress.</li>
+        <li><strong>Disaster recovery / testing</strong>: 21-day EventBridge Archive replay; failures persisted to MongoDB <code>error_rows</code>; Jest integration tests (no mocks) covering 3 out-of-order combinations; Locust load tests.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Wowogaming</span> (Freelance) — Backend Engineer</div>
+        <div class="exp-period">2024 – 2025　Remote</div>
+      </div>
+      <div class="exp-summary">Solo Golang delivery of a gaming whitelabel backend + central control system — demonstrating Go microservices + multi-gateway payments + multi-tenant in production.</div>
+      <ul>
+        <li><strong>Scale</strong>: 707 Go files, 61 business modules, 176 DB migrations, Clean Architecture + DI, 1,463-line Router for centralized dependency injection.</li>
+        <li><strong>10+ payment gateways unified</strong>: each vendor's signature format differs; unified via interface abstraction + Redis Redsync distributed locks to guarantee callback idempotency and prevent duplicate credits.</li>
+        <li><strong>sync.Map multi-tenant DB management</strong>: single Go service maintains N agent-isolated databases with concurrent-safe dynamic dispatch; new agents can be added without restart.</li>
+        <li><strong>TeeReader-based API Audit Log middleware</strong>: full request/response capture into <code>operation_log</code> — satisfying financial audit requirements.</li>
+        <li><strong>JWT + Redis dual-verification sessions</strong>: supports forced logout and single-point kick-out; 3-tier fine-grained RBAC with DB transactions for atomic permission updates.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">Alpha Camp / Newtrek</span> — Senior Full-stack Engineer</div>
+        <div class="exp-period">2019/06 – 2022/09 & 2023/09 – 2025/05　Taipei</div>
+      </div>
+      <div class="exp-summary">Consumer finance lending core — financial compliance + cross-language microservices in production.</div>
+      <ul>
+        <li><strong>alphaKYC</strong> (Python / Django KYC/AML compliance module): Google Cloud Vision OCR for multi-country ID auto-recognition; Celery + RabbitMQ multi-step workflow (OCR → face match → phone verify → background check); Elasticsearch audit log with sub-second query; decoupled from the Rails main platform via microservice API.</li>
+        <li><strong>alphaLoan backend</strong> (Rails 7 + GraphQL): 91 Models covering the full loan lifecycle; <strong>paper_trail field-level versioning</strong> for financial audit compliance; graphql-batch DataLoader resolves N+1; full observability with Sentry + rails_performance + stackprof + Slack alerts.</li>
+        <li><strong>GrowthBook A/B testing</strong>: feature flag system integrated seamlessly with backend, <strong>reducing AlphaLoan application time by 70%</strong>.</li>
+        <li><strong>alphaCard credit-card comparison platform</strong>: led the product from operating loss to stable profit in 8 months.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="dot"></div>
+      <div class="exp-head">
+        <div class="exp-title"><span class="company">TechBang</span> — Full-stack Engineer</div>
+        <div class="exp-period">2016/12 – 2018/05　Taipei</div>
+      </div>
+      <ul>
+        <li>Taiwan's largest tech media (millions of monthly visitors); maintained 7+ sub-sites + built a CAS SSO authentication Gem (one-line install).</li>
+        <li>Chef knife-solo IaC managing 14 AWS servers and 9 site-cookbooks; 6+ months of engineering mentorship.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Side Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <div class="name">gao-jin — Binance Futures Automated Trading Bot</div>
+        <div class="desc">Go + Gin · Binance Futures API · multi-account goroutine isolation · systemd long-running service, currently in production.</div>
+      </div>
+      <div class="project">
+        <div class="name">poker-exchange — Real-time Chip Exchange Backend</div>
+        <div class="desc">Go + Gin · WebSocket broadcast (RWMutex connection pool) · live Binance quotes · Dockerized deployment.</div>
+      </div>
+      <div class="project">
+        <div class="name">Claude Code Agent/Skill Resume Distillation System</div>
+        <div class="desc">Self-built resume distillation system that auto-generates job-tailored resumes from years of project code and online CVs (this resume is its output).</div>
+      </div>
+      <div class="project">
+        <div class="name">AI Music Video Pipeline / Virtual KOL</div>
+        <div class="desc">Suno API generation → automated video composition → YouTube upload; in 2024, trained a virtual KOL via Prompt Engineering + Fine-tuning.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Highlights</h2>
+    <div class="achievements">
+      <div class="ach">
+        <div class="icon">🏆</div>
+        <div class="label"><strong>TRON DApp Developer Contest Winner</strong><span>Pixel Painter (2018)</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">⚡</div>
+        <div class="label"><strong>17 Redis Lua Scripts</strong><span>Decoupled every race in a 10M-tx/day ledger</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">📡</div>
+        <div class="label"><strong>3,000 RPS AWS Serverless Pipeline</strong><span>Event-driven sync, load-tested</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">🔐</div>
+        <div class="label"><strong>DEX Two-layer Architecture</strong><span>5-dim balance + ECDSA: off-chain ↔ on-chain safety</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">🏛️</div>
+        <div class="label"><strong>3 Financial Compliance Stacks in Production</strong><span>paper_trail / KYC-AML / TeeReader Audit Log</span></div>
+      </div>
+      <div class="ach">
+        <div class="icon">📉</div>
+        <div class="label"><strong>70% Reduction in Loan Application Time</strong><span>AlphaLoan, via data-driven optimization</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      document.querySelectorAll('.lang-switch button').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === lang));
+    });
+  });
+</script>
+
+</body>
+</html>
