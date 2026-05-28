@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林源韋 Bruce Lin — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 9.5pt;
+    line-height: 1.6;
+    color: #2d3748;
+    background: #f7f8fa;
+  }
+
+  /* ── Fixed UI Buttons ── */
+  .pdf-btn {
+    position: fixed; top: 18px; right: 24px;
+    width: 38px; height: 38px;
+    background: #1a56db; color: #fff;
+    border: none; border-radius: 6px;
+    font-size: 16px; cursor: pointer;
+    z-index: 9999; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(26,86,219,.35);
+  }
+  .pdf-btn:hover { background: #1447c0; }
+
+  .lang-switch {
+    position: fixed; top: 18px; right: 72px;
+    display: flex; height: 38px;
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 2px 8px rgba(26,86,219,.25);
+    z-index: 9999;
+  }
+  .lang-switch button {
+    padding: 8px 14px;
+    background: #e8effd; color: #1a56db;
+    border: none; cursor: pointer;
+    font-size: 12px; font-weight: 600;
+    transition: background .15s, color .15s;
+  }
+  .lang-switch button.active {
+    background: #1a56db; color: #fff;
+  }
+  .lang-switch button:hover:not(.active) { background: #d0e0fb; }
+
+  /* ── Language visibility ── */
+  body[data-lang="zh"] .lang-en { display: none; }
+  body[data-lang="en"] .lang-zh { display: none; }
+
+  /* ── Page wrapper ── */
+  .page {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 0 60px;
+    background: #fff;
+    box-shadow: 0 0 40px rgba(0,0,0,.08);
+  }
+
+  /* ── Top Bar ── */
+  .topbar {
+    background: #0f1f3d;
+    padding: 36px 44px 28px;
+    color: #fff;
+  }
+  .topbar h1 { font-size: 26pt; font-weight: 700; letter-spacing: .5px; margin-bottom: 4px; }
+  .topbar .subtitle { font-size: 11pt; color: #93b4e8; font-weight: 500; margin-bottom: 12px; }
+  .topbar .contact { font-size: 9pt; color: #c7d9f5; }
+  .topbar .contact a { color: #7eb5f5; text-decoration: none; }
+  .topbar .contact a:hover { text-decoration: underline; }
+  .topbar .contact span { margin: 0 8px; opacity: .5; }
+
+  /* ── Summary block ── */
+  .summary-block {
+    background: #eef3fc;
+    border-left: 4px solid #1a56db;
+    padding: 18px 44px;
+    font-size: 9.5pt;
+    color: #2d3748;
+    line-height: 1.7;
+  }
+
+  /* ── Section ── */
+  .section { padding: 22px 44px 0; }
+  .section-title {
+    font-size: 7.5pt; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.8px;
+    color: #0f1f3d;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #0f1f3d;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ── Skills tags ── */
+  .skills-grid { display: flex; flex-direction: column; gap: 8px; }
+  .skill-row { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; }
+  .skill-label { font-size: 8pt; font-weight: 600; color: #0f1f3d; min-width: 70px; }
+  .tag {
+    display: inline-block; padding: 2px 9px;
+    border-radius: 4px; font-size: 7.5pt; font-weight: 500;
+  }
+  .tag-be   { background: #0f1f3d; color: #fff; }
+  .tag-fe   { background: #1a56db; color: #fff; }
+  .tag-sys  { background: #0694a2; color: #fff; }
+  .tag-bc   { background: #5521b5; color: #fff; }
+  .tag-obs  { background: #057a55; color: #fff; }
+  .tag-ai   { background: #7e3af2; color: #fff; }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding-left: 18px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 0;
+    width: 2px; background: #e2e8f0;
+  }
+  .exp-item { position: relative; margin-bottom: 24px; }
+  .exp-item::before {
+    content: ''; position: absolute; left: -18px; top: 7px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #1a56db; border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #1a56db;
+  }
+
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+  .exp-company { font-size: 11pt; font-weight: 700; color: #1a56db; }
+  .exp-title { font-size: 9pt; font-weight: 500; color: #4a5568; }
+  .exp-date { font-size: 8.5pt; color: #718096; white-space: nowrap; }
+
+  .exp-item ul { padding-left: 16px; margin-top: 6px; }
+  .exp-item ul li { margin-bottom: 4px; color: #374151; }
+  .exp-item ul li strong { color: #0f1f3d; }
+
+  /* ── Metrics ── */
+  .metrics { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .metric {
+    background: #f0f4ff; border: 1px solid #c7d7f8;
+    border-radius: 8px; padding: 8px 14px; text-align: center;
+    min-width: 90px;
+  }
+  .metric strong { display: block; font-size: 14pt; color: #1a56db; font-weight: 700; }
+  .metric span { font-size: 7.5pt; color: #4a5568; }
+
+  /* ── Side projects cards ── */
+  .projects-grid { display: flex; flex-direction: column; gap: 12px; }
+  .project-card {
+    border: 1px solid #e2e8f0; border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .project-card h4 { font-size: 10pt; font-weight: 700; color: #0f1f3d; margin-bottom: 4px; }
+  .project-card p { font-size: 9pt; color: #4a5568; line-height: 1.6; }
+
+  /* ── Achievements ── */
+  .achievements-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .achievement {
+    border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px;
+  }
+  .achievement h4 { font-size: 9.5pt; font-weight: 700; color: #0f1f3d; margin-bottom: 4px; }
+  .achievement p { font-size: 9pt; color: #4a5568; line-height: 1.5; }
+
+  /* ── Print ── */
+  @media print {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    body { background: #fff; }
+    .pdf-btn, .lang-switch { display: none !important; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+    .exp-item { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body data-lang="zh">
+
+<button class="pdf-btn" onclick="window.print()" title="匯出 PDF / Export PDF" aria-label="Export PDF">⬇</button>
+<div class="lang-switch">
+  <button data-lang="zh" class="active">中</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<!-- ══════════════ 繁體中文版 ══════════════ -->
+<div class="page lang-zh">
+
+  <div class="topbar">
+    <h1>林源韋</h1>
+    <div class="subtitle">資深全端工程師 · Senior Full-stack Engineer</div>
+    <div class="contact">
+      lywctl@gmail.com
+      <span>|</span>
+      <a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792" target="_blank">cake.me 線上履歷</a>
+    </div>
+  </div>
+
+  <div class="summary-block">
+    9 年全端工程師，後端主攻 Rails / Go / Node.js，前端以 Angular 為主，從 API 設計、DB 架構、背景任務到前端 SPA 均能獨立交付。曾為高頻投注平台以 17 支 Redis Lua Script 消除競態點、以 Strategy Pattern 雙寫實現零停機倉儲遷移，也設計過去中心化交易所的鏈外撮合 + 鏈上結算二層架構。自建 Claude Code Agent/Skill 體系整合進開發流程，實作過 Fine-tuning 與端對端自動化 Pipeline。
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">技術能力</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">後端</span>
+        <span class="tag tag-be">Ruby on Rails</span>
+        <span class="tag tag-be">Go</span>
+        <span class="tag tag-be">Node.js</span>
+        <span class="tag tag-be">GraphQL</span>
+        <span class="tag tag-be">Sidekiq</span>
+        <span class="tag tag-be">PostgreSQL</span>
+        <span class="tag tag-be">MySQL (Range Partition)</span>
+        <span class="tag tag-be">Redis (Lua Script)</span>
+        <span class="tag tag-be">AWS Lambda / CDK / SQS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">前端</span>
+        <span class="tag tag-fe">Angular (Universal SSR)</span>
+        <span class="tag tag-fe">React</span>
+        <span class="tag tag-fe">TypeScript</span>
+        <span class="tag tag-fe">Apollo Client</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">系統設計</span>
+        <span class="tag tag-sys">分散式鎖</span>
+        <span class="tag tag-sys">冪等性設計</span>
+        <span class="tag tag-sys">AASM 狀態機</span>
+        <span class="tag tag-sys">WebSocket (AnyCable)</span>
+        <span class="tag tag-sys">事件驅動架構</span>
+        <span class="tag tag-sys">零停機遷移</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">區塊鏈</span>
+        <span class="tag tag-bc">Solidity</span>
+        <span class="tag tag-bc">ECDSA 簽名驗證</span>
+        <span class="tag tag-bc">DEX 撮合引擎</span>
+        <span class="tag tag-bc">TRON / Ethereum</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">可觀測性</span>
+        <span class="tag tag-obs">Sentry</span>
+        <span class="tag tag-obs">Rollbar</span>
+        <span class="tag tag-obs">OpenObserve</span>
+        <span class="tag tag-obs">NewRelic</span>
+        <span class="tag tag-obs">Locust 壓測</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">AI 開發</span>
+        <span class="tag tag-ai">Claude Code Agent/Skill</span>
+        <span class="tag tag-ai">Prompt Engineering</span>
+        <span class="tag tag-ai">Fine-tuning</span>
+        <span class="tag tag-ai">端對端 AI Pipeline</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="section">
+    <div class="section-title">工作經歷</div>
+    <div class="timeline">
+
+      <!-- 鑫鼎鑽 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">鑫鼎鑽</span>
+            <span class="exp-title">&nbsp;·&nbsp;資深後端工程師</span>
+          </div>
+          <span class="exp-date">2025年6月至今</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>17</strong><span>Lua Scripts</span></div>
+          <div class="metric"><strong>5</strong><span>Partition 表</span></div>
+          <div class="metric"><strong>1,068</strong><span>行狀態機</span></div>
+          <div class="metric"><strong>467</strong><span>行結算引擎</span></div>
+        </div>
+        <ul>
+          <li>以 <strong>17 支 Redis Lua Script</strong> 原子化覆蓋投注限額（6 key 原子操作）、冪等性 guard、分散式批次鎖與 CDN 多層黑名單滾動，徹底消除 TOCTOU race condition</li>
+          <li>MySQL Range Partition 對 credits / bets / transfers 等 <strong>5 張核心流水表</strong>分表，配合線上擴分區機制支撐高頻投注流量</li>
+          <li><strong>Strategy Pattern + Factory</strong> 實作 <code>Warehouse</code> 模組，以 Feature Key 粒度漸進切換 Redshift → ByteHouse；Phase 1 雙寫比對、Phase 2 一行完成零停機遷移</li>
+          <li>Pool / Round / Bet 三套連動 AASM 狀態機（共 1,068 行），<code>TransferService</code>（467 行）雙重記帳制原子轉帳含 deadlock prevention，支援多幣種即時匯率</li>
+          <li>AnyCable WebSocket + MAC address 定址對邊緣節點下達即時指令；WsMonitor 守護程序 <strong>5 秒 heartbeat</strong> 確認後自動復原；OpenObserve 動態 SQL 偵測 7 幣別中獎異常</li>
+        </ul>
+      </div>
+
+      <!-- 新愛世科技 2nd -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">新愛世科技</span>
+            <span class="exp-title">&nbsp;·&nbsp;資深全端工程師</span>
+          </div>
+          <span class="exp-date">2023年9月 – 2025年5月</span>
+        </div>
+        <ul>
+          <li>Rails 7 + PostgreSQL + GraphQL API 設計（graphql-batch DataLoader 解 N+1），<strong>91 Model</strong> 涵蓋完整貸款生命週期；paper_trail 全量版本記錄滿足金融稽核；Sentry + rails_performance + stackprof 可觀測性棧</li>
+          <li>Sidekiq 非同步化審核通知與報表生成等耗時操作</li>
+          <li>Angular 14 + Angular Universal SSR 前端；Apollo Client GraphQL client-side caching；Cloudinary 響應式圖片使行動端流量減少 <strong>60%</strong></li>
+          <li>Matomo + Sentry + GA 三層分析體系；導入 GrowthBook A/B 測試平台，推動數據驅動產品決策</li>
+        </ul>
+      </div>
+
+      <!-- Lestar -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Lestar</span>
+            <span class="exp-title">&nbsp;·&nbsp;資深後端工程師</span>
+          </div>
+          <span class="exp-date">2022年9月 – 2023年7月</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>3,000</strong><span>RPS</span></div>
+          <div class="metric"><strong>12</strong><span>亂序情境</span></div>
+          <div class="metric"><strong>40+</strong><span>資料表</span></div>
+        </div>
+        <ul>
+          <li>AWS CDK IaC 部署 Serverless 事件驅動管道（API Gateway → Lambda → EventBridge → SQS → Lambda），Locust 壓測驗證生產 <strong>3,000 RPS</strong>，同步 40+ 張資料表</li>
+          <li>設計 <strong>12 種亂序事件</strong>狀態機情境，Prisma Serializable 事務 + <code>paddingUpdatingValue</code> 解決 update 先於 create 的時序問題</li>
+          <li>AJV 嚴格 JSON Schema 驗證 13 張表入口；EventBridge Archive 21 天可 replay 容災；Jest 整合測試（非 Mock）覆蓋亂序事件組合</li>
+        </ul>
+      </div>
+
+      <!-- 新愛世科技 1st -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">新愛世科技</span>
+            <span class="exp-title">&nbsp;·&nbsp;資深全端工程師</span>
+          </div>
+          <span class="exp-date">2019年6月 – 2022年9月</span>
+        </div>
+        <ul>
+          <li>獨立負責 AlphaLoan 貸款平台前後端（Rails + Angular），自設流程優化 CRM，縮短 <strong>70%</strong> 申貸流程時間</li>
+          <li>fincake 金融內容聚合平台：<strong>138 Model</strong> 支援 5+ 種金融產品線，AASM 狀態機驅動內容審核工作流，pg_search PostgreSQL 原生全文搜索</li>
+          <li>AlphaCard 信用卡比較平台：ActiveAdmin CMS 讓行銷團隊自助管理；sitemap 自動化 SEO；<strong>8 個月從虧損轉為穩定獲利</strong></li>
+        </ul>
+      </div>
+
+      <!-- 共識科技 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">共識科技（Joyso）</span>
+            <span class="exp-title">&nbsp;·&nbsp;資深後端工程師</span>
+          </div>
+          <span class="exp-date">2018年5月 – 2019年6月</span>
+        </div>
+        <ul>
+          <li>設計去中心化交易所鏈外撮合（order.rb <strong>22K 行</strong>）→ MatchQueue → Watcher → 鏈上結算二層架構，降低 Gas 成本</li>
+          <li><strong>五維餘額隔離</strong>（joyso / in_order / trading / withdrawing / depositing）+ PostgreSQL Locker 表行級鎖，確保高頻交易資金一致性</li>
+          <li>ECDSA 訂單簽名驗證（Secp256k1）、以太坊鏈分叉偵測回滾、CommitFlush WebSocket 推播一致性保障</li>
+          <li>Solidity HiLo 智能合約：52 張牌鏈上狀態機、<strong>96% RTP</strong>、profitPerShare 分紅算法（<code>2**64</code> magnitude 防定點數精度遺失）</li>
+        </ul>
+      </div>
+
+      <!-- T客邦 -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">T客邦</span>
+            <span class="exp-title">&nbsp;·&nbsp;全端工程師</span>
+          </div>
+          <span class="exp-date">2016年12月 – 2018年5月</span>
+        </div>
+        <ul>
+          <li>Rails 主站（<strong>68 Model</strong>）+ 電商 + 論壇開發，7 種文章類型以 Concern 統一行為，AASM 四狀態文章審核流程</li>
+          <li>CAS SSO 伺服器（Strategy Pattern <strong>8 種認證後端</strong>）+ BCrypt 零停機密碼遷移，統一 7+ 子站認證</li>
+          <li>Chef IaC 管理 14 台 AWS 伺服器；維護 8+ 個私有 Gem 跨子站複用</li>
+        </ul>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+
+  <!-- Side Projects -->
+  <div class="section">
+    <div class="section-title">Side Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h4>自建 LLM 履歷蒸餾系統</h4>
+        <p>以歷年所有專案程式碼為知識來源，透過自建 Claude Code Agent / Skill 體系，自動將工程亮點蒸餾成依職缺動態選材的客製化履歷。本份履歷即由此系統產出。</p>
+      </div>
+      <div class="project-card">
+        <h4>AI 音樂影片自動化上傳系統</h4>
+        <p>端對端 AI Pipeline：輸入主題 / 風格參數 → Suno API 生成音樂 → 自動合成影片 → 上傳 YouTube，全程無人工介入，實現內容規模化生產。</p>
+      </div>
+      <div class="project-card">
+        <h4>GameFi 彙整平台（gamefi-studio）</h4>
+        <p>Rails 後端：Telegram Bot 推播、Web3 詐騙黑名單、RBAC + JWT 權限控制。搭配 Nuxt 2 前端（MetaMask + ethers.js + PWA）。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="section" style="padding-bottom: 32px;">
+    <div class="section-title">特別成就</div>
+    <div class="achievements-grid">
+      <div class="achievement">
+        <h4>🏆 TRON DApp 比賽優選</h4>
+        <p>Pixel Painter 像素藝術 DApp（React + Solidity），3 週獨立開發，獲 TRON 官方競賽優選。</p>
+      </div>
+      <div class="achievement">
+        <h4>🚀 防疫旅館小幫手</h4>
+        <p>COVID-19 期間 3 天獨立上線，Rails 全端開發，協助民眾搜尋防疫隔離旅館，具社會影響力。</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /lang-zh -->
+
+
+<!-- ══════════════ English Version ══════════════ -->
+<div class="page lang-en">
+
+  <div class="topbar">
+    <h1>Bruce Lin</h1>
+    <div class="subtitle">Senior Full-stack Engineer</div>
+    <div class="contact">
+      lywctl@gmail.com
+      <span>|</span>
+      <a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792" target="_blank">Online Resume (cake.me)</a>
+    </div>
+  </div>
+
+  <div class="summary-block">
+    9-year full-stack engineer specializing in Rails / Go / Node.js on the backend and Angular on the frontend — capable of independently delivering end-to-end solutions covering API design, database architecture, background jobs, and SPA frontends. Engineered 17 Redis Lua Scripts to eliminate race conditions in a high-frequency betting platform, implemented zero-downtime data warehouse migration with Strategy Pattern dual-write, and architected a two-layer DEX matching engine (off-chain matching + on-chain settlement). Goes beyond typical AI tool adoption — built a custom Claude Code Agent/Skill system integrated into the development workflow, with hands-on Fine-tuning and end-to-end AI Pipeline experience. Every technical decision is made with "still stable in 5 years" as the acceptance criterion.
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-title">Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Backend</span>
+        <span class="tag tag-be">Ruby on Rails</span>
+        <span class="tag tag-be">Go</span>
+        <span class="tag tag-be">Node.js</span>
+        <span class="tag tag-be">GraphQL</span>
+        <span class="tag tag-be">Sidekiq</span>
+        <span class="tag tag-be">PostgreSQL</span>
+        <span class="tag tag-be">MySQL (Range Partition)</span>
+        <span class="tag tag-be">Redis (Lua Script)</span>
+        <span class="tag tag-be">AWS Lambda / CDK / SQS</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frontend</span>
+        <span class="tag tag-fe">Angular (Universal SSR)</span>
+        <span class="tag tag-fe">React</span>
+        <span class="tag tag-fe">TypeScript</span>
+        <span class="tag tag-fe">Apollo Client</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Architecture</span>
+        <span class="tag tag-sys">Distributed Locks</span>
+        <span class="tag tag-sys">Idempotency Design</span>
+        <span class="tag tag-sys">AASM State Machines</span>
+        <span class="tag tag-sys">WebSocket (AnyCable)</span>
+        <span class="tag tag-sys">Event-Driven Architecture</span>
+        <span class="tag tag-sys">Zero-downtime Migration</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Blockchain</span>
+        <span class="tag tag-bc">Solidity</span>
+        <span class="tag tag-bc">ECDSA Signature Verification</span>
+        <span class="tag tag-bc">DEX Matching Engine</span>
+        <span class="tag tag-bc">TRON / Ethereum</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Observability</span>
+        <span class="tag tag-obs">Sentry</span>
+        <span class="tag tag-obs">Rollbar</span>
+        <span class="tag tag-obs">OpenObserve</span>
+        <span class="tag tag-obs">NewRelic</span>
+        <span class="tag tag-obs">Locust Load Testing</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">AI Dev</span>
+        <span class="tag tag-ai">Claude Code Agent/Skill</span>
+        <span class="tag tag-ai">Prompt Engineering</span>
+        <span class="tag tag-ai">Fine-tuning</span>
+        <span class="tag tag-ai">End-to-end AI Pipeline</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    <div class="timeline">
+
+      <!-- Xin Ding Zuan -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Xin Ding Zuan（鑫鼎鑽）</span>
+            <span class="exp-title">&nbsp;·&nbsp;Senior Backend Engineer</span>
+          </div>
+          <span class="exp-date">Jun 2025 – Present</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>17</strong><span>Lua Scripts</span></div>
+          <div class="metric"><strong>5</strong><span>Partitioned Tables</span></div>
+          <div class="metric"><strong>1,068</strong><span>Lines of State Machines</span></div>
+          <div class="metric"><strong>467</strong><span>Lines Settlement Engine</span></div>
+        </div>
+        <ul>
+          <li>Worked with <strong>17 Redis Lua Scripts</strong> to atomically handle bet limits (6-key atomic ops), idempotency guards, distributed batch locks, and CDN blacklist rotation — eliminating TOCTOU race conditions in high-frequency betting</li>
+          <li>MySQL Range Partition on <strong>5 core ledger tables</strong> (credits / bets / transfers, etc.) with online partition reorganization to sustain high-frequency betting throughput</li>
+          <li><strong>Strategy Pattern + Factory</strong> <code>Warehouse</code> module with Feature Key granularity for Redshift → ByteHouse migration; Phase 1 dual-write comparison, Phase 2 zero-downtime cutover with a single line</li>
+          <li>Three interconnected AASM state machines — Pool / Round / Bet (1,068 lines total); <code>TransferService</code> (467 lines) implements double-entry atomic transfers with deadlock prevention and multi-currency real-time exchange</li>
+          <li>AnyCable WebSocket + MAC address routing for real-time edge node commands; WsMonitor daemon auto-recovers after <strong>5-second heartbeat</strong>; OpenObserve dynamic SQL detects jackpot anomalies across 7 currencies</li>
+        </ul>
+      </div>
+
+      <!-- Shin Ai Shih 2nd -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Shin Ai Shih（新愛世科技）</span>
+            <span class="exp-title">&nbsp;·&nbsp;Senior Full-stack Engineer</span>
+          </div>
+          <span class="exp-date">Sep 2023 – May 2025</span>
+        </div>
+        <ul>
+          <li>Rails 7 + PostgreSQL + GraphQL API design (graphql-batch DataLoader to resolve N+1); <strong>91 Models</strong> covering the full loan lifecycle; paper_trail for complete audit trails meeting financial compliance; Sentry + rails_performance + stackprof observability stack</li>
+          <li>Sidekiq async queues for approval notifications and report generation</li>
+          <li>Angular 14 + Angular Universal SSR frontend; Apollo Client GraphQL client-side caching; Cloudinary responsive images reduced mobile traffic by <strong>60%</strong></li>
+          <li>Three-tier analytics (Matomo + Sentry + GA); introduced GrowthBook A/B testing platform to drive data-informed product decisions</li>
+        </ul>
+      </div>
+
+      <!-- Lestar -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Lestar</span>
+            <span class="exp-title">&nbsp;·&nbsp;Senior Backend Engineer</span>
+          </div>
+          <span class="exp-date">Sep 2022 – Jul 2023</span>
+        </div>
+        <div class="metrics">
+          <div class="metric"><strong>3,000</strong><span>RPS</span></div>
+          <div class="metric"><strong>12</strong><span>Out-of-order Scenarios</span></div>
+          <div class="metric"><strong>40+</strong><span>Tables Synced</span></div>
+        </div>
+        <ul>
+          <li>AWS CDK IaC Serverless event-driven pipeline (API Gateway → Lambda → EventBridge → SQS → Lambda); Locust load-tested to <strong>3,000 RPS</strong> in production, syncing 40+ tables</li>
+          <li>Designed <strong>12 out-of-order event</strong> state machine scenarios; Prisma Serializable transactions + <code>paddingUpdatingValue</code> to handle update-before-create timing issues</li>
+          <li>AJV strict JSON Schema validation at entry for 13 tables; EventBridge 21-day Archive replay for disaster recovery; Jest integration tests (non-mock) covering out-of-order scenarios</li>
+        </ul>
+      </div>
+
+      <!-- Shin Ai Shih 1st -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Shin Ai Shih（新愛世科技）</span>
+            <span class="exp-title">&nbsp;·&nbsp;Senior Full-stack Engineer</span>
+          </div>
+          <span class="exp-date">Jun 2019 – Sep 2022</span>
+        </div>
+        <ul>
+          <li>Independently built AlphaLoan lending platform (Rails + Angular full-stack), streamlined CRM workflow to reduce loan application time by <strong>70%</strong></li>
+          <li>fincake financial content platform: <strong>138 Models</strong> supporting 5+ product lines; AASM state machines driving content review workflows; pg_search PostgreSQL native full-text search</li>
+          <li>AlphaCard credit card comparison site: ActiveAdmin CMS enabling self-service marketing; sitemap SEO automation; <strong>turned from loss to profit in 8 months</strong></li>
+        </ul>
+      </div>
+
+      <!-- Joyso -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">Joyso（共識科技）</span>
+            <span class="exp-title">&nbsp;·&nbsp;Senior Backend Engineer</span>
+          </div>
+          <span class="exp-date">May 2018 – Jun 2019</span>
+        </div>
+        <ul>
+          <li>Designed a two-layer DEX architecture: off-chain matching engine (order.rb <strong>22K lines</strong>) → MatchQueue → Watcher → on-chain settlement, reducing Gas costs</li>
+          <li><strong>Five-dimensional balance isolation</strong> (joyso / in_order / trading / withdrawing / depositing) + PostgreSQL Locker table row-level locking for fund consistency under high-frequency trading</li>
+          <li>ECDSA order signature verification (Secp256k1), Ethereum chain fork detection & rollback, CommitFlush WebSocket push consistency guarantee</li>
+          <li>Solidity HiLo smart contract: 52-card on-chain state machine, <strong>96% RTP</strong>, profitPerShare dividend algorithm (<code>2**64</code> magnitude for fixed-point precision)</li>
+        </ul>
+      </div>
+
+      <!-- TechBang -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-company">TechBang（T客邦）</span>
+            <span class="exp-title">&nbsp;·&nbsp;Full-stack Engineer</span>
+          </div>
+          <span class="exp-date">Dec 2016 – May 2018</span>
+        </div>
+        <ul>
+          <li>Rails main site (<strong>68 Models</strong>) + e-commerce + forum; 7 article types unified via Concern; AASM 4-state article review workflow</li>
+          <li>CAS SSO server (Strategy Pattern with <strong>8 authentication backends</strong>) + BCrypt zero-downtime password migration; unified auth across 7+ subsites</li>
+          <li>Chef IaC managing 14 AWS servers; maintained 8+ private Gems for cross-site reuse</li>
+        </ul>
+      </div>
+
+    </div><!-- /timeline -->
+  </div>
+
+  <!-- Side Projects -->
+  <div class="section">
+    <div class="section-title">Side Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h4>LLM Resume Distillation System</h4>
+        <p>Feeds 9 years of project code as knowledge source into a custom-built Claude Code Agent/Skill system that auto-distills engineering highlights into role-specific resumes. This resume was produced by that system.</p>
+      </div>
+      <div class="project-card">
+        <h4>AI Music Video Auto-Upload Pipeline</h4>
+        <p>End-to-end AI Pipeline: input theme/style parameters → Suno API generates music → auto-compose video → upload to YouTube. Fully automated, no human intervention, enabling content at scale.</p>
+      </div>
+      <div class="project-card">
+        <h4>GameFi Aggregation Platform (gamefi-studio)</h4>
+        <p>Rails backend: Telegram Bot push notifications, Web3 scam blacklist, RBAC + JWT access control. Paired with a Nuxt 2 frontend (MetaMask + ethers.js + PWA).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="section" style="padding-bottom: 32px;">
+    <div class="section-title">Achievements</div>
+    <div class="achievements-grid">
+      <div class="achievement">
+        <h4>🏆 TRON DApp Contest — Honorable Mention</h4>
+        <p>Pixel Painter — a pixel art DApp built with React + Solidity. Independently developed in 3 weeks; awarded Honorable Mention in the official TRON developer contest.</p>
+      </div>
+      <div class="achievement">
+        <h4>🚀 COVID-19 Quarantine Hotel Finder</h4>
+        <p>Independently launched findtaiwanhotel.com in 3 days (Rails full-stack) to help people find COVID-19 quarantine hotels during the pandemic peak.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /lang-en -->
+
+<script>
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      document.querySelectorAll('.lang-switch button').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === lang));
+    });
+  });
+</script>
+</body>
+</html>
