@@ -78,11 +78,11 @@
   .intro {
     background: #f0f5ff;
     border-left: 3px solid #1a56db;
-    padding: 14px 18px;
+    padding: 16px 20px;
     border-radius: 0 6px 6px 0;
-    font-size: 9pt;
+    font-size: 9.8pt;
     color: #2d3748;
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 4px;
   }
 
@@ -338,8 +338,19 @@
     .pdf-btn, .lang-switch { display: none; }
   }
 
+  /* full-width feature card (AI 兩大專案) */
+  .project-card.feature { grid-column: 1 / -1; }
+  .feature .feat-body { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; margin-top: 5px; }
+  .feature .feat-body > div > b { color: #1a56db; font-size: 8.4pt; display: block; margin-bottom: 2px; }
+  .feature .feat-body p { margin: 0 0 7px; }
+  .feature .feat-lead { margin: 0 0 8px; }
+  .feature .card-shot { margin: 9px 0 4px; }
+  .feature .card-shot .workflow-shot { max-width: 560px; margin: 0 auto; }
+  .feature .card-shot figcaption { font-size: 7.2pt; color: #718096; margin-top: 5px; line-height: 1.5; text-align: center; }
+  @media print { .feature .feat-body { grid-template-columns: 1fr 1fr; } }
+
   /* screenshot */
-  .shot-fig { margin: 12px 0 4px; }
+  .shot-fig { margin: 12px 0 4px; max-width: 420px; }
   .workflow-shot {
     width: 100%;
     aspect-ratio: 2940 / 1610;
@@ -359,6 +370,7 @@
     line-height: 1.5;
   }
   @media print { .shot-fig { page-break-inside: avoid; } }
+  @media (max-width: 600px) { .shot-fig { max-width: 100%; } }
 </style>
 </head>
 <body data-lang="zh">
@@ -384,12 +396,12 @@
   <div class="content">
 
     <div class="intro">
-      擁有 9 年全端開發經驗，主力後端技術棧涵蓋 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力。深度參與高併發即時系統設計——在鑫鼎鑽以 <strong>17 支 Redis Lua Script</strong> 原子解耦競態點、處理日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 管道承載 <strong>3,000 RPS</strong> 資料遷移。同時具備區塊鏈實戰經歷（以太坊 DEX 撮合引擎、TRON 智能合約競賽優選）。近年將開發生命週期 AI 工程化為一條可換引擎、有結構化記憶的流水線，並自建 Claude Code Agent / Skill 系統。對系統可觀測性、分散式一致性與零停機遷移有系統性思考，能在業務快速迭代中維持架構健壯性。
+      擁有 <strong>9 年後端與全端開發經驗</strong>，主力技術棧為 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力，長期處理高併發系統。在鑫鼎鑽以 <strong>Redis Lua Script</strong> 原子解耦競態點，支撐日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 事件管道承載 <strong>3,000 RPS</strong> 資料同步，並解決亂序事件下的一致性問題；在共識科技設計去中心化交易所的鏈外撮合、鏈上結算二層架構，並以 TRON 智能合約作品獲官方競賽優選。近兩年將 AI 工程化落地成<strong>兩套自用系統</strong>：一套把開發生命週期做成流水線（上層看板編排、下層自研多 LLM 調度引擎），另一套把求職流程做成雙向系統（履歷蒸餾產出 + 三平台職缺抓取配對）——兩者都從模糊需求出發、繞過各平台實際限制、做到每天在用。對系統可觀測性、分散式一致性與零停機遷移有系統性方法。
     </div>
 
     <div class="metrics">
       <div class="metric-card"><span class="num">千萬筆</span><div class="label">日均投注記錄</div></div>
-      <div class="metric-card"><span class="num">17</span><div class="label">Redis Lua Scripts</div></div>
+      <div class="metric-card"><span class="num">5 張</span><div class="label">核心流水表線上分區</div></div>
       <div class="metric-card"><span class="num">3,000</span><div class="label">RPS Serverless 管道</div></div>
       <div class="metric-card"><span class="num">9 年</span><div class="label">全端開發資歷</div></div>
       <div class="metric-card"><span class="num">70%</span><div class="label">申貸時間縮短</div></div>
@@ -455,9 +467,13 @@
       <div class="skill-group">
         <div class="skill-label">AI 工具與工作流</div>
         <div class="tags">
-          <span class="tag tag-ai">Claude Code Agent/Skill</span>
-          <span class="tag tag-ai">多引擎切換</span>
-          <span class="tag tag-ai">結構化記憶</span>
+          <span class="tag tag-ai">harness-agent 多 LLM 調度引擎</span>
+          <span class="tag tag-ai">成本感知路由</span>
+          <span class="tag tag-ai">Affinity 自我學習</span>
+          <span class="tag tag-ai">雙盲二審</span>
+          <span class="tag tag-ai">跨 AI 冷/暖接續</span>
+          <span class="tag tag-ai">ticket-dashboard 編排</span>
+          <span class="tag tag-ai">履歷蒸餾 + 職缺配對</span>
           <span class="tag tag-ai">Prompt Engineering</span>
           <span class="tag tag-ai">LLM Fine-tuning</span>
         </div>
@@ -473,7 +489,7 @@
           <div class="exp-header"><span class="company">鑫鼎鑽</span><span class="period">2025/06 – 至今</span></div>
           <div class="role">資深後端工程師</div>
           <ul class="exp-bullets">
-            <li><strong>17 支 Redis Lua Script</strong> 原子解耦競態點：投注限額 6-key 原子操作、冪等性 guard、頻率限流、CDN 多層黑名單，徹底消除 TOCTOU race condition</li>
+            <li><strong>Redis Lua Script</strong> 原子解耦競態點：投注限額 6-key 原子操作、冪等性 guard、頻率限流、CDN 多層黑名單，徹底消除 TOCTOU race condition</li>
             <li><strong>MySQL Range Partition</strong>：5 張核心流水表（credits / bets / transfers）按日期分區，<code>PartitionReorganizerService</code> 線上擴展不鎖表；到期前一個月 Slack 告警</li>
             <li><strong>倉儲零停機遷移</strong>：Strategy Pattern + Factory 抽象 <code>Warehouse</code> 模組，per-feature Key 粒度切換 Redshift / ByteHouse，雙寫比對後一行 <code>disable_dual_write!</code> 完成切換</li>
             <li><strong>AASM 三套聯動狀態機</strong>（Pool / Round / Bet，共 1,068 行），Pool 8 個狀態，一個轉換級聯觸發 Round → Bet 結算</li>
@@ -524,7 +540,7 @@
       <div class="exp-item">
         <div class="timeline-dot"></div>
         <div class="exp-body">
-          <div class="exp-header"><span class="company">Freelance（wowogaming）</span><span class="period">2022 – 2023</span></div>
+          <div class="exp-header"><span class="company">Freelance — 遊戲平台白標系統</span><span class="period">2022 – 2023</span></div>
           <div class="role">Go 後端工程師</div>
           <ul class="exp-bullets">
             <li>以 <strong>Go 獨立開發</strong>遊戲平台白標後端：707 個 Go 檔案，60+ 業務模組（代理 / 玩家 / 主控三層）</li>
@@ -577,20 +593,89 @@
     </div>
 
     <div class="section-title">代表性 Side Projects</div>
-    <figure class="shot-fig">
-      <div class="workflow-shot" role="img" aria-label="ticket-dashboard 編排介面截圖"></div>
-      <figcaption>▲ AI 開發工作流體系的編排介面（ticket-dashboard）：左欄票務看板、中欄 AI 比對 codebase 後產出的實作分析、右欄問答區；右上角引擎下拉可在 Codex / Claude / Gemini 間切換並一鍵產生規劃書——體現「精準記憶（落地分析檔）＋ 多引擎可切換」的核心設計。</figcaption>
-    </figure>
     <div class="projects-grid">
 
-      <div class="project-card">
-        <div class="proj-title">AI 開發工作流體系</div>
-        <div class="proj-period">2025 – 至今</div>
-        <p>把開發生命週期（抓票 → 分析 → 評估 → 實作 → review → 自動修正）工程化為可組合的 skill 流水線。核心論點是「<strong>精準記憶 vs 模糊記憶</strong>」——明確任務不靠向量召回，而是把 analysis / plan / 結論落地成結構化檔案作為持久記憶。skill 統一綁 <code>~/.agents/skills</code> 並 symlink 同步 Claude / Gemini / Codex，可隨時切換引擎。本履歷系統即此流水線的產物。</p>
+      <div class="project-card feature">
+        <div class="proj-title">AI 開發工作流體系 — 自研多 LLM 調度引擎 + 開發流水線編排</div>
+        <p class="feat-lead">把整個開發生命週期工程化成一條流水線，並拆成<strong>上層編排、下層引擎</strong>兩層：上層 <code>ticket-dashboard</code> 用看板 UI 串起「抓票 → 分析 → 問答 → 規劃 → 實作 → review → 整合」；下層自研 <code>harness-agent</code> 是<strong>所有 AI 呼叫的統一入口</strong>，把 Claude Code / OpenAI Codex / Gemini CLI 三家異質介面抽象成同一組 runner。<strong>關鍵設計是上層完全不直接呼叫任何一家 AI</strong>——換模型、加成本控制、加品質評分都不必動到編排邏輯。</p>
+
+        <div class="feat-body">
+          <div>
+            <b>成本感知路由</b>
+            <p>先用關鍵字啟發式（外加一次便宜模型的分類 fallback）判斷任務類型，再依難度映射到 cheap / mid / strong 三層。<strong>讀取、抓取類自動派便宜模型，只有需要判斷與實作才上強模型</strong>——不是每件小事都燒最貴的。</p>
+          </div>
+          <div>
+            <b>affinity 自我學習</b>
+            <p>每次呼叫記帳（token / 成本）→ 抽樣用 fresh-context 模型依 rubric 打分 → 聚合出「哪個模型對哪類任務表現好」的適配度，下次同類任務優先派歷史高分模型（n≥5 樣本門檻防呆）。<strong>引擎從自己的執行數據學怎麼路由。</strong></p>
+          </div>
+          <div>
+            <b>harness + loop 自動升降級</b>
+            <p>harness 是疊在原生 CLI 之上、而非取代它。任務評分過低或失敗時，<strong>自動帶著失敗軌跡升級</strong>（換更強模型或換一家 AI）重試數輪，讓流水線在最小人工介入下跑完。</p>
+          </div>
+          <div>
+            <b>雙盲二審（LLM-as-judge）</b>
+            <p>高風險判斷時讓兩家 strong 模型<strong>並行獨立盲答</strong>，再由第三方 fresh-context 模型裁決。用多模型交叉 + 獨立裁判逼近更高等級模型的判斷力。</p>
+          </div>
+          <div>
+            <b>跨 AI／跨 session 接續</b>
+            <p>同一家用原生 resume 暖接續；換家時把壓縮過的 ledger 塞進 prompt 冷接續，<strong>省 90%+ token</strong>；A→B→A 換手時自動補上中間發生的差量。</p>
+          </div>
+          <div>
+            <b>安全邊界：AI 不碰 Git、不自評成敗</b>
+            <p>worktree / branch 操作與成敗判準（diff + tests + record 三條件全過）一律由 deterministic script 負責，AI 只寫程式與判斷。<strong>每張票獨立 worktree + 隔離 test DB</strong>，多票並行互不干擾。</p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;"><strong>核心論點：精準記憶 vs 模糊記憶。</strong>多數 AI 記憶方案無腦上 vector search 靠語意相似度召回；但任務有明確方向與已定案結論時，模糊召回會漏掉關鍵約束、重述已決定的事。改用<strong>檔案系統當結構化記憶層</strong>——plan / analysis / 討論結論落地成可驗證、可重讀的檔案，下一步直接讀檔而非讓 LLM「回想」。另一個刻意設計是<strong>不確定性前置</strong>：分析階段強制 AI 比對 codebase 後列出「需要人先確認的事」，避免帶著錯誤假設一路實作到底。工程上是零依賴 Python 單檔（約 1,900 行）＋ <code>flock</code> 並發鎖 ＋ 自產 HTML 用量儀表板。</p>
+
+        <figure class="card-shot">
+          <div class="workflow-shot" role="img" aria-label="ticket-dashboard 編排介面截圖"></div>
+          <figcaption>▲ ticket-dashboard 編排介面：頂部 8 階段 pipeline（票 → 分析 → 問答 → 規劃 → 實作 → Review → 整合 → 💰AI呼叫，最後一階即 token／成本記帳）；左欄多專案票務看板；中欄 AI 比對 codebase 後產出的實作分析與「需要討論事項」；右上角引擎下拉與「自動 review」即 harness + loop 的入口。連 harness-agent 本身都用這套流程開發（dogfooding）。</figcaption>
+        </figure>
+
         <div class="tags" style="margin-top:6px;">
-          <span class="tag tag-ai">Claude / Gemini / Codex</span>
-          <span class="tag tag-ai">結構化記憶</span>
-          <span class="tag tag-backend">Skill Pipeline</span>
+          <span class="tag tag-ai">Claude / Codex / Gemini 統一抽象</span>
+          <span class="tag tag-ai">成本感知路由</span>
+          <span class="tag tag-ai">Affinity 自我學習</span>
+          <span class="tag tag-ai">LLM-as-judge 雙盲二審</span>
+          <span class="tag tag-ai">冷/暖 context 接續</span>
+          <span class="tag tag-backend">Git Worktree 隔離</span>
+          <span class="tag tag-backend">零依賴 Python</span>
+        </div>
+      </div>
+
+      <div class="project-card feature">
+        <div class="proj-title">AI 求職系統 — 履歷蒸餾 + 三平台職缺配對</div>
+        <div class="proj-period">2026</div>
+        <p class="feat-lead">把「找工作」拆成輸入與輸出兩個可解的子問題，做成一組雙向系統。<strong>輸出端</strong>將歷年專案程式碼與工作經歷蒸餾成 <strong>55 頁結構化知識庫</strong>，依 JD 動態選材產出客製化履歷；<strong>輸入端</strong>抓 104 / Cake / LinkedIn 共 <strong>1,100+ 筆職缺</strong>，自動多標籤分類、加權評分、可篩選。<strong>兩端共用同一份知識庫</strong>——求職條件基準檔本身即從知識庫蒸餾而來。</p>
+
+        <div class="feat-body">
+          <div>
+            <b>三平台三種取得方式</b>
+            <p>104 直接取搜尋頁背後的 JSON API；Cake 需 cookie warmup + Referer，且實測其速率限制是<strong>「時間窗內請求數」而非間隔長短</strong>，改用低密度 + 指數退避才穩定；LinkedIn 需登入 session，判斷<strong>不該硬做</strong>而改半自動。</p>
+          </div>
+          <div>
+            <b>刻意的取捨</b>
+            <p>LinkedIn 涵蓋率只做到約 3%，<strong>用低涵蓋率換帳號安全</strong>。它的價值不在數量——Binance、Circle、Netskope 這些外商全遠端職缺，另外兩個平台完全找不到。</p>
+          </div>
+          <div>
+            <b>拒絕假精確</b>
+            <p>70% 職缺薪資未公開，原本給的「中間分」等於把<strong>「不知道」編碼成「大概還行」</strong>。查證確實取不到後（104 詳情 API 為 0、比薪水在付費牆後），改為薪資獨立成維度並明確標「未公開」。</p>
+          </div>
+          <div>
+            <b>標註自己方法的偏誤</b>
+            <p>人力顧問代招職缺因 JD 極簡而被系統性低估（一筆年薪 210 萬的純遠端 Go 職缺只拿 40 分）。<strong>選擇把這個已知偏誤寫在頁面上，而不是調參數美化分數。</strong></p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;">後續把個人化規則（關鍵字、標籤、評分權重）全數抽離成 config 並封裝成 skill，讓他人填入自己條件即可使用——實測<strong>同一批來源資料能為不同背景者產出完全不同的分類體系</strong>。實際成果：系統找出我手動瀏覽會跳過的職缺，例如一筆 JD 寫著「具 forward-deployed 落地交付精神、需 LLM 多模型管理（LiteLLM）」的職缺，職稱卻只叫「架構師」。</p>
+
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-ai">履歷蒸餾</span>
+          <span class="tag tag-backend">多平台資料管線</span>
+          <span class="tag tag-backend">Config 驅動 / 多使用者隔離</span>
+          <span class="tag tag-data">多標籤分類 + 加權評分</span>
+          <span class="tag tag-data">增量同步 (first_seen / stale)</span>
         </div>
       </div>
 
@@ -666,12 +751,12 @@
   <div class="content">
 
     <div class="intro">
-      9 years of full-stack development experience, with a backend core in <strong>Ruby on Rails, Go, and Node.js</strong>, plus hands-on Angular front-end work. Deeply involved in high-concurrency real-time systems—at Fatpit (鑫鼎鑽), decoupled race conditions with <strong>17 Redis Lua Scripts</strong> while handling tens of millions of betting records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> pipeline sustaining <strong>3,000 RPS</strong> of data migration. Real-world blockchain experience (Ethereum DEX matching engine, TRON smart-contract competition award). Recently engineered the full development lifecycle into an engine-swappable, structured-memory pipeline and built a custom Claude Code Agent / Skill system. Systematic about observability, distributed consistency, and zero-downtime migration—keeping architecture robust through fast business iteration.
+      <strong>9 years of backend and full-stack engineering</strong> across <strong>Ruby on Rails, Go, and Node.js</strong>, with hands-on Angular front-end work and a long track record in high-concurrency systems. At Fatpit (鑫鼎鑽), decoupled race conditions with <strong>Redis Lua Scripts</strong> to support tens of millions of betting records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> event pipeline sustaining <strong>3,000 RPS</strong> while solving out-of-order event consistency; at Consensus Technology (共識科技), designed a decentralized exchange's off-chain matching / on-chain settlement architecture, and won a TRON smart-contract competition award. Over the past two years, engineered AI into <strong>two systems in daily personal use</strong>: one turns the development lifecycle into a pipeline (kanban orchestration on top, a self-built multi-LLM dispatch engine underneath, with cost-aware routing and self-learning); the other turns job searching into a two-way system (resume distillation for output, three-platform job scraping and matching for input). Both started from vague problems, worked around real platform constraints, and ended up in daily use. Systematic about observability, distributed consistency, and zero-downtime migration.
     </div>
 
     <div class="metrics">
       <div class="metric-card"><span class="num">10M+/day</span><div class="label">Betting Records</div></div>
-      <div class="metric-card"><span class="num">17</span><div class="label">Redis Lua Scripts</div></div>
+      <div class="metric-card"><span class="num">5</span><div class="label">Ledger Tables Partitioned</div></div>
       <div class="metric-card"><span class="num">3,000</span><div class="label">RPS Serverless Pipeline</div></div>
       <div class="metric-card"><span class="num">9 yrs</span><div class="label">Full-Stack Experience</div></div>
       <div class="metric-card"><span class="num">70%</span><div class="label">Loan Time Reduced</div></div>
@@ -737,11 +822,15 @@
       <div class="skill-group">
         <div class="skill-label">AI Tooling &amp; Workflow</div>
         <div class="tags">
-          <span class="tag tag-ai">Claude Code Agent/Skill</span>
-          <span class="tag tag-ai">Multi-Engine Switching</span>
-          <span class="tag tag-ai">Structured Memory</span>
+          <span class="tag tag-ai">harness-agent Multi-LLM Dispatcher</span>
+          <span class="tag tag-ai">Cost-Aware Routing</span>
+          <span class="tag tag-ai">Affinity Self-Learning</span>
+          <span class="tag tag-ai">Dual-Blind Judging</span>
+          <span class="tag tag-ai">Cross-AI Cold/Warm Handoff</span>
+          <span class="tag tag-ai">ticket-dashboard Orchestration</span>
           <span class="tag tag-ai">Prompt Engineering</span>
           <span class="tag tag-ai">LLM Fine-tuning</span>
+          <span class="tag tag-ai">Resume Distillation + Job Matching</span>
         </div>
       </div>
     </div>
@@ -755,7 +844,7 @@
           <div class="exp-header"><span class="company">Fatpit (鑫鼎鑽)</span><span class="period">2025/06 – Present</span></div>
           <div class="role">Senior Backend Engineer</div>
           <ul class="exp-bullets">
-            <li><strong>17 Redis Lua Scripts</strong> to atomically decouple race conditions: 6-key atomic bet-limit ops, idempotency guards, rate limiting, multi-layer CDN blacklist—eliminating TOCTOU race conditions entirely</li>
+            <li><strong>Redis Lua Scripts</strong> to atomically decouple race conditions: 6-key atomic bet-limit ops, idempotency guards, rate limiting, multi-layer CDN blacklist—eliminating TOCTOU race conditions entirely</li>
             <li><strong>MySQL Range Partition</strong> across 5 core ledger tables (credits / bets / transfers) by date; <code>PartitionReorganizerService</code> extends partitions online without locking; Slack alerts one month before expiry</li>
             <li><strong>Zero-downtime warehouse migration</strong>: Strategy + Factory abstracting a <code>Warehouse</code> module, per-feature-key switching between Redshift / ByteHouse; cut over with a single <code>disable_dual_write!</code> after dual-write reconciliation</li>
             <li><strong>Three interlocking AASM state machines</strong> (Pool / Round / Bet, 1,068 lines); a Pool transition (8 states) cascades into Round → Bet settlement</li>
@@ -806,7 +895,7 @@
       <div class="exp-item">
         <div class="timeline-dot"></div>
         <div class="exp-body">
-          <div class="exp-header"><span class="company">Freelance (wowogaming)</span><span class="period">2022 – 2023</span></div>
+          <div class="exp-header"><span class="company">Freelance — White-Label Gaming Platform</span><span class="period">2022 – 2023</span></div>
           <div class="role">Go Backend Engineer</div>
           <ul class="exp-bullets">
             <li>Independently built a white-label gaming platform backend in <strong>Go</strong>: 707 Go files, 60+ business modules (agent / player / master three-tier roles)</li>
@@ -865,14 +954,87 @@
     </figure>
     <div class="projects-grid">
 
-      <div class="project-card">
-        <div class="proj-title">AI Development Workflow System</div>
-        <div class="proj-period">2025 – Present</div>
-        <p>Engineered the dev lifecycle (sync → analyze → evaluate → implement → review → auto-fix) into a composable skill pipeline. Core thesis: <strong>precise vs fuzzy memory</strong>—well-defined tasks don't rely on vector recall; analysis / plan / decisions are persisted as structured files. Skills live in <code>~/.agents/skills</code> and symlink-sync across Claude / Gemini / Codex for engine swapping. This resume system is a product of that pipeline.</p>
+      <div class="project-card feature">
+        <div class="proj-title">AI Development Workflow System — Self-Built Multi-LLM Dispatcher + Pipeline Orchestration</div>
+        <p class="feat-lead">Engineered the entire development lifecycle into a pipeline, split into <strong>an orchestration layer and an engine layer</strong>: on top, <code>ticket-dashboard</code> drives "fetch → analyze → Q&amp;A → plan → implement → review → integrate" through a kanban UI; underneath, the self-built <code>harness-agent</code> is <strong>the single entry point for every AI call</strong>, abstracting Claude Code / OpenAI Codex / Gemini CLI into one runner interface. <strong>The key design is that the upper layer never calls any AI vendor directly</strong>—swapping models or adding cost control and quality scoring never touches orchestration logic.</p>
+
+        <div class="feat-body">
+          <div>
+            <b>Cost-Aware Routing</b>
+            <p>A keyword heuristic (with a cheap-model classification fallback) infers task type, then maps difficulty onto cheap / mid / strong tiers. <strong>Reading and fetching tasks automatically get cheap models; only judgment and implementation escalate</strong>—not every trivial task burns the most expensive model.</p>
+          </div>
+          <div>
+            <b>Affinity Self-Learning</b>
+            <p>Each call is metered (tokens / cost), sampled and scored by a fresh-context model against a rubric, then aggregated into a per-model-per-task-type affinity signal that biases future routing (n≥5 sample threshold). <strong>The engine learns its own routing from execution data.</strong></p>
+          </div>
+          <div>
+            <b>Harness + Loop Auto-Escalation</b>
+            <p>The harness layers on top of native CLIs rather than replacing them. On low scores or failures it <strong>automatically escalates carrying the failure trace</strong> (stronger model, or a different vendor) and retries, letting the pipeline finish with minimal human intervention.</p>
+          </div>
+          <div>
+            <b>Dual-Blind Judging (LLM-as-Judge)</b>
+            <p>For high-stakes decisions, two strong models <strong>answer independently and blind</strong>, then a third fresh-context model adjudicates—approximating higher-tier judgment through model cross-checking plus an independent referee.</p>
+          </div>
+          <div>
+            <b>Cross-AI / Cross-Session Handoff</b>
+            <p>Warm resume within the same vendor; cold handoff across vendors by compressing the ledger into the prompt, <strong>saving 90%+ tokens</strong>; A→B→A switches automatically inject the delta of what happened in between.</p>
+          </div>
+          <div>
+            <b>Safety Boundary: AI Never Touches Git</b>
+            <p>Worktree / branch operations and success criteria (diff + tests + record, all three required) are handled by deterministic scripts; the AI only writes code and judges. <strong>Each ticket gets an isolated worktree and test DB</strong>, so parallel work never collides.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;"><strong>Core thesis: precise memory vs. fuzzy memory.</strong> Most AI memory designs reflexively reach for vector search and semantic recall; but when a task has a clear direction and already-settled decisions, fuzzy recall drops key constraints and re-litigates what was decided. Instead the filesystem <strong>becomes the structured memory layer</strong>—plan / analysis / conclusions land as verifiable, re-readable files that the next step reads directly rather than asking the LLM to "remember." A second deliberate choice is <strong>surfacing uncertainty up front</strong>: the analysis stage forces the AI to diff against the codebase and list "what a human must confirm first," avoiding a full implementation built on a wrong assumption. Built as a zero-dependency single-file Python program (~1,900 lines) with <code>flock</code> concurrency locking and a self-generated HTML usage dashboard.</p>
+
+        <figure class="card-shot">
+          <div class="workflow-shot" role="img" aria-label="ticket-dashboard orchestration UI screenshot"></div>
+          <figcaption>▲ ticket-dashboard orchestration UI: an 8-stage pipeline across the top (ticket → analysis → Q&amp;A → plan → implement → review → integrate → 💰AI calls, the last being token/cost metering); multi-project ticket board on the left; center shows the AI's implementation analysis and its "needs discussion" list after diffing the codebase; the engine dropdown and "auto review" toggle at top right are the harness + loop entry point. Even harness-agent itself is developed through this pipeline (dogfooding).</figcaption>
+        </figure>
+
         <div class="tags" style="margin-top:6px;">
-          <span class="tag tag-ai">Claude / Gemini / Codex</span>
-          <span class="tag tag-ai">Structured Memory</span>
-          <span class="tag tag-backend">Skill Pipeline</span>
+          <span class="tag tag-ai">Claude / Codex / Gemini Abstraction</span>
+          <span class="tag tag-ai">Cost-Aware Routing</span>
+          <span class="tag tag-ai">Affinity Self-Learning</span>
+          <span class="tag tag-ai">LLM-as-Judge</span>
+          <span class="tag tag-ai">Cold/Warm Context Handoff</span>
+          <span class="tag tag-backend">Git Worktree Isolation</span>
+          <span class="tag tag-backend">Zero-Dependency Python</span>
+        </div>
+      </div>
+
+      <div class="project-card feature">
+        <div class="proj-title">AI Job-Search System — Resume Distillation + Three-Platform Job Matching</div>
+        <div class="proj-period">2026</div>
+        <p class="feat-lead">Broke "job searching" into two solvable sub-problems and built a two-way system. <strong>Output side</strong>: distilled years of source code and work history into a <strong>55-page structured knowledge base</strong>, generating tailored resumes by selecting material per job description. <strong>Input side</strong>: scraped <strong>1,100+ postings</strong> across 104 / Cake / LinkedIn with multi-label classification, weighted scoring, and faceted filtering. <strong>Both halves share one knowledge base</strong>—the criteria profile is itself distilled from it.</p>
+
+        <div class="feat-body">
+          <div>
+            <b>Three Platforms, Three Approaches</b>
+            <p>104 exposed a JSON API behind its search page; Cake needed cookie warm-up plus Referer, and testing showed its rate limit counts <strong>requests per time window, not interval length</strong>—lower density plus exponential backoff was the fix; LinkedIn requires an authenticated session, so I judged it <strong>not worth forcing</strong> and went semi-automatic.</p>
+          </div>
+          <div>
+            <b>A Deliberate Trade-Off</b>
+            <p>LinkedIn coverage was capped at ~3%, <strong>trading coverage for account safety</strong>. Its value was never volume—Binance, Circle, and Netskope remote roles simply do not appear on the other two platforms.</p>
+          </div>
+          <div>
+            <b>Refusing False Precision</b>
+            <p>With 70% of postings hiding salary, the original "middle score" effectively <strong>encoded "unknown" as "probably fine."</strong> After verifying the data genuinely wasn't obtainable (104's detail API returns 0; salary.tw sits behind a paywall), salary became its own dimension explicitly labeled "undisclosed."</p>
+          </div>
+          <div>
+            <b>Documenting My Own Bias</b>
+            <p>Recruiter-posted roles were systematically underscored because their JDs are terse—a fully-remote Go role paying NT$2.1M scored only 40. <strong>I documented that known bias on the page rather than tuning parameters to make scores look better.</strong></p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;">Personalization rules (keywords, tags, scoring weights) were later externalized into config and packaged as a skill, so anyone can supply their own criteria—verified that <strong>the same source data produces entirely different taxonomies for different backgrounds</strong>. Concrete payoff: the system surfaced roles I would have skipped by hand, including one whose JD demanded "forward-deployed delivery mindset" and "multi-model LLM management (LiteLLM)" but was titled merely "Architect."</p>
+
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-ai">Resume Distillation</span>
+          <span class="tag tag-backend">Multi-Platform Pipeline</span>
+          <span class="tag tag-backend">Config-Driven / Multi-User</span>
+          <span class="tag tag-data">Multi-Label + Weighted Scoring</span>
+          <span class="tag tag-data">Incremental Sync</span>
         </div>
       </div>
 
