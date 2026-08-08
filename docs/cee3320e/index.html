@@ -243,6 +243,8 @@
     color: #0f1f3d;
     margin-bottom: 2px;
   }
+  .project-card .proj-period a { color: #1a56db; text-decoration: none; border-bottom: 1px solid #cbd8f0; }
+  .project-card .proj-period a:hover { border-bottom-color: #1a56db; }
   .project-card .proj-period {
     font-size: 7.5pt;
     color: #718096;
@@ -396,7 +398,7 @@
   <div class="content">
 
     <div class="intro">
-      擁有 <strong>9 年後端與全端開發經驗</strong>，主力技術棧為 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力，長期處理高併發系統。在鑫鼎鑽以 <strong>Redis Lua Script</strong> 原子解耦競態點，支撐日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 事件管道承載 <strong>3,000 RPS</strong> 資料同步，並解決亂序事件下的一致性問題；在共識科技設計去中心化交易所的鏈外撮合、鏈上結算二層架構，並以 TRON 智能合約作品獲官方競賽優選。近兩年將 AI 工程化落地成<strong>兩套自用系統</strong>：一套把開發生命週期做成流水線（上層看板編排、下層自研多 LLM 調度引擎），另一套把求職流程做成雙向系統（履歷蒸餾產出 + 三平台職缺抓取配對）——兩者都從模糊需求出發、繞過各平台實際限制、做到每天在用。對系統可觀測性、分散式一致性與零停機遷移有系統性方法。
+      擁有 <strong>9 年後端與全端開發經驗</strong>，主力技術棧為 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力，長期處理高併發系統。在鑫鼎鑽以 <strong>Redis Lua Script</strong> 原子解耦競態點，支撐日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 事件管道承載 <strong>3,000 RPS</strong> 資料同步，並解決亂序事件下的一致性問題；在共識科技設計去中心化交易所的鏈外撮合、鏈上結算二層架構，並以 TRON 智能合約作品獲官方競賽優選。近兩年將 AI 工程化落地成<strong>三套系統</strong>：把開發生命週期做成流水線（上層看板編排、下層自研多 LLM 調度引擎）、把求職流程做成雙向系統（履歷蒸餾 + 三平台職缺配對），以及一條 YouTube 內容生產流水線（<strong>1 個月累積 6.4 萬次觀看</strong>）——都從模糊需求出發、繞過各平台實際限制、做到真的在用。對系統可觀測性、分散式一致性與零停機遷移有系統性方法。
     </div>
 
     <div class="metrics">
@@ -679,14 +681,40 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="proj-title">AI 端對端自動化管線</div>
-        <div class="proj-period">2024 – 至今</div>
-        <p>音樂影片生成系統：輸入主題/風格 → Suno API 生成歌曲 → 自動合成影片 → 上傳 YouTube，全程無人介入。AI 虛擬網紅以 Prompt Engineering + Fine-tuning 建模名人個性，為 2024 年早期模型蒸餾實踐。</p>
+      <div class="project-card feature">
+        <div class="proj-title">YouTube Video Factory — AI 內容生產流水線<span style="font-weight:600;color:#1a56db;"> · 1 個月累積 6.4 萬觀看 / 46 支影片</span></div>
+        <div class="proj-period">2026（世足賽期間）· 驗證型嘗試專案 · <a href="https://www.youtube.com/channel/UCYRpn7HzafEC6_O_kbfCXQA" target="_blank" rel="noopener">頻道連結</a></div>
+        <p class="feat-lead">世足賽期間的<strong>驗證型嘗試專案</strong>——想確認「AI 全自動生產的內容，市場到底買不買單」。把整條影片生產鏈工程化：<strong>一句話大綱進去，成品 Shorts 出來</strong>——解析資料 → 生腳本 → ElevenLabs 配音 → 抓背景（AI 生圖／素材庫空鏡）→ Remotion 渲染 → 字幕對齊 → 縮圖 → metadata → QC → 上傳 YouTube。<strong>從零開始、1 個月內累積 6.4 萬次觀看與 46 支影片</strong>（<strong>平均每支 1,000–2,000 次觀看</strong>、51 位訂閱）。重點不在總量，而在於它證明了兩件事：這條流水線的<strong>產能足以支撐日更節奏</strong>，且自動生成的內容<strong>單支就能穩定拿到四位數觀看</strong>——品質不行的話，觀看數會誠實反映。</p>
+
+        <div class="feat-body">
+          <div>
+            <b>人負責創意，AI 負責執行</b>
+            <p>刻意<strong>不把「想題目」自動化</strong>。先用自寫的 <code>/ai-roundtable</code> skill 讓多個 AI 互相辯論同一場比賽，激盪出最能帶動情緒的標題與切角，收斂成 brief 後才丟進全自動流水線。「什麼題目會紅」是創意判斷，不是可自動化的規則。</p>
+          </div>
+          <div>
+            <b>LLM 只表達，不發明事實</b>
+            <p>所有數字必須來自 Data Resolver 已驗證的 <code>data_points</code>，LLM 只決定「怎麼講」不決定「講什麼數字」；另寫 <code>fact-guard</code> 模組攔截並改寫潛在幻覺。<strong>與 harness-agent「AI 不自評成敗」是同一套思路。</strong></p>
+          </div>
+          <div>
+            <b>合規紅線前置</b>
+            <p>零賽事版權素材（背景只用 AI 生圖或泛用空鏡，嚴禁轉播畫面與球員照）、一律先上傳 private 待人工 approve 才公開。<strong>都是開工前定的規則，不是事後補救。</strong></p>
+          </div>
+          <div>
+            <b>可插拔架構</b>
+            <p>每個運動一份 preset（術語／資料 schema／知識片段），新增運動 = 換 preset + DataSource，<strong>生產骨幹零改動</strong>——從足球擴到籃球（NBA/WNBA）即如此驗證。資料源亦可插拔：賽果、ESPN、市場賠率。</p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;">系統唯一輸入是經 JSON Schema 驗證的 ContentDirectionSpec，<strong>錯誤在進入流水線前就攔下</strong>而非跑到渲染才爆。<code>src/</code> 下 19 個模組各司其職且可單獨測試（orchestrator、data-resolver、script-generator、tts-generator、visual-renderer、fact-guard、qc、youtube-publisher…），約 110 個 TS/JS 檔。<strong>早期的 AI 音樂影片自動化</strong>（Suno API 生成歌曲 → 合成影片 → 上傳 YouTube）與 <strong>AI 虛擬網紅</strong>（Prompt Engineering + Fine-tuning 建模名人個性，2024 年早期模型蒸餾實踐）即此系統的前身。</p>
+
         <div class="tags" style="margin-top:6px;">
-          <span class="tag tag-ai">Fine-tuning</span>
-          <span class="tag tag-ai">Suno API</span>
-          <span class="tag tag-ai">YouTube API</span>
+          <span class="tag tag-ai">Remotion 影片渲染</span>
+          <span class="tag tag-ai">ElevenLabs TTS</span>
+          <span class="tag tag-ai">fact-guard 防幻覺</span>
+          <span class="tag tag-backend">TypeScript / Node.js</span>
+          <span class="tag tag-backend">PostgreSQL + Redis 佇列</span>
+          <span class="tag tag-data">Schema-First 輸入驗證</span>
+          <span class="tag tag-data">YouTube Data API</span>
         </div>
       </div>
 
@@ -751,7 +779,7 @@
   <div class="content">
 
     <div class="intro">
-      <strong>9 years of backend and full-stack engineering</strong> across <strong>Ruby on Rails, Go, and Node.js</strong>, with hands-on Angular front-end work and a long track record in high-concurrency systems. At Fatpit (鑫鼎鑽), decoupled race conditions with <strong>Redis Lua Scripts</strong> to support tens of millions of betting records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> event pipeline sustaining <strong>3,000 RPS</strong> while solving out-of-order event consistency; at Consensus Technology (共識科技), designed a decentralized exchange's off-chain matching / on-chain settlement architecture, and won a TRON smart-contract competition award. Over the past two years, engineered AI into <strong>two systems in daily personal use</strong>: one turns the development lifecycle into a pipeline (kanban orchestration on top, a self-built multi-LLM dispatch engine underneath, with cost-aware routing and self-learning); the other turns job searching into a two-way system (resume distillation for output, three-platform job scraping and matching for input). Both started from vague problems, worked around real platform constraints, and ended up in daily use. Systematic about observability, distributed consistency, and zero-downtime migration.
+      <strong>9 years of backend and full-stack engineering</strong> across <strong>Ruby on Rails, Go, and Node.js</strong>, with hands-on Angular front-end work and a long track record in high-concurrency systems. At Fatpit (鑫鼎鑽), decoupled race conditions with <strong>Redis Lua Scripts</strong> to support tens of millions of betting records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> event pipeline sustaining <strong>3,000 RPS</strong> while solving out-of-order event consistency; at Consensus Technology (共識科技), designed a decentralized exchange's off-chain matching / on-chain settlement architecture, and won a TRON smart-contract competition award. Over the past two years, engineered AI into <strong>three working systems</strong>: one turns the development lifecycle into a pipeline (kanban orchestration on top, a self-built multi-LLM dispatch engine underneath); another turns job searching into a two-way system (resume distillation plus three-platform job matching); and a YouTube content production pipeline that drew <strong>64K views in one month</strong>. All started from vague problems, worked around real platform constraints, and ended up actually being used. Systematic about observability, distributed consistency, and zero-downtime migration.
     </div>
 
     <div class="metrics">
@@ -1038,14 +1066,40 @@
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="proj-title">End-to-End AI Automation Pipeline</div>
-        <div class="proj-period">2024 – Present</div>
-        <p>Music-video generation system: topic/style input → Suno API generates songs → auto video composition → YouTube upload, fully unattended. AI virtual influencer modeled via Prompt Engineering + Fine-tuning—an early (2024) model-distillation practice.</p>
+      <div class="project-card feature">
+        <div class="proj-title">YouTube Video Factory — AI Content Production Pipeline<span style="font-weight:600;color:#1a56db;"> · 64K Views in One Month / 46 Videos</span></div>
+        <div class="proj-period">2026 (World Cup season) · Exploratory validation project · <a href="https://www.youtube.com/channel/UCYRpn7HzafEC6_O_kbfCXQA" target="_blank" rel="noopener">Channel</a></div>
+        <p class="feat-lead">An <strong>exploratory validation project</strong> run during the World Cup—to find out whether fully AI-generated content actually finds an audience. I engineered the entire production chain: <strong>a one-line outline goes in, a finished Short comes out</strong>—resolve data → generate script → ElevenLabs voiceover → fetch background (AI-generated or stock B-roll) → Remotion render → caption alignment → thumbnail → metadata → QC → upload to YouTube. <strong>Starting from zero, it reached 64K views across 46 videos within one month</strong> (<strong>1,000–2,000 views per video</strong>, 51 subscribers). The point isn't the total but what it proves: the pipeline's <strong>throughput sustains a daily publishing cadence</strong>, and each auto-generated video <strong>reliably pulled four-digit view counts</strong>—if the quality weren't there, view counts would say so honestly.</p>
+
+        <div class="feat-body">
+          <div>
+            <b>Humans Own Creative, AI Owns Execution</b>
+            <p>I deliberately <strong>did not automate topic selection</strong>. A self-written <code>/ai-roundtable</code> skill has multiple AIs debate a given match to surface the most emotionally compelling angle, converging on a brief that then enters the fully automated pipeline. "What will resonate" is a creative judgment, not an automatable rule.</p>
+          </div>
+          <div>
+            <b>LLMs Express, They Don't Invent Facts</b>
+            <p>Every number must come from Data Resolver's verified <code>data_points</code>—the LLM decides <em>how</em> to say it, never <em>what</em> the number is. A dedicated <code>fact-guard</code> module intercepts and rewrites likely hallucinations. <strong>Same principle as harness-agent's "AI never self-certifies success."</strong></p>
+          </div>
+          <div>
+            <b>Compliance Boundaries Set Up Front</b>
+            <p>Zero licensed match footage (backgrounds are AI-generated or generic B-roll; broadcast frames and player photos are banned), and every upload goes out private pending manual approval. <strong>Rules set before writing code, not patched afterward.</strong></p>
+          </div>
+          <div>
+            <b>Pluggable Architecture</b>
+            <p>Each sport is one preset (terminology, data schema, knowledge snippets); adding a sport means swapping preset and DataSource with <strong>zero changes to the production backbone</strong>—verified by extending from soccer to basketball (NBA/WNBA). Data sources are equally pluggable: results, ESPN, market odds.</p>
+          </div>
+        </div>
+
+        <p style="margin-top:2px;">The system's only input is a JSON Schema-validated ContentDirectionSpec, so <strong>bad input is rejected before entering the pipeline</strong> rather than blowing up at render time. Nineteen modules under <code>src/</code> each run and test independently (orchestrator, data-resolver, script-generator, tts-generator, visual-renderer, fact-guard, qc, youtube-publisher…), ~110 TS/JS files. An <strong>earlier AI music-video pipeline</strong> (Suno API → video composition → YouTube upload) and an <strong>AI virtual influencer</strong> (persona modeling via prompt engineering + fine-tuning, an early-2024 distillation experiment) were this system's predecessors.</p>
+
         <div class="tags" style="margin-top:6px;">
-          <span class="tag tag-ai">Fine-tuning</span>
-          <span class="tag tag-ai">Suno API</span>
-          <span class="tag tag-ai">YouTube API</span>
+          <span class="tag tag-ai">Remotion Rendering</span>
+          <span class="tag tag-ai">ElevenLabs TTS</span>
+          <span class="tag tag-ai">fact-guard Hallucination Control</span>
+          <span class="tag tag-backend">TypeScript / Node.js</span>
+          <span class="tag tag-backend">PostgreSQL + Redis Queue</span>
+          <span class="tag tag-data">Schema-First Validation</span>
+          <span class="tag tag-data">YouTube Data API</span>
         </div>
       </div>
 
