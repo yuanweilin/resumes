@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林源韋 Bruce Lin — Senior Backend Engineer</title>
+<style>
+  :root{
+    --ink:#0f1f3d; --accent:#1a56db; --teal:#0f766e; --green:#15803d; --purple:#6d28d9;
+    --line:#e2e8f0; --muted:#5b6b82; --bg:#fff; --soft:#f6f8fc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-family:'Inter','Helvetica Neue',-apple-system,'PingFang TC','Microsoft JhengHei',sans-serif;
+    color:#1a2233;background:var(--soft);line-height:1.6;font-size:9.4pt}
+  .page{max-width:820px;margin:0 auto;background:var(--bg);padding:0 44px 46px}
+  .lang-en{display:none}
+  body[data-lang="en"] .lang-zh{display:none}
+  body[data-lang="en"] .lang-en{display:block}
+
+  /* topbar */
+  .topbar{background:var(--ink);color:#fff;margin:0 -44px 26px;padding:26px 44px 22px}
+  .topbar h1{font-size:22pt;letter-spacing:.5px;font-weight:700}
+  .topbar .role{color:#9fc0ff;font-size:11pt;font-weight:600;margin-top:3px}
+  .topbar .contact{color:#c7d6ee;font-size:8.6pt;margin-top:10px;word-break:break-all}
+  .topbar .contact a{color:#c7d6ee;text-decoration:none}
+
+  h2.section{font-size:8.4pt;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink);
+    font-weight:700;margin:26px 0 12px;display:flex;align-items:center;gap:12px}
+  h2.section::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .intro{background:var(--soft);border-left:3px solid var(--accent);padding:13px 16px;border-radius:0 6px 6px 0;font-size:9.5pt}
+  .intro strong{color:var(--ink)}
+
+  .skills{display:grid;gap:6px}
+  .skills .row{display:grid;grid-template-columns:118px 1fr;gap:10px;align-items:baseline}
+  .skills .k{font-weight:700;color:var(--ink);font-size:8.8pt}
+  .skills .v{color:#2a3446}
+
+  /* timeline */
+  .exp{position:relative;padding-left:22px;margin-top:16px}
+  .exp::before{content:"";position:absolute;left:5px;top:6px;bottom:2px;width:2px;background:var(--line)}
+  .exp .dot{position:absolute;left:0;top:5px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid #fff;box-shadow:0 0 0 2px var(--line)}
+  .exp .head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .exp .co{font-size:11pt;font-weight:700;color:var(--ink)}
+  .exp .title{color:var(--accent);font-weight:600;font-size:9.4pt}
+  .exp .date{margin-left:auto;color:var(--muted);font-size:8.4pt;font-weight:600;white-space:nowrap}
+  .exp .lead{color:var(--muted);font-size:8.9pt;margin:2px 0 7px}
+  ul{list-style:none;margin:0}
+  ul li{position:relative;padding-left:15px;margin-bottom:5px}
+  ul li::before{content:"";position:absolute;left:2px;top:8px;width:4px;height:4px;border-radius:50%;background:var(--accent)}
+  .map{margin-top:7px;font-size:8.3pt;color:var(--teal);background:#eefaf8;border-radius:5px;padding:6px 9px;border-left:2px solid var(--teal)}
+  strong{color:var(--ink)}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 2px}
+  .metric{background:var(--ink);color:#fff;border-radius:8px;padding:11px 12px;text-align:center}
+  .metric b{display:block;font-size:14pt;color:#fff;letter-spacing:.3px}
+  .metric span{font-size:7.6pt;color:#b9cdf0;letter-spacing:.4px}
+
+  /* projects */
+  .projects{display:grid;gap:11px;margin-top:6px}
+  .card{border:1px solid var(--line);border-radius:9px;padding:13px 15px;background:#fff}
+  .card h3{font-size:9.8pt;color:var(--ink);margin-bottom:4px}
+  .card .tag{font-size:7.4pt;font-weight:700;letter-spacing:.4px;padding:1px 7px;border-radius:20px;vertical-align:middle;margin-left:6px}
+  .tag.py{background:#efe9fb;color:var(--purple)}
+  .tag.ts{background:#e7f0fe;color:var(--accent)}
+  .tag.go{background:#e6f4ec;color:var(--green)}
+  .card p{font-size:8.9pt;color:#2a3446}
+
+  /* achievements */
+  .ach{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ach .item{background:var(--soft);border-radius:8px;padding:11px 13px;font-size:8.8pt}
+  .ach .item b{display:block;color:var(--ink);margin-bottom:2px;font-size:9.2pt}
+
+  /* controls */
+  .pdf-btn{position:fixed;top:18px;right:24px;width:38px;height:38px;border:none;border-radius:9px;
+    background:var(--accent);color:#fff;font-size:16px;cursor:pointer;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .lang-switch{position:fixed;top:18px;right:72px;height:38px;display:flex;z-index:9999;
+    border-radius:9px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+  .lang-switch button{border:none;background:#c9d6ea;color:#0f1f3d;padding:8px 12px;font-size:9pt;font-weight:700;cursor:pointer}
+  .lang-switch button.active{background:var(--accent);color:#fff}
+
+  @media print{
+    body{background:#fff;font-size:9pt}
+    .page{max-width:100%;padding:0 6px 6px}
+    .topbar{margin:0 -6px 20px;padding:20px}
+    .pdf-btn,.lang-switch{display:none}
+    .exp,.card,.metric,.ach .item{break-inside:avoid}
+    h2.section{break-after:avoid}
+  }
+  @media (max-width:640px){
+    .metrics,.ach{grid-template-columns:1fr 1fr}
+    .skills .row{grid-template-columns:1fr}
+    .exp .date{margin-left:0;width:100%}
+  }
+</style>
+</head>
+<body data-lang="zh">
+<button class="pdf-btn" onclick="window.print()" title="匯出 PDF / Export PDF" aria-label="Export PDF">⬇</button>
+<div class="lang-switch">
+  <button data-lang="zh" class="active">中</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<!-- ================= 繁中版 ================= -->
+<div class="page lang-zh">
+  <div class="topbar">
+    <h1>林源韋 <span style="font-size:13pt;font-weight:400;color:#9fc0ff">Bruce Lin</span></h1>
+    <div class="role">資深後端工程師 · 9 年經驗</div>
+    <div class="contact">📧 lywctl@gmail.com　·　線上履歷：<a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792">cake.me/resumes/…/cff792</a></div>
+  </div>
+
+  <h2 class="section">關於我</h2>
+  <div class="intro">
+    9 年後端 / 全端經驗，長期在<strong>交易、金流與高併發系統</strong>上從架構設計做到 production 維運。在共識科技參與去中心化交易所（DEX）後端開發（鏈外撮合 + 鏈上結算二層架構），以五維餘額隔離與 PostgreSQL 行級鎖處理高頻交易的資金一致性。之後在鑫鼎鑽與 Lestar 分別負責金融級結算引擎與 AWS Serverless 資料管道（生產驗證 3,000 RPS，含亂序事件一致性）。近一年以 <strong>Python</strong> 自研多 LLM 調度引擎與求職 / 內容自動化系統，端到端從設計、實作到日常自用。習慣自己扛下設計、實作、部署、監控到事故處理的完整生命週期。
+  </div>
+
+  <h2 class="section">技術能力</h2>
+  <div class="skills">
+    <div class="row"><div class="k">語言</div><div class="v">Python · Ruby / Rails · Go · Node.js / TypeScript · SQL</div></div>
+    <div class="row"><div class="k">資料庫</div><div class="v"><strong>PostgreSQL</strong>（行級鎖、Serializable 事務、Range Partition / pg_party、pg_search）· MySQL（Range Partition）· MongoDB · Redis</div></div>
+    <div class="row"><div class="k">雲端 / 部署</div><div class="v"><strong>AWS</strong>（CDK、Lambda、API Gateway、EventBridge、SQS、Redshift）· Docker · systemd · CI/CD</div></div>
+    <div class="row"><div class="k">交易 / 金融</div><div class="v">交易所 REST / WebSocket 串接 · 鏈外撮合 + 鏈上結算二層架構 · 雙重記帳結算引擎 · 多幣別即時匯率 · 風控與 GGR 指標</div></div>
+    <div class="row"><div class="k">資料管道 / 可觀測</div><div class="v">事件驅動管道（API GW → Lambda → EventBridge → SQS → Lambda）· 亂序事件一致性 · JSONStream 串流重播 · OpenObserve / Sentry / Rollbar / stackprof</div></div>
+    <div class="row"><div class="k">即時系統</div><div class="v">WebSocket 即時推播（AnyCable、gorilla/websocket）· 分散式鎖 · 冪等性與 TOCTOU 防護 · watchdog / 自動復原</div></div>
+    <div class="row"><div class="k">AI 工程化</div><div class="v">自研多 LLM 調度引擎（成本感知路由、affinity 自我學習、雙盲二審）· Fine-tuning · Prompt Engineering</div></div>
+  </div>
+
+  <h2 class="section">工作經歷</h2>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">共識科技（Joyso）</span><span class="title">後端工程師</span><span class="date">2018/05 – 2019/06</span></div>
+    <div class="lead">去中心化交易所（DEX）與區塊鏈金流平台後端</div>
+    <ul>
+      <li>參與 DEX <strong>二層撮合引擎</strong>（鏈外撮合 → MatchQueue → Watcher → 鏈上結算）開發，以降低 Gas 成本</li>
+      <li>以<strong>五維餘額隔離</strong>模型 + <strong>PostgreSQL 行級鎖 + Locker 表（交易對粒度）</strong>兩層並發控制，確保高頻交易下資金一致性且不需全表鎖</li>
+      <li><strong>CommitFlush 推播</strong>：確保 WebSocket 推播必在 DB commit 之後送出，避免前端看到未落庫狀態</li>
+      <li>另負責 TRON 鏈事件監聽中介層（Node.js）：動態 ABI Keccak256 hash 路由、單執行緒串行佇列避免 nonce 衝突、watchdog timer 保 24/7；及 ICO 平台 BTC/ETH 雙鏈收款與三段式金流狀態機</li>
+    </ul>
+    <div class="map">對應 JD：crypto / digital-asset trading 環境 · exchange REST/WebSocket · 金融資料一致性 · PostgreSQL</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">鑫鼎鑽（Xindinzuan）</span><span class="title">資深後端工程師</span><span class="date">2025/06 – 至今</span></div>
+    <div class="lead">高併發即時投注平台核心與節點調度後台</div>
+    <div class="metrics">
+      <div class="metric"><b>千萬筆/日</b><span>投注流水規模</span></div>
+      <div class="metric"><b>17 支</b><span>Redis Lua 原子解耦</span></div>
+      <div class="metric"><b>零停機</b><span>倉儲雙寫遷移</span></div>
+      <div class="metric"><b>7 幣別</b><span>異常偵測告警</span></div>
+    </div>
+    <ul>
+      <li><strong>金融級結算引擎</strong>：雙重記帳制（OrderBet → OrderSettle → OrderCancel）、原子性轉帳含 deadlock prevention、<strong>多幣種即時匯率轉換</strong>；AASM 三套連動狀態機（Pool / Round / Bet）級聯結算</li>
+      <li><strong>17 支 Redis Lua Script</strong> 原子化解耦所有競態點（限額 6-key 原子操作、冪等性 guard、限流、分布式批次鎖），消除 TOCTOU race condition</li>
+      <li><strong>MySQL Range Partition</strong>：5 張核心流水表按日期分區，線上重組不鎖表、到期前一個月 Slack 告警</li>
+      <li><strong>零停機倉儲遷移</strong>：Strategy + Factory 的 Warehouse 模組做 Redshift→ByteHouse per-feature 切換 + 雙寫比對</li>
+      <li><strong>可觀測性與自動復原</strong>：OpenObserve 7 幣別中獎異常偵測（JSON 動態閾值）、WsMonitor 每分鐘掃描斷線節點自動釋放資源 + Slack 告警；統計異常驅動自動黑名單與風險分級</li>
+    </ul>
+    <div class="map">對應 JD：portfolio / fund accounting 與 risk / performance metrics 工程化 · 可觀測性 / alerting / incident · 零停機部署 · backend 效能</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">Lestar</span><span class="title">資深後端工程師</span><span class="date">2022/09 – 2023/07</span></div>
+    <div class="lead">AWS Serverless 資料管道與後台管理系統</div>
+    <ul>
+      <li>以 <strong>AWS CDK</strong> 從零設計全 Serverless 事件驅動管道（API Gateway → Lambda → EventBridge → SQS → Lambda），同步 MongoDB 事件至 <strong>PostgreSQL</strong>，<strong>Locust 壓測驗證 3,000 RPS</strong>、40+ 張表</li>
+      <li><strong>亂序事件一致性</strong>：設計 12 種狀態機情境，Prisma <strong>Serializable 事務</strong> + padding 暫存解決 update 早於 create；EventBridge Archive 21 天可 replay</li>
+      <li><strong>生產事故修復</strong>：以 <strong>JSONStream 串流</strong>解析大型 MongoDB 備份，選擇性重播 40+ 個遺漏時段至 SQS，含斷點續傳</li>
+      <li>後台採 PostgreSQL + MongoDB polyglot、pg_party 分區、Main/Sub Job 平行產出<strong>百萬行 CSV 財報</strong>至 S3（中斷恢復）、代理結算引擎（NGR：存款－出款－成本，日結 / 週結）</li>
+      <li>PII 欄位 JWT HS256 加密、細粒度 RBAC + TOTP 2FA</li>
+    </ul>
+    <div class="map">對應 JD：AWS 部署 · PostgreSQL 優化 · data pipeline / ETL · production 事故處理 · 財務結算 / 報表</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">新愛世科技（Xinyaishi）</span><span class="title">資深全端工程師</span><span class="date">2019/06 – 2022/09、2023/09 – 2025/05</span></div>
+    <div class="lead">消費金融與金融內容平台後端</div>
+    <ul>
+      <li>消費金融貸款核心後端：<strong>Rails 7 + PostgreSQL + GraphQL</strong>（graphql-batch DataLoader 解 N+1），91 Models 涵蓋完整貸款生命週期</li>
+      <li><strong>paper_trail 稽核追蹤</strong>：所有資料變更保留完整版本記錄，滿足金融監管稽核需求</li>
+      <li><strong>完整可觀測性棧</strong>：Sentry + rails_performance + stackprof + Slack 告警；耗時操作 Sidekiq 非同步化</li>
+      <li>金融內容聚合平台（138 Models，體量最大）：AASM 審核工作流、<strong>pg_search（tsvector + GIN index）</strong>全文搜索，省去 Elasticsearch 運維</li>
+    </ul>
+    <div class="map">對應 JD：PostgreSQL · 金融資料系統與稽核 · observability</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">T客邦（TechBang）</span><span class="title">全端工程師</span><span class="date">2016/12 – 2018/05</span></div>
+    <div class="lead">台灣科技媒體，Rails 大型站台與跨站 SSO</div>
+    <ul>
+      <li>設計企業級 CAS SSO 伺服器（策略模式 8 種認證後端、BCrypt 零停機遷移），封裝為可重用 Rails Engine Gem 供 7+ 子站一行接入</li>
+    </ul>
+  </div>
+
+  <h2 class="section">重點專案 · 自研系統（與正職時間線分開）</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>多 LLM 調度引擎 harness-agent + 開發流水線<span class="tag py">Python</span></h3>
+      <p>把開發生命週期（抓票 → 分析 → 對話 → 規劃 → 實作 → review → 自動修正）工程化：上層看板編排、下層自研多 LLM 調度引擎。引擎做<strong>成本感知路由</strong>（簡單任務派便宜模型）、自動記帳 + 抽樣打分聚合出 <strong>affinity 自我學習</strong>、失敗自動升降級（harness + loop）、高風險決策<strong>雙盲二審</strong>。零依賴 Python 單檔（約 1,900 行），<code>flock</code> 保護並發，AI 不碰 Git、以機器化三條件判定成敗。</p>
+    </div>
+    <div class="card">
+      <h3>AI 求職系統：履歷蒸餾 + 職缺配對<span class="tag py">Python</span></h3>
+      <p>三平台三種取得方式：104 打內部 JSON API；Cake 以 cookie warmup + Referer，並實測出速率限制是「<strong>時間窗內請求數</strong>」而改低密度 + 指數退避；LinkedIn 判斷不該硬做而改半自動、以低涵蓋率換帳號安全。核心原則<strong>拒絕假精確</strong>——70% 薪資未公開時明確標示不確定性，並主動把自身評分偏誤寫在頁面上。規則抽成 config、來源 / 產出 / 註記三層分離、增量同步（<code>first_seen</code> / <code>stale</code>，下架標記不刪除）。純標準庫 Python。</p>
+    </div>
+    <div class="card">
+      <h3>YouTube Video Factory — AI 內容生產流水線<span class="tag ts">TypeScript / Remotion</span></h3>
+      <p>一句話大綱 → 成片全自動（腳本 / 配音 / 渲染 / 字幕 / 縮圖 / QC / 上傳），1 個月從零累積 <strong>6.4 萬次觀看、46 支影片</strong>。三條開工前紅線：<strong>LLM 只表達不發明事實</strong>（數字須來自已驗證 data_points + fact-guard 攔截）、零賽事版權素材、先 private 後人工 approve。可插拔運動 preset 讓骨幹零改動即從足球擴到籃球；唯一輸入是經 JSON Schema 驗證的 spec。</p>
+    </div>
+    <div class="card">
+      <h3>加密貨幣交易 side projects<span class="tag go">Go</span></h3>
+      <p><strong>Gao Jin（幣安期貨自動交易機器人）</strong>：Go + Gin 封裝 Binance Futures API（做多 / 做空 / 止盈 / 平倉），多帳號環境變數隔離，systemd 常駐。<strong>Poker Exchange</strong>：Go + Gin，gorilla/websocket + RWMutex 多客戶端訂單簿即時推播，整合 Binance 報價，Docker Compose 部署。</p>
+    </div>
+  </div>
+
+  <h2 class="section">特別成就</h2>
+  <div class="ach">
+    <div class="item"><b>🏆 TRON 智能合約競賽優選</b>HiLo 博弈合約：52 張牌鏈上狀態機、96% RTP、profitPerShare 分紅演算法，獲官方競賽優選</div>
+    <div class="item"><b>♻️ 零停機倉儲遷移</b>Redshift→ByteHouse 以雙寫比對 + per-feature 切換，正式環境無中斷</div>
+    <div class="item"><b>⚡ 生產級 3,000 RPS</b>AWS Serverless 事件管道，Locust 壓測驗證，40+ 張表</div>
+    <div class="item"><b>🤖 三套自研 AI 系統</b>分別驗證「工程化開發流程 / 把模糊痛點做成每天在用的系統 / 有真實觀眾驗證的產品」三種能力</div>
+  </div>
+</div>
+
+<!-- ================= English ================= -->
+<div class="page lang-en">
+  <div class="topbar">
+    <h1>Bruce Lin <span style="font-size:13pt;font-weight:400;color:#9fc0ff">林源韋</span></h1>
+    <div class="role">Senior Backend Engineer · 9 Years</div>
+    <div class="contact">📧 lywctl@gmail.com　·　Online CV: <a href="https://www.cake.me/resumes/s--lFrcpkmoNvBKzbIh2HDpdg--/cff792">cake.me/resumes/…/cff792</a></div>
+  </div>
+
+  <h2 class="section">About</h2>
+  <div class="intro">
+    9 years of backend / full-stack experience, consistently on <strong>trading, payment-flow and high-concurrency systems</strong> — from architecture design through production operations. At Consensus Tech I worked on a decentralized exchange (DEX) backend (off-chain matching + on-chain settlement two-layer architecture), using a 5-dimensional balance isolation model and PostgreSQL row-level locking to guarantee fund consistency under high-frequency trading. Later, at Xindinzuan and Lestar, I owned a financial-grade settlement engine and an AWS Serverless data pipeline (production-validated at 3,000 RPS, incl. out-of-order event consistency). Over the past year I built a multi-LLM orchestration engine and job-search / content automation systems in <strong>Python</strong>, end-to-end from design to daily personal use. I take ownership of the full lifecycle: design, build, deploy, monitor, and incident response.
+  </div>
+
+  <h2 class="section">Technical Skills</h2>
+  <div class="skills">
+    <div class="row"><div class="k">Languages</div><div class="v">Python · Ruby / Rails · Go · Node.js / TypeScript · SQL</div></div>
+    <div class="row"><div class="k">Databases</div><div class="v"><strong>PostgreSQL</strong> (row-level locking, Serializable txns, Range Partition / pg_party, pg_search) · MySQL (Range Partition) · MongoDB · Redis</div></div>
+    <div class="row"><div class="k">Cloud / Deploy</div><div class="v"><strong>AWS</strong> (CDK, Lambda, API Gateway, EventBridge, SQS, Redshift) · Docker · systemd · CI/CD</div></div>
+    <div class="row"><div class="k">Trading / Finance</div><div class="v">Exchange REST / WebSocket integration · off-chain matching + on-chain settlement · double-entry settlement engine · multi-currency real-time FX · risk & GGR metrics</div></div>
+    <div class="row"><div class="k">Pipelines / Obs.</div><div class="v">Event-driven pipeline (API GW → Lambda → EventBridge → SQS → Lambda) · out-of-order event consistency · JSONStream replay · OpenObserve / Sentry / Rollbar / stackprof</div></div>
+    <div class="row"><div class="k">Realtime</div><div class="v">WebSocket push (AnyCable, gorilla/websocket) · distributed locks · idempotency & TOCTOU prevention · watchdog / auto-recovery</div></div>
+    <div class="row"><div class="k">AI Engineering</div><div class="v">Self-built multi-LLM orchestration engine (cost-aware routing, affinity self-learning, double-blind adjudication) · Fine-tuning · Prompt Engineering</div></div>
+  </div>
+
+  <h2 class="section">Experience</h2>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">Consensus Tech (Joyso)</span><span class="title">Backend Engineer</span><span class="date">2018/05 – 2019/06</span></div>
+    <div class="lead">Decentralized exchange (DEX) & blockchain payment-flow backend</div>
+    <ul>
+      <li>Worked on a DEX <strong>two-layer matching engine</strong> (off-chain matching → MatchQueue → Watcher → on-chain settlement) to cut Gas cost</li>
+      <li><strong>5-dimensional balance isolation</strong> + <strong>PostgreSQL row-level locking + Locker table (per trading-pair)</strong> two-layer concurrency control — fund consistency under high-frequency trading without table-level locks</li>
+      <li><strong>CommitFlush push</strong>: WebSocket push is emitted only after DB commit, so the client never sees un-persisted state</li>
+      <li>Also built a TRON event-listening middleware (Node.js): dynamic ABI Keccak256 hash routing, single-threaded serial queue to avoid nonce conflicts, watchdog timer for 24/7 uptime; plus an ICO platform with BTC/ETH dual-chain收款 and a three-stage payment state machine</li>
+    </ul>
+    <div class="map">JD fit: crypto / digital-asset trading environment · exchange REST/WebSocket · financial data consistency · PostgreSQL</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">Xindinzuan (鑫鼎鑽)</span><span class="title">Senior Backend Engineer</span><span class="date">2025/06 – Present</span></div>
+    <div class="lead">High-concurrency real-time betting platform core & node-orchestration backend</div>
+    <div class="metrics">
+      <div class="metric"><b>10M+/day</b><span>ledger volume</span></div>
+      <div class="metric"><b>17</b><span>Redis Lua scripts</span></div>
+      <div class="metric"><b>Zero-DT</b><span>warehouse migration</span></div>
+      <div class="metric"><b>7 currencies</b><span>anomaly alerting</span></div>
+    </div>
+    <ul>
+      <li><strong>Financial-grade settlement engine</strong>: double-entry accounting (OrderBet → OrderSettle → OrderCancel), atomic transfers with deadlock prevention, <strong>multi-currency real-time FX</strong>; AASM three interlocking state machines (Pool / Round / Bet) cascading settlement</li>
+      <li><strong>17 Redis Lua Scripts</strong> atomically decoupling every race point (6-key atomic limit checks, idempotency guards, rate limiting, distributed batch locks), eliminating TOCTOU race conditions; sustains 10M+ daily transactions</li>
+      <li><strong>MySQL Range Partition</strong>: 5 core ledger tables partitioned by date, online reorg without table locks, Slack alerts one month before expiry</li>
+      <li><strong>Zero-downtime warehouse migration</strong>: Strategy + Factory Warehouse module for Redshift→ByteHouse per-feature switchover + dual-write reconciliation</li>
+      <li><strong>Observability & auto-recovery</strong>: OpenObserve anomaly detection across 7 currencies (JSON-driven thresholds); WsMonitor scans disconnected nodes every minute, auto-releases resources + Slack alerts; statistical anomalies drive auto-blacklist & risk grading</li>
+    </ul>
+    <div class="map">JD fit: engineering portfolio / fund accounting & risk / performance metrics · observability / alerting / incident · zero-downtime deploy · backend performance</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">Lestar</span><span class="title">Senior Backend Engineer</span><span class="date">2022/09 – 2023/07</span></div>
+    <div class="lead">AWS Serverless data pipeline & admin backend</div>
+    <ul>
+      <li>Designed a fully Serverless event-driven pipeline from scratch with <strong>AWS CDK</strong> (API Gateway → Lambda → EventBridge → SQS → Lambda), syncing MongoDB events to <strong>PostgreSQL</strong>, <strong>Locust-validated at 3,000 RPS</strong> across 40+ tables</li>
+      <li><strong>Out-of-order event consistency</strong>: 12 state-machine scenarios, Prisma <strong>Serializable transactions</strong> + padding buffer to solve update-before-create; EventBridge Archive gives 21-day replay</li>
+      <li><strong>Production incident repair</strong>: <strong>JSONStream</strong> parsing of large MongoDB backups, selectively replaying 40+ missing windows to SQS, with resumable checkpoints</li>
+      <li>Admin backend: PostgreSQL + MongoDB polyglot persistence, pg_party partitioning, Main/Sub Job parallel export of <strong>million-row CSV financial reports</strong> to S3 (resumable), agent-settlement engine (NGR = deposits − withdrawals − costs, daily / weekly)</li>
+      <li>PII fields encrypted with JWT HS256, fine-grained RBAC + TOTP 2FA</li>
+    </ul>
+    <div class="map">JD fit: AWS deployment · PostgreSQL optimization · data pipeline / ETL · production incident handling · financial settlement / reporting</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">Xinyaishi (新愛世科技)</span><span class="title">Senior Full-Stack Engineer</span><span class="date">2019/06 – 2022/09, 2023/09 – 2025/05</span></div>
+    <div class="lead">Consumer-finance & financial-content platform backends</div>
+    <ul>
+      <li>Consumer-finance lending core: <strong>Rails 7 + PostgreSQL + GraphQL</strong> (graphql-batch DataLoader for N+1), 91 Models covering the full loan lifecycle</li>
+      <li><strong>paper_trail audit</strong>: full version history on all data changes, meeting financial regulatory audit needs</li>
+      <li><strong>Full observability stack</strong>: Sentry + rails_performance + stackprof + Slack alerts; heavy operations offloaded to Sidekiq</li>
+      <li>Financial-content aggregation platform (138 Models, the largest): AASM review workflow, <strong>pg_search (tsvector + GIN index)</strong> full-text search — no Elasticsearch to operate</li>
+    </ul>
+    <div class="map">JD fit: PostgreSQL · financial data systems & audit · observability</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
+    <div class="head"><span class="co">TechBang (T客邦)</span><span class="title">Full-Stack Engineer</span><span class="date">2016/12 – 2018/05</span></div>
+    <div class="lead">Taiwan tech media — large Rails site & cross-site SSO</div>
+    <ul>
+      <li>Built an enterprise CAS SSO server (Strategy pattern, 8 auth backends, BCrypt zero-downtime migration), packaged as a reusable Rails Engine Gem for one-line adoption across 7+ sub-sites</li>
+    </ul>
+  </div>
+
+  <h2 class="section">Key Projects · Self-Built (separate from employment timeline)</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Multi-LLM Orchestration Engine (harness-agent) + Dev Pipeline<span class="tag py">Python</span></h3>
+      <p>Engineered the full dev lifecycle (fetch → analyze → discuss → plan → implement → review → auto-fix): a board UI orchestration layer on top of a self-built multi-LLM engine. The engine does <strong>cost-aware routing</strong> (cheap models for simple tasks), auto-accounting + sampled scoring aggregated into <strong>affinity self-learning</strong>, auto up/down-grade on failure (harness + loop), and <strong>double-blind adjudication</strong> for high-risk calls. Zero-dependency single-file Python (~1,900 lines), <code>flock</code>-guarded concurrency; the AI never touches Git and success is judged by three machine conditions.</p>
+    </div>
+    <div class="card">
+      <h3>AI Job-Search System: Résumé Distillation + Job Matching<span class="tag py">Python</span></h3>
+      <p>Three platforms, three access methods: 104 via internal JSON API; Cake via cookie warmup + Referer, after empirically finding its rate limit counts <strong>requests-per-time-window</strong> (switched to low density + exponential backoff); LinkedIn deliberately kept semi-automatic, trading low coverage for account safety. Core principle: <strong>refuse false precision</strong> — when 70% of salaries are undisclosed, explicitly flag the uncertainty and surface the method's own scoring bias on the product page. Rules externalized to config; source / output / annotation kept in three separated layers; incremental sync (<code>first_seen</code> / <code>stale</code>, delisted jobs flagged not deleted). Pure standard-library Python.</p>
+    </div>
+    <div class="card">
+      <h3>YouTube Video Factory — AI Content Pipeline<span class="tag ts">TypeScript / Remotion</span></h3>
+      <p>One-line outline → finished short, fully automated (script / VO / render / captions / thumbnail / QC / upload); <strong>64K views and 46 videos in one month</strong> from a zero account. Three up-front red lines: <strong>the LLM expresses but never invents facts</strong> (numbers must come from verified data_points + a fact-guard rewriter), zero copyrighted match footage, private-first then manual approval. A pluggable sport preset lets the backbone stay unchanged when expanding from football to basketball; the only input is a JSON-Schema-validated spec.</p>
+    </div>
+    <div class="card">
+      <h3>Crypto Trading Side Projects<span class="tag go">Go</span></h3>
+      <p><strong>Gao Jin (Binance Futures auto-trading bot)</strong>: Go + Gin wrapping the Binance Futures API (long / short / take-profit / close), multi-account isolation via env vars, systemd-resident. <strong>Poker Exchange</strong>: Go + Gin, gorilla/websocket + RWMutex for multi-client order-book push, Binance quote integration, Docker Compose deploy.</p>
+    </div>
+  </div>
+
+  <h2 class="section">Highlights</h2>
+  <div class="ach">
+    <div class="item"><b>🏆 TRON Smart-Contract Award</b>HiLo betting contract: on-chain 52-card state machine, 96% RTP, profitPerShare dividend algorithm — selected in the official competition</div>
+    <div class="item"><b>♻️ Zero-Downtime Migration</b>Redshift→ByteHouse via dual-write reconciliation + per-feature switchover, no production interruption</div>
+    <div class="item"><b>⚡ Production 3,000 RPS</b>AWS Serverless event pipeline, Locust-validated, 40+ tables</div>
+    <div class="item"><b>🤖 Three Self-Built AI Systems</b>each proving a distinct ability: engineering the dev process / turning a vague pain point into a daily-used system / a product validated by real viewers</div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      document.body.dataset.lang = lang;
+      document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      document.querySelectorAll('.lang-switch button').forEach(b =>
+        b.classList.toggle('active', b.dataset.lang === lang));
+    });
+  });
+</script>
+</body>
+</html>
