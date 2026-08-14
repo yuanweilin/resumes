@@ -131,20 +131,7 @@
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">共識科技（Joyso）</span><span class="title">後端工程師</span><span class="date">2018/05 – 2019/06</span></div>
-    <div class="lead">去中心化交易所（DEX）與區塊鏈金流平台後端</div>
-    <ul>
-      <li>參與 DEX <strong>二層撮合引擎</strong>（鏈外撮合 → MatchQueue → Watcher → 鏈上結算）開發，以降低 Gas 成本</li>
-      <li>以<strong>五維餘額隔離</strong>模型 + <strong>PostgreSQL 行級鎖 + Locker 表（交易對粒度）</strong>兩層並發控制，確保高頻交易下資金一致性且不需全表鎖</li>
-      <li><strong>CommitFlush 推播</strong>：確保 WebSocket 推播必在 DB commit 之後送出，避免前端看到未落庫狀態</li>
-      <li>另負責 TRON 鏈事件監聽中介層（Node.js）：動態 ABI Keccak256 hash 路由、單執行緒串行佇列避免 nonce 衝突、watchdog timer 保 24/7；及 ICO 平台 BTC/ETH 雙鏈收款與三段式金流狀態機</li>
-    </ul>
-    <div class="map">對應 JD：crypto / digital-asset trading 環境 · exchange REST/WebSocket · 金融資料一致性 · PostgreSQL</div>
-  </div>
-
-  <div class="exp">
-    <div class="dot"></div>
-    <div class="head"><span class="co">鑫鼎鑽（Xindinzuan）</span><span class="title">資深後端工程師</span><span class="date">2025/06 – 至今</span></div>
+    <div class="head"><span class="co">鑫鼎鑽</span><span class="title">資深後端工程師</span><span class="date">2025/06 – 至今</span></div>
     <div class="lead">高併發即時投注平台核心與節點調度後台</div>
     <div class="metrics">
       <div class="metric"><b>千萬筆/日</b><span>投注流水規模</span></div>
@@ -164,6 +151,19 @@
 
   <div class="exp">
     <div class="dot"></div>
+    <div class="head"><span class="co">新愛世科技</span><span class="title">資深全端工程師</span><span class="date">2019/06 – 2022/09、2023/09 – 2025/05</span></div>
+    <div class="lead">消費金融與金融內容平台後端</div>
+    <ul>
+      <li>消費金融貸款核心後端：<strong>Rails 7 + PostgreSQL + GraphQL</strong>（graphql-batch DataLoader 解 N+1），91 Models 涵蓋完整貸款生命週期</li>
+      <li><strong>paper_trail 稽核追蹤</strong>：所有資料變更保留完整版本記錄，滿足金融監管稽核需求</li>
+      <li><strong>完整可觀測性棧</strong>：Sentry + rails_performance + stackprof + Slack 告警；耗時操作 Sidekiq 非同步化</li>
+      <li>金融內容聚合平台（138 Models，體量最大）：AASM 審核工作流、<strong>pg_search（tsvector + GIN index）</strong>全文搜索，省去 Elasticsearch 運維</li>
+    </ul>
+    <div class="map">對應 JD：PostgreSQL · 金融資料系統與稽核 · observability</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
     <div class="head"><span class="co">Lestar</span><span class="title">資深後端工程師</span><span class="date">2022/09 – 2023/07</span></div>
     <div class="lead">AWS Serverless 資料管道與後台管理系統</div>
     <ul>
@@ -178,20 +178,20 @@
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">新愛世科技（Xinyaishi）</span><span class="title">資深全端工程師</span><span class="date">2019/06 – 2022/09、2023/09 – 2025/05</span></div>
-    <div class="lead">消費金融與金融內容平台後端</div>
+    <div class="head"><span class="co">共識科技（Joyso）</span><span class="title">後端工程師</span><span class="date">2018/05 – 2019/06</span></div>
+    <div class="lead">去中心化交易所（DEX）與區塊鏈金流平台後端</div>
     <ul>
-      <li>消費金融貸款核心後端：<strong>Rails 7 + PostgreSQL + GraphQL</strong>（graphql-batch DataLoader 解 N+1），91 Models 涵蓋完整貸款生命週期</li>
-      <li><strong>paper_trail 稽核追蹤</strong>：所有資料變更保留完整版本記錄，滿足金融監管稽核需求</li>
-      <li><strong>完整可觀測性棧</strong>：Sentry + rails_performance + stackprof + Slack 告警；耗時操作 Sidekiq 非同步化</li>
-      <li>金融內容聚合平台（138 Models，體量最大）：AASM 審核工作流、<strong>pg_search（tsvector + GIN index）</strong>全文搜索，省去 Elasticsearch 運維</li>
+      <li>參與 DEX <strong>二層撮合引擎</strong>（鏈外撮合 → MatchQueue → Watcher → 鏈上結算）開發，以降低 Gas 成本</li>
+      <li>以<strong>五維餘額隔離</strong>模型 + <strong>PostgreSQL 行級鎖 + Locker 表（交易對粒度）</strong>兩層並發控制，確保高頻交易下資金一致性且不需全表鎖</li>
+      <li><strong>CommitFlush 推播</strong>：確保 WebSocket 推播必在 DB commit 之後送出，避免前端看到未落庫狀態</li>
+      <li>另負責 TRON 鏈事件監聽中介層（Node.js）：動態 ABI Keccak256 hash 路由、單執行緒串行佇列避免 nonce 衝突、watchdog timer 保 24/7；及 ICO 平台 BTC/ETH 雙鏈收款與三段式金流狀態機</li>
     </ul>
-    <div class="map">對應 JD：PostgreSQL · 金融資料系統與稽核 · observability</div>
+    <div class="map">對應 JD：crypto / digital-asset trading 環境 · exchange REST/WebSocket · 金融資料一致性 · PostgreSQL</div>
   </div>
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">T客邦（TechBang）</span><span class="title">全端工程師</span><span class="date">2016/12 – 2018/05</span></div>
+    <div class="head"><span class="co">T客邦</span><span class="title">全端工程師</span><span class="date">2016/12 – 2018/05</span></div>
     <div class="lead">台灣科技媒體，Rails 大型站台與跨站 SSO</div>
     <ul>
       <li>設計企業級 CAS SSO 伺服器（策略模式 8 種認證後端、BCrypt 零停機遷移），封裝為可重用 Rails Engine Gem 供 7+ 子站一行接入</li>
@@ -237,7 +237,7 @@
 
   <h2 class="section">About</h2>
   <div class="intro">
-    9 years of backend / full-stack experience, consistently on <strong>trading, payment-flow and high-concurrency systems</strong> — from architecture design through production operations. At Consensus Tech I worked on a decentralized exchange (DEX) backend (off-chain matching + on-chain settlement two-layer architecture), using a 5-dimensional balance isolation model and PostgreSQL row-level locking to guarantee fund consistency under high-frequency trading. Later, at Xindinzuan and Lestar, I owned a financial-grade settlement engine and an AWS Serverless data pipeline (production-validated at 3,000 RPS, incl. out-of-order event consistency). Over the past year I built a multi-LLM orchestration engine and job-search / content automation systems in <strong>Python</strong>, end-to-end from design to daily personal use. I take ownership of the full lifecycle: design, build, deploy, monitor, and incident response.
+    9 years of backend / full-stack experience, consistently on <strong>trading, payment-flow and high-concurrency systems</strong> — from architecture design through production operations. At 共識科技 (Joyso) I worked on a decentralized exchange (DEX) backend (off-chain matching + on-chain settlement two-layer architecture), using a 5-dimensional balance isolation model and PostgreSQL row-level locking to guarantee fund consistency under high-frequency trading. Later, at 鑫鼎鑽 and Lestar, I owned a financial-grade settlement engine and an AWS Serverless data pipeline (production-validated at 3,000 RPS, incl. out-of-order event consistency). Over the past year I built a multi-LLM orchestration engine and job-search / content automation systems in <strong>Python</strong>, end-to-end from design to daily personal use. I take ownership of the full lifecycle: design, build, deploy, monitor, and incident response.
   </div>
 
   <h2 class="section">Technical Skills</h2>
@@ -255,20 +255,7 @@
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">Consensus Tech (Joyso)</span><span class="title">Backend Engineer</span><span class="date">2018/05 – 2019/06</span></div>
-    <div class="lead">Decentralized exchange (DEX) & blockchain payment-flow backend</div>
-    <ul>
-      <li>Worked on a DEX <strong>two-layer matching engine</strong> (off-chain matching → MatchQueue → Watcher → on-chain settlement) to cut Gas cost</li>
-      <li><strong>5-dimensional balance isolation</strong> + <strong>PostgreSQL row-level locking + Locker table (per trading-pair)</strong> two-layer concurrency control — fund consistency under high-frequency trading without table-level locks</li>
-      <li><strong>CommitFlush push</strong>: WebSocket push is emitted only after DB commit, so the client never sees un-persisted state</li>
-      <li>Also built a TRON event-listening middleware (Node.js): dynamic ABI Keccak256 hash routing, single-threaded serial queue to avoid nonce conflicts, watchdog timer for 24/7 uptime; plus an ICO platform with BTC/ETH dual-chain收款 and a three-stage payment state machine</li>
-    </ul>
-    <div class="map">JD fit: crypto / digital-asset trading environment · exchange REST/WebSocket · financial data consistency · PostgreSQL</div>
-  </div>
-
-  <div class="exp">
-    <div class="dot"></div>
-    <div class="head"><span class="co">Xindinzuan (鑫鼎鑽)</span><span class="title">Senior Backend Engineer</span><span class="date">2025/06 – Present</span></div>
+    <div class="head"><span class="co">鑫鼎鑽</span><span class="title">Senior Backend Engineer</span><span class="date">2025/06 – Present</span></div>
     <div class="lead">High-concurrency real-time betting platform core & node-orchestration backend</div>
     <div class="metrics">
       <div class="metric"><b>10M+/day</b><span>ledger volume</span></div>
@@ -288,6 +275,19 @@
 
   <div class="exp">
     <div class="dot"></div>
+    <div class="head"><span class="co">新愛世科技</span><span class="title">Senior Full-Stack Engineer</span><span class="date">2019/06 – 2022/09, 2023/09 – 2025/05</span></div>
+    <div class="lead">Consumer-finance & financial-content platform backends</div>
+    <ul>
+      <li>Consumer-finance lending core: <strong>Rails 7 + PostgreSQL + GraphQL</strong> (graphql-batch DataLoader for N+1), 91 Models covering the full loan lifecycle</li>
+      <li><strong>paper_trail audit</strong>: full version history on all data changes, meeting financial regulatory audit needs</li>
+      <li><strong>Full observability stack</strong>: Sentry + rails_performance + stackprof + Slack alerts; heavy operations offloaded to Sidekiq</li>
+      <li>Financial-content aggregation platform (138 Models, the largest): AASM review workflow, <strong>pg_search (tsvector + GIN index)</strong> full-text search — no Elasticsearch to operate</li>
+    </ul>
+    <div class="map">JD fit: PostgreSQL · financial data systems & audit · observability</div>
+  </div>
+
+  <div class="exp">
+    <div class="dot"></div>
     <div class="head"><span class="co">Lestar</span><span class="title">Senior Backend Engineer</span><span class="date">2022/09 – 2023/07</span></div>
     <div class="lead">AWS Serverless data pipeline & admin backend</div>
     <ul>
@@ -302,20 +302,20 @@
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">Xinyaishi (新愛世科技)</span><span class="title">Senior Full-Stack Engineer</span><span class="date">2019/06 – 2022/09, 2023/09 – 2025/05</span></div>
-    <div class="lead">Consumer-finance & financial-content platform backends</div>
+    <div class="head"><span class="co">共識科技（Joyso）</span><span class="title">Backend Engineer</span><span class="date">2018/05 – 2019/06</span></div>
+    <div class="lead">Decentralized exchange (DEX) & blockchain payment-flow backend</div>
     <ul>
-      <li>Consumer-finance lending core: <strong>Rails 7 + PostgreSQL + GraphQL</strong> (graphql-batch DataLoader for N+1), 91 Models covering the full loan lifecycle</li>
-      <li><strong>paper_trail audit</strong>: full version history on all data changes, meeting financial regulatory audit needs</li>
-      <li><strong>Full observability stack</strong>: Sentry + rails_performance + stackprof + Slack alerts; heavy operations offloaded to Sidekiq</li>
-      <li>Financial-content aggregation platform (138 Models, the largest): AASM review workflow, <strong>pg_search (tsvector + GIN index)</strong> full-text search — no Elasticsearch to operate</li>
+      <li>Worked on a DEX <strong>two-layer matching engine</strong> (off-chain matching → MatchQueue → Watcher → on-chain settlement) to cut Gas cost</li>
+      <li><strong>5-dimensional balance isolation</strong> + <strong>PostgreSQL row-level locking + Locker table (per trading-pair)</strong> two-layer concurrency control — fund consistency under high-frequency trading without table-level locks</li>
+      <li><strong>CommitFlush push</strong>: WebSocket push is emitted only after DB commit, so the client never sees un-persisted state</li>
+      <li>Also built a TRON event-listening middleware (Node.js): dynamic ABI Keccak256 hash routing, single-threaded serial queue to avoid nonce conflicts, watchdog timer for 24/7 uptime; plus an ICO platform with BTC/ETH dual-chain deposits and a three-stage payment state machine</li>
     </ul>
-    <div class="map">JD fit: PostgreSQL · financial data systems & audit · observability</div>
+    <div class="map">JD fit: crypto / digital-asset trading environment · exchange REST/WebSocket · financial data consistency · PostgreSQL</div>
   </div>
 
   <div class="exp">
     <div class="dot"></div>
-    <div class="head"><span class="co">TechBang (T客邦)</span><span class="title">Full-Stack Engineer</span><span class="date">2016/12 – 2018/05</span></div>
+    <div class="head"><span class="co">T客邦</span><span class="title">Full-Stack Engineer</span><span class="date">2016/12 – 2018/05</span></div>
     <div class="lead">Taiwan tech media — large Rails site & cross-site SSO</div>
     <ul>
       <li>Built an enterprise CAS SSO server (Strategy pattern, 8 auth backends, BCrypt zero-downtime migration), packaged as a reusable Rails Engine Gem for one-line adoption across 7+ sub-sites</li>
