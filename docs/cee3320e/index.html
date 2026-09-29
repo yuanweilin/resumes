@@ -417,11 +417,11 @@
   <div class="content">
 
     <div class="intro">
-      擁有 <strong>9 年後端與全端開發經驗</strong>，主力技術棧為 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力，長期處理高併發系統。在鑫鼎鑽以 <strong>Redis Lua Script</strong> 原子解耦競態點，支撐日均千萬筆投注記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 事件管道承載 <strong>3,000 RPS</strong> 資料同步，並解決亂序事件下的一致性問題；在共識科技設計去中心化交易所的鏈外撮合、鏈上結算二層架構，並以 TRON 智能合約作品獲官方競賽優選。近兩年將 AI 工程化落地成<strong>三套系統</strong>：把開發生命週期做成流水線（上層看板編排、下層自研多 LLM 調度引擎）、把求職流程做成雙向系統（履歷蒸餾 + 三平台職缺配對），以及一條 YouTube 內容生產流水線（<strong>1 個月累積 6.4 萬次觀看</strong>）——都從模糊需求出發、繞過各平台實際限制、做到真的在用。對系統可觀測性、分散式一致性與零停機遷移有系統性方法。
+      擁有 <strong>9 年後端與全端開發經驗</strong>，主力技術棧為 <strong>Ruby on Rails、Go 與 Node.js</strong>，並具備 Angular 前端實戰能力，長期處理高併發系統。在鑫鼎鑽以 <strong>Redis Lua Script</strong> 原子解耦競態點，支撐日均千萬筆流水記錄；在 Lestar 以 <strong>AWS CDK Serverless</strong> 事件管道承載 <strong>3,000 RPS</strong> 資料同步，並解決亂序事件下的一致性問題；在共識科技設計去中心化交易所的鏈外撮合、鏈上結算二層架構，並以 TRON 智能合約作品獲官方競賽優選。近兩年將 AI 工程化落地成<strong>三套系統</strong>：把開發生命週期做成流水線（上層看板編排、下層自研多 LLM 調度引擎）、把求職流程做成雙向系統（履歷蒸餾 + 三平台職缺配對），以及一條 YouTube 內容生產流水線（<strong>1 個月累積 6.4 萬次觀看</strong>）——都從模糊需求出發、繞過各平台實際限制、做到真的在用。也有多段接案與共同創業經驗，習慣直接面對業務端把模糊需求拆解成可執行的系統設計。對系統可觀測性、分散式一致性與零停機遷移有系統性方法。
     </div>
 
     <div class="metrics">
-      <div class="metric-card"><span class="num">千萬筆</span><div class="label">日均投注記錄</div></div>
+      <div class="metric-card"><span class="num">千萬筆</span><div class="label">日均交易流水</div></div>
       <div class="metric-card"><span class="num">5 張</span><div class="label">核心流水表線上分區</div></div>
       <div class="metric-card"><span class="num">3,000</span><div class="label">RPS Serverless 管道</div></div>
       <div class="metric-card"><span class="num">9 年</span><div class="label">全端開發資歷</div></div>
@@ -531,7 +531,7 @@
           <div class="exp-header"><span class="company">鑫鼎鑽</span><span class="period">2025/06 – 至今</span></div>
           <div class="role">資深後端工程師</div>
           <ul class="exp-bullets">
-            <li><strong>Redis Lua Script</strong> 原子解耦競態點：投注限額 6-key 原子操作、冪等性 guard、頻率限流、CDN 多層黑名單，徹底消除 TOCTOU race condition</li>
+            <li><strong>Redis Lua Script</strong> 原子解耦競態點：額度限制 6-key 原子操作、冪等性 guard、頻率限流、CDN 多層黑名單，徹底消除 TOCTOU race condition</li>
             <li><strong>MySQL Range Partition</strong>：5 張核心流水表（credits / bets / transfers）按日期分區，<code>PartitionReorganizerService</code> 線上擴展不鎖表；到期前一個月 Slack 告警</li>
             <li><strong>倉儲零停機遷移</strong>：Strategy Pattern + Factory 抽象 <code>Warehouse</code> 模組，per-feature Key 粒度切換 Redshift / ByteHouse，雙寫比對後一行 <code>disable_dual_write!</code> 完成切換</li>
             <li><strong>AASM 三套聯動狀態機</strong>（Pool / Round / Bet，共 1,068 行），Pool 8 個狀態，一個轉換級聯觸發 Round → Bet 結算</li>
@@ -613,7 +613,7 @@
           <ul class="exp-bullets">
             <li>設計並實作 <strong>DEX 二層撮合引擎</strong>：鏈外撮合（order.rb 22K 行）→ 鏈上結算，五維餘額隔離 + PostgreSQL 兩層鎖確保高頻交易資金一致性</li>
             <li>ECDSA 訂單簽名驗證（Secp256k1）、以太坊區塊事件監聽（含鏈分叉回滾）、CommitFlush WebSocket 推播一致性保障</li>
-            <li>TRON 鏈博弈平台：Concern + SimpleDelegator 多遊戲架構，撲克手型識別引擎（9 種手型，5 手並行），動態挖礦 + 每小時自動分紅</li>
+            <li>TRON 鏈遊戲平台：Concern + SimpleDelegator 多遊戲架構，撲克手型識別引擎（9 種手型，5 手並行），動態挖礦 + 每小時自動分紅</li>
             <li>ICO 平台：BTC / ETH 雙鏈收款 + 三段式狀態機（購買→聚合→派發）+ KYC 合規；TronJack Watcher：動態 ABI Keccak256 路由 + 分叉偵測 + watchdog timer</li>
           </ul>
         </div>
@@ -642,7 +642,7 @@
         <div class="feat-highlights">
           <div class="hl">🏗️ <b>兩層架構</b>：上層看板編排、下層自研多 LLM 調度引擎——換 AI／換模型不動編排</div>
           <div class="hl">💰 <b>成本感知路由</b>：簡單的事自動派便宜模型，量化每張票 token 成本</div>
-          <div class="hl">⚡ <b>多票並行、互不干擾</b>：worktree 隔離讓一人同開多條產線，已落地生產專案</div>
+          <div class="hl">⚡ <b>多票並行、互不干擾</b>：worktree 隔離讓一人同開多條產線</div>
           <div class="hl">🧠 <b>原創洞見</b>：精準記憶 vs 模糊記憶——檔案系統當結構化記憶，不靠 vector search</div>
         </div>
         <p class="feat-lead">把整個開發生命週期工程化成一條流水線，並拆成<strong>上層編排、下層引擎</strong>兩層：上層 <code>ticket-dashboard</code> 用看板 UI 串起「抓票 → 分析 → 問答 → 規劃 → 實作 → review → 整合」；下層自研 <code>harness-agent</code> 是<strong>所有 AI 呼叫的統一入口</strong>，把 Claude Code / OpenAI Codex / Gemini CLI 三家異質介面抽象成同一組 runner。<strong>關鍵設計是上層完全不直接呼叫任何一家 AI</strong>——換模型、加成本控制、加品質評分都不必動到編排邏輯。</p>
@@ -674,7 +674,9 @@
           </div>
         </div>
 
-        <p style="margin-top:2px;"><strong>核心論點：精準記憶 vs 模糊記憶。</strong>任務有明確方向與已定案結論時，別靠 vector search 語意召回（會漏約束、重述已決定的事）——改用<strong>檔案系統當結構化記憶</strong>，plan / analysis / 結論落地成可重讀的檔案，下一步直接讀檔。並已落地生產專案（鑫鼎鑽 fatpit）：自架 MCP 串接 Replica DB + CloudWatch 日誌即時排查線上錯誤。</p>
+        <p style="margin-top:2px;"><strong>核心論點：精準記憶 vs 模糊記憶。</strong>任務有明確方向與已定案結論時，別靠 vector search 語意召回（會漏約束、重述已決定的事）——改用<strong>檔案系統當結構化記憶</strong>，plan / analysis / 結論落地成可重讀的檔案，下一步直接讀檔。</p>
+
+        <p style="margin-top:6px;"><strong>harness-agent 本身是個人本地開發工具，未部署到任何公司正式系統</strong>；但同樣在鑫鼎鑽，我另外獨立建置了一套自架 MCP server（不同專案，基於 Anthropic Model Context Protocol），串接 Replica DB + CloudWatch 日誌，讓工程團隊能用自然語言即時排查線上錯誤——<strong>這套 MCP server 已實際跑在公司正式生產環境</strong>，是團隊日常在用的工具，不是 demo。</p>
 
         <figure class="card-shot">
           <div class="workflow-shot" role="img" aria-label="ticket-dashboard 編排介面截圖"></div>
@@ -751,6 +753,29 @@
       </div>
 
       <div class="project-card">
+        <div class="proj-title">Valsyn — 品牌與代理商媒合平台</div>
+        <div class="proj-period">共同創業 · Rails 7.1 + Next.js 16 + React 19</div>
+        <p>跟朋友共同創業開發的 B2B 媒合平台，讓品牌方與代理商互相搜尋、雙向配對、即時聊天並產生促銷報價。核心是 <strong>Engagement 雙向配對機制</strong>（AASM 狀態機管理配對生命週期，類交友軟體邏輯，雙方都表達興趣才算配對成功，並設每日搜尋上限防濫用）；<strong>業務規則下沉到 model 層</strong>（聊天室建立前檢查雙方是否已配對，繞過前端直接打 API 也擋得住）；促銷檔期時間衝突用 PostgreSQL 原生 <code>OVERLAPS</code> 運算子在資料庫層檢查；並串接 <strong>OpenRouter API</strong> 為報價內容做自動多語系翻譯，是實際上線給使用者用的 AI 功能。這段經歷也包含從零跟共同創辦人一起定義商業模式、把「媒合」拆解成具體規則的過程。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Rails 7.1</span>
+          <span class="tag tag-frontend">Next.js 16</span>
+          <span class="tag tag-ai">OpenRouter API</span>
+          <span class="tag tag-data">PostgreSQL OVERLAPS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">Lexico — 律所案件管理系統</div>
+        <div class="proj-period">跟朋友 + 一家律師事務所合作 · Rails 7 + GraphQL</div>
+        <p>跟朋友、以及一家律師事務所合作開發的案件管理系統，給中小型律師事務所使用。用<strong>多型關聯</strong>設計彈性的案件關係人（客戶/對造）與人力編制、拆解出 <strong>13 種台灣法律程序常見任務類型</strong>做期限追蹤、支援多律所多租戶情境下的<strong>民國年自動案件編號</strong>。證明我能在缺乏現成規格的情況下，直接跟不懂技術的業主溝通釐清陌生領域的真實需求，並轉譯成可維護的資料模型。</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Rails 7</span>
+          <span class="tag tag-backend">GraphQL</span>
+          <span class="tag tag-data">多型關聯</span>
+        </div>
+      </div>
+
+      <div class="project-card">
         <div class="proj-title">Gao Jin — 幣安期貨自動交易機器人</div>
         <div class="proj-period">2023</div>
         <p>Go + Gin + Binance API，多帳號隔離管理，systemd 常駐服務，支援多策略並行執行。</p>
@@ -781,7 +806,7 @@
       </div>
       <div class="ach-card">
         <div class="ach-title">⚙️ HiLo 智能合約設計</div>
-        <p>52 張牌鏈上狀態機，96% RTP 數學模型，profitPerShare 分紅算法，內建防 bot 設計，Solidity 實作完整博弈邏輯。</p>
+        <p>52 張牌鏈上狀態機，96% RTP 數學模型，profitPerShare 分紅算法，內建防 bot 設計，Solidity 實作完整遊戲邏輯。</p>
       </div>
       <div class="ach-card">
         <div class="ach-title">🔐 零停機 BCrypt 密碼遷移</div>
@@ -811,11 +836,11 @@
   <div class="content">
 
     <div class="intro">
-      <strong>9 years of backend and full-stack engineering</strong> across <strong>Ruby on Rails, Go, and Node.js</strong>, with hands-on Angular front-end work and a long track record in high-concurrency systems. At Fatpit (鑫鼎鑽), decoupled race conditions with <strong>Redis Lua Scripts</strong> to support tens of millions of betting records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> event pipeline sustaining <strong>3,000 RPS</strong> while solving out-of-order event consistency; at Consensus Technology (共識科技), designed a decentralized exchange's off-chain matching / on-chain settlement architecture, and won a TRON smart-contract competition award. Over the past two years, engineered AI into <strong>three working systems</strong>: one turns the development lifecycle into a pipeline (kanban orchestration on top, a self-built multi-LLM dispatch engine underneath); another turns job searching into a two-way system (resume distillation plus three-platform job matching); and a YouTube content production pipeline that drew <strong>64K views in one month</strong>. All started from vague problems, worked around real platform constraints, and ended up actually being used. Systematic about observability, distributed consistency, and zero-downtime migration.
+      <strong>9 years of backend and full-stack engineering</strong> across <strong>Ruby on Rails, Go, and Node.js</strong>, with hands-on Angular front-end work and a long track record in high-concurrency systems. At Fatpit (鑫鼎鑽), decoupled race conditions with <strong>Redis Lua Scripts</strong> to support tens of millions of transaction records per day; at Lestar, built an <strong>AWS CDK Serverless</strong> event pipeline sustaining <strong>3,000 RPS</strong> while solving out-of-order event consistency; at Consensus Technology (共識科技), designed a decentralized exchange's off-chain matching / on-chain settlement architecture, and won a TRON smart-contract competition award. Over the past two years, engineered AI into <strong>three working systems</strong>: one turns the development lifecycle into a pipeline (kanban orchestration on top, a self-built multi-LLM dispatch engine underneath); another turns job searching into a two-way system (resume distillation plus three-platform job matching); and a YouTube content production pipeline that drew <strong>64K views in one month</strong>. All started from vague problems, worked around real platform constraints, and ended up actually being used. Also have several freelance and co-founding experiences working directly with non-technical stakeholders to turn ambiguous requirements into executable system design. Systematic about observability, distributed consistency, and zero-downtime migration.
     </div>
 
     <div class="metrics">
-      <div class="metric-card"><span class="num">10M+/day</span><div class="label">Betting Records</div></div>
+      <div class="metric-card"><span class="num">10M+/day</span><div class="label">Transaction Records</div></div>
       <div class="metric-card"><span class="num">5</span><div class="label">Ledger Tables Partitioned</div></div>
       <div class="metric-card"><span class="num">3,000</span><div class="label">RPS Serverless Pipeline</div></div>
       <div class="metric-card"><span class="num">9 yrs</span><div class="label">Full-Stack Experience</div></div>
@@ -923,7 +948,7 @@
           <div class="exp-header"><span class="company">Fatpit (鑫鼎鑽)</span><span class="period">2025/06 – Present</span></div>
           <div class="role">Senior Backend Engineer</div>
           <ul class="exp-bullets">
-            <li><strong>Redis Lua Scripts</strong> to atomically decouple race conditions: 6-key atomic bet-limit ops, idempotency guards, rate limiting, multi-layer CDN blacklist—eliminating TOCTOU race conditions entirely</li>
+            <li><strong>Redis Lua Scripts</strong> to atomically decouple race conditions: 6-key atomic quota-limit ops, idempotency guards, rate limiting, multi-layer CDN blacklist—eliminating TOCTOU race conditions entirely</li>
             <li><strong>MySQL Range Partition</strong> across 5 core ledger tables (credits / bets / transfers) by date; <code>PartitionReorganizerService</code> extends partitions online without locking; Slack alerts one month before expiry</li>
             <li><strong>Zero-downtime warehouse migration</strong>: Strategy + Factory abstracting a <code>Warehouse</code> module, per-feature-key switching between Redshift / ByteHouse; cut over with a single <code>disable_dual_write!</code> after dual-write reconciliation</li>
             <li><strong>Three interlocking AASM state machines</strong> (Pool / Round / Bet, 1,068 lines); a Pool transition (8 states) cascades into Round → Bet settlement</li>
@@ -938,7 +963,7 @@
       <div class="exp-item">
         <div class="timeline-dot"></div>
         <div class="exp-body">
-          <div class="exp-header"><span class="company">Shin Ai Shih (新愛世科技)</span><span class="period">2023/09 – 2025/05</span></div>
+          <div class="exp-header"><span class="company">新愛世科技</span><span class="period">2023/09 – 2025/05</span></div>
           <div class="role">Senior Full-Stack Engineer</div>
           <ul class="exp-bullets">
             <li>Rails 7 + <strong>GraphQL + graphql-batch DataLoader</strong>, 91 Models covering the full loan lifecycle; paper_trail financial audit trail for regulatory compliance</li>
@@ -987,7 +1012,7 @@
       <div class="exp-item">
         <div class="timeline-dot"></div>
         <div class="exp-body">
-          <div class="exp-header"><span class="company">Shin Ai Shih (新愛世科技)</span><span class="period">2019/06 – 2022/09</span></div>
+          <div class="exp-header"><span class="company">新愛世科技</span><span class="period">2019/06 – 2022/09</span></div>
           <div class="role">Senior Full-Stack Engineer</div>
           <ul class="exp-bullets">
             <li>AlphaLoan lending platform: full Rails + Angular ownership, automated CRM cutting <strong>loan application time by 70%</strong></li>
@@ -1038,7 +1063,7 @@
         <div class="feat-highlights">
           <div class="hl">🏗️ <b>Two-layer architecture</b>: kanban orchestration on top, self-built multi-LLM dispatcher underneath—swap AI/models without touching orchestration</div>
           <div class="hl">💰 <b>Cost-aware routing</b>: cheap models auto-assigned to simple tasks; per-ticket token cost quantified</div>
-          <div class="hl">⚡ <b>Parallel tickets, zero collision</b>: worktree isolation lets one person run many lanes at once—already used in production</div>
+          <div class="hl">⚡ <b>Parallel tickets, zero collision</b>: worktree isolation lets one person run many lanes at once</div>
           <div class="hl">🧠 <b>Original insight</b>: precise vs. fuzzy memory—filesystem as structured memory, not vector search</div>
         </div>
         <p class="feat-lead">Engineered the entire development lifecycle into a pipeline, split into <strong>an orchestration layer and an engine layer</strong>: on top, <code>ticket-dashboard</code> drives "fetch → analyze → Q&amp;A → plan → implement → review → integrate" through a kanban UI; underneath, the self-built <code>harness-agent</code> is <strong>the single entry point for every AI call</strong>, abstracting Claude Code / OpenAI Codex / Gemini CLI into one runner interface. <strong>The key design is that the upper layer never calls any AI vendor directly</strong>—swapping models or adding cost control and quality scoring never touches orchestration logic.</p>
@@ -1070,7 +1095,9 @@
           </div>
         </div>
 
-        <p style="margin-top:2px;"><strong>Core thesis: precise vs. fuzzy memory.</strong> When a task has a clear direction and settled decisions, don't reach for vector search / semantic recall (it drops constraints and re-litigates settled points)—make the filesystem <strong>the structured memory layer</strong>: plan / analysis / conclusions land as re-readable files the next step reads directly. Already used in production (fatpit): a self-hosted MCP wired to the replica DB + CloudWatch logs debugs production issues in real time.</p>
+        <p style="margin-top:2px;"><strong>Core thesis: precise vs. fuzzy memory.</strong> When a task has a clear direction and settled decisions, don't reach for vector search / semantic recall (it drops constraints and re-litigates settled points)—make the filesystem <strong>the structured memory layer</strong>: plan / analysis / conclusions land as re-readable files the next step reads directly.</p>
+
+        <p style="margin-top:6px;"><strong>harness-agent itself is a personal local dev tool, never deployed to any company's production systems.</strong> Separately, also at Fatpit, I independently built a self-hosted MCP server (a different project, built on Anthropic's Model Context Protocol) wired to the replica DB and CloudWatch logs so engineers can debug live issues in natural language — <strong>that MCP server is genuinely running in the company's production environment</strong> as part of the team's daily workflow, not a demo.</p>
 
         <figure class="card-shot">
           <div class="workflow-shot" role="img" aria-label="ticket-dashboard orchestration UI screenshot"></div>
@@ -1143,6 +1170,29 @@
           <span class="tag tag-backend">PostgreSQL + Redis Queue</span>
           <span class="tag tag-data">Schema-First Validation</span>
           <span class="tag tag-data">YouTube Data API</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">Valsyn — Brand × Agent Matching Platform</div>
+        <div class="proj-period">Co-Founded · Rails 7.1 + Next.js 16 + React 19</div>
+        <p>A B2B matching platform co-founded with a friend, letting brands and agents search for each other, match mutually, chat in real time, and generate promotional quotes. Core is the <strong>Engagement mutual-match engine</strong> (an AASM state machine managing the match lifecycle, dating-app-style logic where both sides must express interest, with a daily search cap to prevent abuse); <strong>business rules enforced at the model layer</strong> (chat rooms check for a confirmed match before creation, holding even if someone calls the API directly); promotion date-range conflicts checked with PostgreSQL's native <code>OVERLAPS</code> operator; and an <strong>OpenRouter API</strong> integration auto-translating quote content — a real, shipped AI feature. This experience also involved defining a business model from scratch with a co-founder and turning "matching" into concrete rules.</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Rails 7.1</span>
+          <span class="tag tag-frontend">Next.js 16</span>
+          <span class="tag tag-ai">OpenRouter API</span>
+          <span class="tag tag-data">PostgreSQL OVERLAPS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="proj-title">Lexico — Law Firm Case Management System</div>
+        <div class="proj-period">With a Friend + a Law Firm · Rails 7 + GraphQL</div>
+        <p>Built with a friend and a law firm as the client, for small and mid-sized firms. Used a <strong>polymorphic association</strong> to model case parties (customers/opponents) and staffing flexibly, broke down <strong>13 task types common to Taiwanese legal procedure</strong> for deadline tracking, and supported <strong>ROC-calendar case numbering</strong> for multi-tenant, multi-firm scenarios. Demonstrates working directly with a non-technical client to clarify real requirements in an unfamiliar domain and translate them into a maintainable data model, absent a ready-made spec.</p>
+        <div class="tags" style="margin-top:6px;">
+          <span class="tag tag-backend">Rails 7</span>
+          <span class="tag tag-backend">GraphQL</span>
+          <span class="tag tag-data">Polymorphic Associations</span>
         </div>
       </div>
 
